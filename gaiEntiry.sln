@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33214.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gaiEntiry", "gaiEntiry\gaiEntiry.csproj", "{B823CD27-CD54-46C6-A09D-085C2BC67CF6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B823CD27-CD54-46C6-A09D-085C2BC67CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B823CD27-CD54-46C6-A09D-085C2BC67CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B823CD27-CD54-46C6-A09D-085C2BC67CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B823CD27-CD54-46C6-A09D-085C2BC67CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD637CD7-8D8B-4D27-8FF4-302CFC0FA460}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd9c1def4a044cabb0c191084d012906" Name="Diagram1">
+        <EntityTypeShape EntityType="gaiEngModel.Accounting" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Auto" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Driver" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Duty" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Illegal" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.IllegalType" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Rank" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.User" Width="1.5" PointX="5.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEngModel.Worker" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="gaiEngModel.FK_Accounting_Auto" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Accounting_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Accounting_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Illegal_Auto" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Illegal_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Illegal_Duty" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Illegal_IllegalType" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Rank_Rank" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEngModel.FK_Worker_Rank" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
