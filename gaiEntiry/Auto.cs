@@ -23,7 +23,7 @@ namespace gaiEntiry
         public int id { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }
-        public System.DateTime Year { get; set; }
+        public int Year { get; set; }
         public string VinNumber { get; set; }
     
         public virtual ICollection<Accounting> Accounting { get; set; }

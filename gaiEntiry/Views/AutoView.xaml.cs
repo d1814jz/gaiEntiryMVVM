@@ -14,49 +14,29 @@ using System.Windows.Shapes;
 
 namespace gaiEntiry.Views
 {
-
-    public partial class DirectoryView : Window
+    
+    public partial class AutoView : Window
     {
         gaiEngEntities db = new gaiEngEntities();
 
 
         private string tableName { get; set; }
-        public DirectoryView(string tableName)
-        {
-
-            DirectoryView_Load();
-        }
-        public DirectoryView()
+        public AutoView()
         {
             InitializeComponent();
-            this.tableName = tableName;
+            AutoView_Load();
 
         }
 
-        public void DirectoryView_Load()
+        public void AutoView_Load()
         {
-            MessageBox.Show(tableName);
-            InitializeComponent();
-            getDate(tableName);
+
+            dataGridView1.ItemsSource = db.Auto.ToList();
         }
 
         public void getDate(string tableName)
         {
             List<string> directoryTablesList = new List<string>() { "Auto", "Driver", "IllegalType", "Rank" };
-            switch (tableName) {
-                case "Auto":
-                    dataGridView1.ItemsSource = db.Auto.ToList();
-                    break;
-                case "Driver":
-                    dataGridView1.ItemsSource = db.Driver.ToList();
-                    break;
-                case "IllegalType":
-                    dataGridView1.ItemsSource = db.IllegalType.ToList();
-                    break;
-                case "Rank":
-                    dataGridView1.ItemsSource = db.Rank.ToList();
-                    break;
-            }
 
 
         }
@@ -73,6 +53,7 @@ namespace gaiEntiry.Views
 
         private void btnGridView_Click(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

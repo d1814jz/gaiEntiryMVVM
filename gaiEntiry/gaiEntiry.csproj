@@ -200,6 +200,18 @@
     <Compile Include="IllegalType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Insert\InserDriver.xaml.cs">
+      <DependentUpon>InserDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Insert\InsertAuto.xaml.cs">
+      <DependentUpon>InsertAuto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Insert\InsertRank.xaml.cs">
+      <DependentUpon>InsertRank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Insert\IsnertIllegalType.xaml.cs">
+      <DependentUpon>IsnertIllegalType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,6 +234,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\AutoView.xaml.cs">
+      <DependentUpon>AutoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DirectoryView.xaml.cs">
       <DependentUpon>DirectoryView.xaml</DependentUpon>
     </Compile>
@@ -234,6 +249,22 @@
     <Compile Include="Worker.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="Insert\InserDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Insert\InsertAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Insert\InsertRank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Insert\IsnertIllegalType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -246,6 +277,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AutoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DirectoryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +332,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Image1.gif" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -307,9 +345,6 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\Image1.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\background.jpg" />
     <Resource Include="Resources\backgroundnolights.gif" />
   </ItemGroup>

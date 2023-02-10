@@ -25,7 +25,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Year" Type="date" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
           <Property Name="VinNumber" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Driver">
@@ -279,7 +279,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Year" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Year" Type="Int32" Nullable="false" />
           <Property Name="VinNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Auto" FromRole="Auto" ToRole="Accounting" />
           <NavigationProperty Name="Illegal" Relationship="Self.FK_Illegal_Auto" FromRole="Auto" ToRole="Illegal" />

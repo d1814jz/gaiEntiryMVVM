@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace gaiEntiry.Views
 {
-    /// <summary>
-    /// Interaction logic for LoginView.xaml
-    /// </summary>
     public partial class LoginView : Window
     {
         public string Login;

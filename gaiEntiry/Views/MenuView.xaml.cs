@@ -15,9 +15,6 @@ using XamlAnimatedGif;
 
 namespace gaiEntiry.Views
 {
-    /// <summary>
-    /// Interaction logic for MenuView.xaml
-    /// </summary>
     public partial class MenuView : Window
     {
         public string Type;
@@ -47,7 +44,7 @@ namespace gaiEntiry.Views
             DirectoryClick("Auto");
         }
 
-        private void Drivers_Click(object sender, RoutedEventArgs e)
+        private void Driver_Click(object sender, RoutedEventArgs e)
         {
             DirectoryClick("Driver");
         }
@@ -59,7 +56,7 @@ namespace gaiEntiry.Views
 
         private void Rank_Click(object sender, RoutedEventArgs e)
         {
-            DirectoryClick("Звания");
+            DirectoryClick("Rank");
         }
     }
 }

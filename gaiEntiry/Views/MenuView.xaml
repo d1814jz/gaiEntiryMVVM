@@ -16,7 +16,7 @@
         <Menu Height="30" VerticalAlignment="Top" Margin="0,0,0.2,0">
             <MenuItem Header="Справочники" >
                 <MenuItem x:Name="Auto" Header="Автомобили" Click="Auto_Click"/>
-                <MenuItem x:Name="Drivers" Header="Водители" Click="Drivers_Click"/>
+                <MenuItem x:Name="Driver" Header="Водители" Click="Driver_Click"/>
                 <MenuItem x:Name="IllegalType" Header="Виды нарушений" Click="IllegalType_Click"/>
                 <MenuItem x:Name="Rank" Header="Звания" Click="Rank_Click"/>
                 
