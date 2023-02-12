@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gaiEntiry.Update;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,7 +24,10 @@ namespace gaiEntiry
         public MainWindow()
         {
             InitializeComponent();
-            
+            UpdateDriver upd = new UpdateDriver(2);
+            this.Hide();
+            upd.Show();
+           
         }
     }
 }
