@@ -23,9 +23,20 @@ namespace gaiEntiry.Update
         private int _id { get; set; }
         public void setValues()
         {
-            using (db)
+            using (gaiEngEntities db = new gaiEngEntities())
             {
-                var driver = db.Driver.Where(u => u.id == _id);
+                var driver = db.Driver.Where(u => u.id == _id).FirstOrDefault();
+                if(driver != null)
+                {
+                    FirstNameTextBox.Text = driver.FirstName;
+                    LastNameTextBox.Text = driver.LastName;
+                    SurnameTextBox.Text = driver.Surname;
+                    AddressTextBox.Text = driver.Address;
+                    NumberDLTextBox.Text = driver.NumberDL;
+                    db.SaveChanges();
+                    MessageBox.Show("Данные обновлены");
+                }
+                
                 //извлечь данные !?
             }
         }
@@ -37,16 +48,24 @@ namespace gaiEntiry.Update
             setValues();
         }
 
-        private void btnInser_Click(object sender, RoutedEventArgs e)
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            using (db)
+            using (gaiEngEntities db = new gaiEngEntities())
             {
-                var result = db.Driver.Where(u => u.id == _id).FirstOrDefault(u => u.FirstName == FirstNameTextBox.Text & u.LastName == LastNameTextBox.Text & u.Surname == SurnameTextBox.Text & u.Address == AddressTextBox.Text & u.NumberDL == NumberDLTextBox.Text);
-                if(result != null)
+                //var result = db.Driver.Where(u => u.id == _id).FirstOrDefault(u => u.FirstName == FirstNameTextBox.Text & u.LastName == LastNameTextBox.Text & u.Surname == SurnameTextBox.Text & u.Address == AddressTextBox.Text & u.NumberDL == NumberDLTextBox.Text);
+                var result = db.Driver.Where(u => u.id == _id).FirstOrDefault();
+                if (result != null)
                 {
-                    MessageBox.Show(Convert.ToString(result));
+                    result.FirstName = FirstNameTextBox.Text;
+                    result.LastName = LastNameTextBox.Text;
+                    result.Surname = SurnameTextBox.Text;
+                    result.Address = AddressTextBox.Text;
+                    result.NumberDL = NumberDLTextBox.Text;
                     db.SaveChanges();
+                    MessageBox.Show("Данные изменены");
+                    setValues();
                 }
+
             }
         }
 

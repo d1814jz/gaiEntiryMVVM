@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:gaiEntiry.Insert"
         mc:Ignorable="d"
         Title="IsnertIllegalType" Height="373.2" Width="355.2">
-    <Grid Margin="0,0,3.6,0">
+    <Grid Margin="0,0,3.8,0.2">
         <Label Content="Вид нарушения" HorizontalAlignment="Left" Margin="36,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.476,1.305"/>
-        <Label Content="Штраф" HorizontalAlignment="Left" Margin="33,78,0,0" VerticalAlignment="Top"/>
-        <Label Content="Предупреждение" HorizontalAlignment="Left" Margin="33,117,0,0" VerticalAlignment="Top"/>
-        <Label Content="Срок лишения" HorizontalAlignment="Left" Margin="33,158,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IllegalTypeTextBox" HorizontalAlignment="Left" Height="26" Margin="148,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
-        <TextBox x:Name="FineTextBox" HorizontalAlignment="Left" Height="26" Margin="148,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
-        <TextBox x:Name="TodTextBox" HorizontalAlignment="Left" Height="26" Margin="148,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <Label Content="Штраф" HorizontalAlignment="Left" Margin="33,137,0,0" VerticalAlignment="Top"/>
+        <Label Content="Предупреждение" HorizontalAlignment="Left" Margin="33,176,0,0" VerticalAlignment="Top"/>
+        <Label Content="Срок лишения" HorizontalAlignment="Left" Margin="33,217,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="IllegalTypeTextBox" HorizontalAlignment="Left" Height="88" Margin="148,35,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="FineTextBox" HorizontalAlignment="Left" Height="26" Margin="148,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <TextBox x:Name="TodTextBox" HorizontalAlignment="Left" Height="26" Margin="148,218,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
         <Button x:Name="btnInser" Content="Добавить" HorizontalAlignment="Left" Margin="90,268,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnInser_Click"/>
         <Button x:Name="btnExit" Content="Назад" HorizontalAlignment="Left" Margin="204,268,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnExit_Click"/>
-        <CheckBox x:Name="NoticeCheckBox" Content="Да&#xD;&#xA;" HorizontalAlignment="Left" Margin="148,123,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="NoticeCheckBox" Content="Да&#xD;&#xA;" HorizontalAlignment="Left" Margin="148,182,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

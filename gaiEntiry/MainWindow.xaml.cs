@@ -24,7 +24,7 @@ namespace gaiEntiry
         public MainWindow()
         {
             InitializeComponent();
-            UpdateDriver upd = new UpdateDriver(2);
+            UpdateIllegalType upd = new UpdateIllegalType(2);
             this.Hide();
             upd.Show();
            

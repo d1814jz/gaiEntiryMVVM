@@ -1,0 +1,20 @@
+﻿<Window x:Class="gaiEntiry.Update.UpdateRank"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Update"
+        mc:Ignorable="d"
+        Title="Редактировать звания" Height="216.316" Width="323.158"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiry\gaiEntiry\Resources\logo.ico">
+    <Grid Margin="0,0,3.6,0.2">
+        <Label Content="Звание" HorizontalAlignment="Left" Margin="36,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.476,1.305"/>
+
+
+
+        <TextBox x:Name="RankTextBox" HorizontalAlignment="Left" Height="26" Margin="113,36,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
+        <Button x:Name="btnUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="70,146,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnUpdate_Click"/>
+        <Button x:Name="btnExit" Content="Назад" HorizontalAlignment="Left" Margin="198,146,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnExit_Click"/>
+
+    </Grid>
+</Window>

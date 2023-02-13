@@ -230,8 +230,17 @@
     <Compile Include="Rank.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Update\UpdateAuto.xaml.cs">
+      <DependentUpon>UpdateAuto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update\UpdateDriver.xaml.cs">
       <DependentUpon>UpdateDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Update\UpdateIllegalType.xaml.cs">
+      <DependentUpon>UpdateIllegalType.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Update\UpdateRank.xaml.cs">
+      <DependentUpon>UpdateRank.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -280,7 +289,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Update\UpdateAuto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Update\UpdateDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Update\UpdateIllegalType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Update\UpdateRank.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

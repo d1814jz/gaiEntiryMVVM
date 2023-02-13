@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Update"
         mc:Ignorable="d"
-        Title="UpdateDriver" Height="345.79" Width="342.105">
+        Title="Редактирование водителя" Height="345.79" Width="342.105"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiry\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Label Content="Имя" HorizontalAlignment="Left" Margin="36,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.476,1.305"/>
         <Label Content="Фамилия" HorizontalAlignment="Left" Margin="33,78,0,0" VerticalAlignment="Top"/>
@@ -17,7 +18,7 @@
         <TextBox x:Name="SurnameTextBox" HorizontalAlignment="Left" Height="26" Margin="123,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
         <TextBox x:Name="AddressTextBox" HorizontalAlignment="Left" Height="26" Margin="123,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
         <TextBox x:Name="NumberDLTextBox" HorizontalAlignment="Left" Height="26" Margin="123,199,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="147"/>
-        <Button x:Name="btnUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="90,268,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnInser_Click"/>
+        <Button x:Name="btnUpdate" Content="Изменить" HorizontalAlignment="Left" Margin="90,268,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnUpdate_Click"/>
         <Button x:Name="btnExit" Content="Назад" HorizontalAlignment="Left" Margin="204,268,0,0" VerticalAlignment="Top" Width="80" Height="23" Click="btnExit_Click"/>
     </Grid>
 </Window>
