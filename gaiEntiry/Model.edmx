@@ -65,7 +65,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IllegalType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IllegalType" Type="varchar(max)" Nullable="false" />
           <Property Name="Fine" Type="int" Nullable="false" />
           <Property Name="Notice" Type="bit" Nullable="false" />
           <Property Name="Tod" Type="int" Nullable="false" />
@@ -328,7 +328,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IllegalType1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IllegalType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Fine" Type="Int32" Nullable="false" />
           <Property Name="Notice" Type="Boolean" Nullable="false" />
           <Property Name="Tod" Type="Int32" Nullable="false" />

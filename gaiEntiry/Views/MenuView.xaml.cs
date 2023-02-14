@@ -35,7 +35,7 @@ namespace gaiEntiry.Views
 
         private void DirectoryClick(string itemName)
         {
-            DirectoryView directory = new DirectoryView(itemName);
+            DictionaryView directory = new DictionaryView(itemName);
             directory.Show();
         }
 

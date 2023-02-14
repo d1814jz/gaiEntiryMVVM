@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,7 +60,24 @@ namespace gaiEntiry.Update
                     illegalType.Fine = Convert.ToInt32(FineTextBox.Text);
                     _ = NoticeCheckBox.IsChecked == true ? illegalType.Notice = true : illegalType.Notice = false;
                     illegalType.Tod = Convert.ToInt32(TodTextBox.Text);
-                    db.SaveChanges();
+                    try
+                    {
+
+                        db.SaveChanges();
+
+                    }
+                    catch (DbEntityValidationException ex)
+                    {
+                        foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                        {
+                            MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                            MessageBox.Show(" ");
+                            foreach (DbValidationError err in validationError.ValidationErrors)
+                            {
+                                MessageBox.Show(err.ErrorMessage + " ");
+                            }
+                        }
+                    }
                     MessageBox.Show("Данные изменены"); ;
                     setValues();
                 }

@@ -17,10 +17,10 @@ namespace gaiEntiry.Insert
     /// <summary>
     /// Interaction logic for IsnertIllegalType.xaml
     /// </summary>
-    public partial class IsnertIllegalType : Window
+    public partial class InsertIllegalType : Window
     {
         gaiEngEntities db = new gaiEngEntities();
-        public IsnertIllegalType()
+        public InsertIllegalType()
         {
             InitializeComponent();
         }

@@ -11,32 +11,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using gaiEntiry;
 
 namespace gaiEntiry.Views
 {
 
-    public partial class DirectoryView : Window
+    public partial class DictionaryView : Window
     {
         gaiEngEntities db = new gaiEngEntities();
-
+        
 
         private string tableName { get; set; }
-        public DirectoryView(string tableName)
+        public DictionaryView(string tableName)
         {
-
-            DirectoryView_Load();
+            this.tableName = tableName;
+            DictionaryView_Load();
         }
-        public DirectoryView()
+        public DictionaryView()
         {
             InitializeComponent();
             this.tableName = tableName;
 
         }
 
-        public void DirectoryView_Load()
+        public void DictionaryView_Load()
         {
-            MessageBox.Show(tableName);
+            
             InitializeComponent();
+            
+            MessageBox.Show(tableName);
             getDate(tableName);
         }
 
@@ -44,8 +47,8 @@ namespace gaiEntiry.Views
         {
             List<string> directoryTablesList = new List<string>() { "Auto", "Driver", "IllegalType", "Rank" };
             switch (tableName) {
-                case "Auto":
-                    dataGridView1.ItemsSource = db.Auto.ToList();
+                case "Auto": 
+                    dataGridView1.ItemsSource = db.Auto.ToList();                 
                     break;
                 case "Driver":
                     dataGridView1.ItemsSource = db.Driver.ToList();
@@ -57,18 +60,19 @@ namespace gaiEntiry.Views
                     dataGridView1.ItemsSource = db.Rank.ToList();
                     break;
             }
-
-
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            OtherCommands.getInsertWindow(tableName);
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            TextBlock currentId = (TextBlock)dataGridView1.SelectedCells[0].Column.GetCellContent(dataGridView1.SelectedItem);
+            OtherCommands.getUpdateWindow(tableName, Convert.ToInt32(currentId.Text));
 
+            
         }
 
         private void btnGridView_Click(object sender, RoutedEventArgs e)
@@ -88,6 +92,15 @@ namespace gaiEntiry.Views
         private void comboBox1_IsMouseCapturedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //получение оси абсцисс
+            //int index = dataGridView1.CurrentCell.Column.DisplayIndex;
+            //MessageBox.Show(dataGridView1.CurrentColumn.DisplayIndex.ToString());
+            MessageBox.Show(dataGridView1.CurrentColumn.DisplayIndex.ToString());
+            
         }
     }
 }

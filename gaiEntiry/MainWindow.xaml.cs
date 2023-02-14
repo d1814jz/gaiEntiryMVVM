@@ -24,9 +24,6 @@ namespace gaiEntiry
         public MainWindow()
         {
             InitializeComponent();
-            UpdateIllegalType upd = new UpdateIllegalType(2);
-            this.Hide();
-            upd.Show();
            
         }
     }

@@ -17,15 +17,15 @@ namespace gaiEntiry.Insert
     /// <summary>
     /// Interaction logic for InserDriver.xaml
     /// </summary>
-    public partial class InserDriver : Window
+    public partial class InsertDriver : Window
     {
         gaiEngEntities db = new gaiEngEntities();
-        public InserDriver()
+        public InsertDriver()
         {
             InitializeComponent();
         }
 
-        private void btnInser_Click(object sender, RoutedEventArgs e)
+        private void btnInsert_Click(object sender, RoutedEventArgs e)
         {
             using (var context = new gaiEngEntities())
             {
@@ -49,5 +49,6 @@ namespace gaiEntiry.Insert
         {
             this.Hide();
         }
+
     }
 }

@@ -200,8 +200,8 @@
     <Compile Include="IllegalType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Insert\InserDriver.xaml.cs">
-      <DependentUpon>InserDriver.xaml</DependentUpon>
+    <Compile Include="Insert\InsertDriver.xaml.cs">
+      <DependentUpon>InsertDriver.xaml</DependentUpon>
     </Compile>
     <Compile Include="Insert\InsertAuto.xaml.cs">
       <DependentUpon>InsertAuto.xaml</DependentUpon>
@@ -209,8 +209,8 @@
     <Compile Include="Insert\InsertRank.xaml.cs">
       <DependentUpon>InsertRank.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Insert\IsnertIllegalType.xaml.cs">
-      <DependentUpon>IsnertIllegalType.xaml</DependentUpon>
+    <Compile Include="Insert\InsertIllegalType.xaml.cs">
+      <DependentUpon>InsertIllegalType.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -227,6 +227,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="OtherCommands.cs" />
     <Compile Include="Rank.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -245,12 +246,11 @@
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Views\AutoView.xaml.cs">
       <DependentUpon>AutoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DirectoryView.xaml.cs">
-      <DependentUpon>DirectoryView.xaml</DependentUpon>
+    <Compile Include="Views\DictionaryView.xaml.cs">
+      <DependentUpon>DictionaryView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -261,7 +261,7 @@
     <Compile Include="Worker.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Page Include="Insert\InserDriver.xaml">
+    <Page Include="Insert\InsertDriver.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -273,7 +273,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Insert\IsnertIllegalType.xaml">
+    <Page Include="Insert\InsertIllegalType.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -309,7 +309,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DirectoryView.xaml">
+    <Page Include="Views\DictionaryView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -378,6 +378,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />
