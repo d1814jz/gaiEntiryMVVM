@@ -1,6 +1,7 @@
-﻿
+﻿using gaiEntiry.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,20 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace gaiEntiry
+namespace gaiEntiry.Add
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddNewAutoWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddNewAutoView : Window
     {
-        public MainWindow()
+        public AddNewAutoView()
         {
             InitializeComponent();
-           
+            DataContext = new RepositoriesVM();
         }
     }
 }
