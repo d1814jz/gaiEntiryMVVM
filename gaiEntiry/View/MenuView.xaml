@@ -17,23 +17,13 @@
                 <MenuItem x:Name="Auto" Header="Автомобили" Command="{Binding OpenAutoView}"/>
                 <MenuItem x:Name="Driver" Header="Водители" Command="{Binding OpenDriverView}"/>
                 <MenuItem x:Name="IllegalType" Header="Виды нарушений" Command="{Binding OpenIllegalTypeView}"/>
-                <MenuItem x:Name="Rank" Header="Звания"/>
+                <MenuItem x:Name="Rank" Header="Звания" Command="{Binding OpenRankView}"/>
 
-            </MenuItem>
-            <MenuItem Header="Инструменты" >
-                <MenuItem Header="Редактирование">
-                    <MenuItem Header="Базы данных"></MenuItem>
-                    <MenuItem Header="Пользователей"></MenuItem>
-
-                </MenuItem>
-                <MenuItem Header="Просмотр"></MenuItem>
-                <MenuItem Header="Отчет"></MenuItem>
-                <MenuItem Header="История подключений"></MenuItem>
             </MenuItem>
             <MenuItem Header="Нарушения"></MenuItem>
-            <MenuItem Header="Дежурство"></MenuItem>
+            <MenuItem Header="Дежурство"  Command="{Binding OpenDutyView}"></MenuItem>
             <MenuItem Header="Учет"></MenuItem>
-            <MenuItem Header="Кадры"></MenuItem>
+            <MenuItem Header="Кадры" Command="{Binding OpenWorkerView}"></MenuItem>
             <MenuItem Header="Выход"></MenuItem>
 
 

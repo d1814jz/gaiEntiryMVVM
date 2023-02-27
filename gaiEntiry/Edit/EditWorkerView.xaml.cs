@@ -13,20 +13,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace gaiEntiry.View
+namespace gaiEntiry.Edit
 {
     /// <summary>
-    /// Interaction logic for IllegalTypeView.xaml
+    /// Interaction logic for EditWorker.xaml
     /// </summary>
-    public partial class IllegalTypeView : Window
+    public partial class EditWorkerView : Window
     {
-        public static ListView AllIllegalTypesView;
-        public IllegalTypeView()
+        public EditWorkerView(Worker workerToEdit)
         {
             InitializeComponent();
-            AllIllegalTypesView = ViewAllIllegalTypes;
             DataContext = new RepositoriesVM();
-
+            RepositoriesVM.SelectedWorker = workerToEdit;
+            RepositoriesVM.WorkerLastName = workerToEdit.LastName;
+            RepositoriesVM.WorkerFirstName = workerToEdit.FirsName;
+            RepositoriesVM.WorkerSurname = workerToEdit.Surname;
+            RepositoriesVM.WorkeridRank = workerToEdit.idRank;
         }
     }
 }

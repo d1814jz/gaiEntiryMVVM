@@ -16,17 +16,16 @@ using System.Windows.Shapes;
 namespace gaiEntiry.View
 {
     /// <summary>
-    /// Interaction logic for IllegalTypeView.xaml
+    /// Interaction logic for WorkerView.xaml
     /// </summary>
-    public partial class IllegalTypeView : Window
+    public partial class WorkerView : Window
     {
-        public static ListView AllIllegalTypesView;
-        public IllegalTypeView()
+        public static ListView AllWorkersView;
+        public WorkerView()
         {
             InitializeComponent();
-            AllIllegalTypesView = ViewAllIllegalTypes;
+            AllWorkersView = ViewAllWorkers;
             DataContext = new RepositoriesVM();
-
         }
     }
 }

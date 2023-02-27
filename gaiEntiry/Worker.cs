@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.ViewModel;
     using System;
     using System.Collections.Generic;
     
@@ -27,5 +28,20 @@ namespace gaiEntiry
     
         public virtual ICollection<Accounting> Accounting { get; set; }
         public virtual Rank Rank { get; set; }
+        public Rank WorkerRank
+        {
+            get
+            {
+                return Repositories.GetRankById(idRank);
+            }
+        }
+
+        public List<Duty> WorkerDuty
+        {
+            get
+            {
+                return Repositories.GetAllDutiesByWorkerId(id);
+            }
+        }
     }
 }

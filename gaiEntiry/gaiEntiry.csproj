@@ -201,11 +201,17 @@
     <Compile Include="Add\AddNewDriverView.xaml.cs">
       <DependentUpon>AddNewDriverView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\AddNewDutyView.xaml.cs">
+      <DependentUpon>AddNewDutyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Add\AddNewIllegalTypeView.xaml.cs">
       <DependentUpon>AddNewIllegalTypeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Add\AddNewRankView.xaml.cs">
       <DependentUpon>AddNewRankView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Add\AddNewWorkerView.xaml.cs">
+      <DependentUpon>AddNewWorkerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Auto.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -218,11 +224,17 @@
     <Compile Include="Edit\EditDriverView.xaml.cs">
       <DependentUpon>EditDriverView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Edit\EditDutyView.xaml.cs">
+      <DependentUpon>EditDutyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Edit\EditIllegalTypeView.xaml.cs">
       <DependentUpon>EditIllegalTypeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Edit\EditRankView.xaml.cs">
       <DependentUpon>EditRankView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Edit\EditWorkerView.xaml.cs">
+      <DependentUpon>EditWorkerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -271,8 +283,14 @@
     <Compile Include="View\DriverView.xaml.cs">
       <DependentUpon>DriverView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\DutyView.xaml.cs">
+      <DependentUpon>DutyView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\IllegalTypeView.xaml.cs">
       <DependentUpon>IllegalTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IllegalView.xaml.cs">
+      <DependentUpon>IllegalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -286,6 +304,9 @@
     <Compile Include="View\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\WorkerView.xaml.cs">
+      <DependentUpon>WorkerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Worker.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -297,11 +318,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Add\AddNewDutyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Add\AddNewIllegalTypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Add\AddNewRankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Add\AddNewWorkerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,11 +342,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Edit\EditDutyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Edit\EditIllegalTypeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Edit\EditRankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edit\EditWorkerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -341,7 +378,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\DutyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\IllegalTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IllegalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -358,6 +403,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WorkerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

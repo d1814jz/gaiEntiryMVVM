@@ -20,9 +20,11 @@ namespace gaiEntiry.View
     /// </summary>
     public partial class RankView : Window
     {
+        public static ListView AllRanksView;
         public RankView()
         {
             InitializeComponent();
+            AllRanksView = ViewAllRanks;
             DataContext = new RepositoriesVM();
         }
     }

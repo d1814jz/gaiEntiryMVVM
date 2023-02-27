@@ -25,7 +25,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ListView x:Name="ViewAllUsers" ItemsSource="{Binding AllDrivers}"
+        <ListView x:Name="ViewAllDrivers" ItemsSource="{Binding AllDrivers}"
                           SelectedItem="{Binding SelectedDriver}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="427" Grid.ColumnSpan="2" >
             <ListView.View>
                 <GridView>

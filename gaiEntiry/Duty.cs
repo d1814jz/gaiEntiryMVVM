@@ -25,5 +25,15 @@ namespace gaiEntiry
         public string Place { get; set; }
     
         public virtual ICollection<Illegal> Illegal { get; set; }
+
+        public Worker DutyWorker
+        {
+            get
+            {
+                return Repositories.GetWorkerById(idWorker);
+            }
+        }
+
+        
     }
 }

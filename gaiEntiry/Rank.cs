@@ -25,5 +25,28 @@ namespace gaiEntiry
         public virtual Rank Rank11 { get; set; }
         public virtual Rank Rank2 { get; set; }
         public virtual ICollection<Worker> Worker { get; set; }
+
+        /*public Rank RankWorker
+        {
+            get
+            {
+                return Repositories.GetRankById(id);
+            }
+        }*/
+
+        /*public List<User> PositionUsers
+        {
+            get
+            {
+                return DataWorker.GetAllUsersByPositionId(Id);
+            }
+        }*/
+        public List<Worker> WorkerRank
+        {
+            get
+            {
+                return Repositories.GetAllWorkersByRankId(id);
+            }
+        }
     }
 }

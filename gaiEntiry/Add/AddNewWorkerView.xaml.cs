@@ -13,20 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace gaiEntiry.View
+namespace gaiEntiry.Add
 {
     /// <summary>
-    /// Interaction logic for IllegalTypeView.xaml
+    /// Interaction logic for AddNewWorkerView.xaml
     /// </summary>
-    public partial class IllegalTypeView : Window
+    public partial class AddNewWorkerView : Window
     {
-        public static ListView AllIllegalTypesView;
-        public IllegalTypeView()
+        public AddNewWorkerView()
         {
             InitializeComponent();
-            AllIllegalTypesView = ViewAllIllegalTypes;
             DataContext = new RepositoriesVM();
-
         }
     }
 }

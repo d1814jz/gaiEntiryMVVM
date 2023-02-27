@@ -26,7 +26,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ListView x:Name="ViewAllUsers" ItemsSource="{Binding AllRanks}"
+        <ListView x:Name="ViewAllRanks" ItemsSource="{Binding AllRanks}"
                           SelectedItem="{Binding SelectedRank}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="217" >
             <ListView.View>
                 <GridView>

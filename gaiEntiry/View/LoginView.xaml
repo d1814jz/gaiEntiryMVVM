@@ -7,16 +7,17 @@
         xmlns:vm="clr-namespace:gaiEntiry.ViewModel"
         mc:Ignorable="d"
         Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico"
-        Title="LoginView" Height="339.894" Width="322.872">
-    
+        Title="LoginView" Height="527.92" Width="322.872">
+
     <Grid>
-        <Button Content="Вход" HorizontalAlignment="Left" Margin="61,241,0,0" VerticalAlignment="Top" Width="93" Height="29" RenderTransformOrigin="1.058,0.234" Command="{Binding LoginCommand}"/>
-        <Button Content="Закрыть" HorizontalAlignment="Left" Height="29" Margin="178,241,0,0" VerticalAlignment="Top" Width="93" Command="{Binding ExitCommand}"/>
+        <Button Content="Вход" HorizontalAlignment="Left" Margin="60,431,0,0" VerticalAlignment="Top" Width="93" Height="29" RenderTransformOrigin="1.058,0.234" Command="{Binding LoginCommand}"/>
+        <Button Content="Закрыть" HorizontalAlignment="Left" Height="29" Margin="177,431,0,0" VerticalAlignment="Top" Width="93" Command="{Binding ExitCommand}" RenderTransformOrigin="0.424,-0.621"/>
         <Label Content="Авторизация" HorizontalAlignment="Left" Height="52" Margin="80,10,-26,0" VerticalAlignment="Top" Width="331" FontSize="25"/>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="61,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Text="{Binding UserLogin}"/>
-        <TextBox  HorizontalAlignment="Left" Height="27" Margin="61,156,0,0" VerticalAlignment="Top" Width="210" Text="{Binding UserPassword}"/>
-        <Label Content="Логин" HorizontalAlignment="Left" Height="29" Margin="10,97,0,0" VerticalAlignment="Top" Width="46" />
-        <Label Content="Пароль" HorizontalAlignment="Left" Height="27" Margin="10,156,0,0" VerticalAlignment="Top" Width="46"/>
+        <TextBox HorizontalAlignment="Left" Height="29" Margin="79,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" Text="{Binding UserLogin}"/>
+        <TextBox  HorizontalAlignment="Left" Height="27" Margin="80,346,0,0" VerticalAlignment="Top" Width="210" Text="{Binding UserPassword}"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Height="29" Margin="10,287,0,0" VerticalAlignment="Top" Width="46" />
+        <Label Content="Пароль" HorizontalAlignment="Left" Height="27" Margin="10,346,0,0" VerticalAlignment="Top" Width="56"/>
+        <Image HorizontalAlignment="Left" Height="248" Margin="27,39,-0.2,0" VerticalAlignment="Top" Width="290" Source="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.png"/>
     </Grid>
-   
+
 </Window>

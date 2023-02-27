@@ -4,9 +4,11 @@ using gaiEntiry.Edit;
 using gaiEntiry.View;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace gaiEntiry.ViewModel
 {
@@ -267,19 +269,56 @@ namespace gaiEntiry.ViewModel
 
         public static int Rankid { get; set; }
         public static string RankRank1 { get; set; }
+
+        public static int Workerid { get; set; }
+        public static int WorkeridRank { get; set; }
+        public static string WorkerLastName { get; set; }
+        public static string WorkerFirstName { get; set; }
+        public static string WorkerSurname { get; set; }
+
+        public static int Dutyid { get; set; }
+        public static int DutyidWorker { get; set; }
+        public static System.DateTime DutyDate { get; set; }
+        public static string DutyPlace { get; set; }
+
+
+
         //другие свойства
         public static User SelectedUser { get; set; }
         public static Auto SelectedAuto { get; set; }
         public static Driver SelectedDriver { get; set; }
         public static IllegalType SelectedIllegalType { get; set; }
         public static Rank SelectedRank { get; set; }
+        public static Worker SelectedWorker{ get; set; }
+        public static Duty SelectedDuty { get; set; }
+       
+
+
+        public static Rank WorkerRank { get; set; }
+
+        public static Worker RankWorker { get; set; }
+
+        public static Worker DutyWorker { get; set; }
+
+        public static   Worker WorkerDuty { get; set; }
+        //public static Department PositionDepartment { get; set; }
 
 
 
         #endregion
 
-
         #region getTables
+        private List<Duty> allDuties = Repositories.GetAllDuties();
+        public List<Duty> AllDuties
+        {
+            get { return allDuties; }
+            set
+            {
+                allDuties = value;
+                NotifyPropertyChanged("AllDutys");
+            }
+        }
+
         private List<User> allUsers = Repositories.GetAllUsers();
         public List<User> AllUsers
         {
@@ -291,16 +330,29 @@ namespace gaiEntiry.ViewModel
             }
         }
         //все автомобили
-        private List<Auto> allAutos = Repositories.GetAllAutos();
+        private static List<Auto> allAutos = Repositories.GetAllAutos();
+        //public static List<Auto> list = Repositories.GetAllAutos();
+        private ObservableCollection<Auto> allAutosOc = Repositories.GetAllAutosOc();
+        public  ObservableCollection<Auto> AllAutosOc
+        {
+            get { return allAutosOc; }
+            set
+            {
+                allAutosOc = value;
+                NoticePropertyChanged(nameof(AllAutosOc));
+            }
+        }
         public List<Auto> AllAutos
         {
             get { return allAutos; }
             set
             {
                 allAutos = value;
-                NotifyPropertyChanged("AllAutos");
+                NoticePropertyChanged(nameof(AllAutos));
+                //NotifyPropertyChanged("AllAutos");
             }
         }
+
         //все водители
 
         private List<Driver> allDrivers = Repositories.GetAllDrivers();
@@ -338,9 +390,17 @@ namespace gaiEntiry.ViewModel
             }
         }
 
+        private List<Worker> allWorkers = Repositories.GetAllWorkers();
+        public List<Worker> AllWorkers
+        {
+            get { return allWorkers; }
+            set
+            {
+                allWorkers = value;
+                NotifyPropertyChanged("AllWorkers");
+            }
+        }
         #endregion
-
-       
 
         #region addRecord
 
@@ -361,6 +421,7 @@ namespace gaiEntiry.ViewModel
                        ShowMessageToUser(resultStr);
                        SetNullValuesToProperties();
                        wnd.Close();
+                       UpdateAllAutoView();
                    }
                });
             }
@@ -383,7 +444,7 @@ namespace gaiEntiry.ViewModel
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();
-
+                        UpdateAllDriversView();
                     }
                 });
                 
@@ -406,6 +467,7 @@ namespace gaiEntiry.ViewModel
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();
+                        UpdateAllIllegalTypesView();
                     }
                 });
             }
@@ -426,16 +488,80 @@ namespace gaiEntiry.ViewModel
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();
+                        UpdateAllRanksView();
                     }
                 });
             }
         }
 
+        private RelayCommand addNewWorker;
+        public RelayCommand AddNewWorker
+        {
+            get
+            {
+                return addNewWorker?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                if (WorkerFirstName != null && WorkerLastName != null && WorkerSurname != null)
+                    {
+                        resultStr = Repositories.CreateWorker(WorkerLastName, WorkerFirstName, WorkerSurname, WorkerRank);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllWorkersView();
+                    }
+                });
+            }
+        }
+
+        /*RelayCommand addNewDriver;
+        public RelayCommand AddNewDriver
+        {
+            get
+            {
+                return addNewDriver ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                    if (DriverFirstName != null && DriverLastName != null && DriverSurname != null &&
+                        DriverAddress != null && DriverNumberDL != null)
+                    {
+                        resultStr = Repositories.CreateDriver(DriverLastName, DriverFirstName, DriverSurname, DriverAddress, DriverNumberDL);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllDriversView();
+                    }
+                });
+
+            }
+        }*/
+        private RelayCommand addNewDuty;
+        public RelayCommand AddNewDuty
+        {
+            get
+            {
+                return addNewDuty ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                    if (DutyDate != null &&  DutyPlace != null)
+                    {
+                        resultStr = Repositories.CreateDuty(DutyDate, DutyPlace, DutyWorker);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllDutiesView();
+                    }
+                });
+            }
+        }
         #endregion
 
         #region editRecord
 
-     
+
 
         private RelayCommand editAuto;
         public RelayCommand EditAuto
@@ -453,6 +579,7 @@ namespace gaiEntiry.ViewModel
                         SetNullValuesToProperties();
 
                         wnd.Close();
+                        UpdateAllAutoView();
                     }
                     else
                         ShowMessageToUser(resultStr);
@@ -476,6 +603,56 @@ namespace gaiEntiry.ViewModel
                         SetNullValuesToProperties();
 
                         wnd.Close();
+                        UpdateAllRanksView();
+                    }
+                    else
+                        ShowMessageToUser(resultStr);
+                });
+            }
+        }
+
+        private RelayCommand editWorker;
+        public RelayCommand EditWorker
+        {
+            get
+            {
+                return editWorker ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "Сотрудник не выбран";
+                    if (SelectedWorker != null)
+                    {
+                        resultStr = Repositories.EditWorker(SelectedWorker, WorkerLastName, WorkerFirstName, WorkerSurname, WorkerRank);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+
+                        wnd.Close();
+                        UpdateAllWorkersView();
+                    }
+                    else
+                        ShowMessageToUser(resultStr);
+                });
+            }
+        }
+
+
+
+        private RelayCommand editDuty;
+        public RelayCommand EditDuty
+        {
+            get
+            {
+                return editDuty ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "Сотрудник не выбран";
+                    if (SelectedDuty != null)
+                    {
+                        resultStr = Repositories.EditDuty(SelectedDuty, DutyDate, DutyPlace, DutyWorker);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllDutiesView();
                     }
                     else
                         ShowMessageToUser(resultStr);
@@ -498,8 +675,8 @@ namespace gaiEntiry.ViewModel
                     if(SelectedAuto != null)
                     {
                         resultStr = Repositories.DeleteAuto(SelectedAuto);
+                        UpdateAllAutoView();
                         SetNullValuesToProperties();
-                        
                     }
                     ShowMessageToUser(resultStr);
                 });
@@ -518,7 +695,7 @@ namespace gaiEntiry.ViewModel
                     {
                         resultStr = Repositories.DeleteDriver(SelectedDriver);
                         SetNullValuesToProperties();
-
+                        UpdateAllDriversView();
                     }
                     ShowMessageToUser(resultStr);
                 });
@@ -537,6 +714,7 @@ namespace gaiEntiry.ViewModel
                     {
                         resultStr = Repositories.DeleteIllegalType(SelectedIllegalType);
                         SetNullValuesToProperties();
+                        UpdateAllIllegalTypesView();
 
                     }
                     ShowMessageToUser(resultStr);
@@ -556,7 +734,46 @@ namespace gaiEntiry.ViewModel
                     {
                         resultStr = Repositories.DeleteRank(SelectedRank);
                         SetNullValuesToProperties();
+                        UpdateAllRanksView();
 
+                    }
+                    ShowMessageToUser(resultStr);
+                });
+            }
+        }
+
+        private RelayCommand deleteWorker;
+        public RelayCommand DeleteWorker
+        {
+            get
+            {
+                return deleteWorker ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Нужно выбрать запись!";
+                    if (SelectedWorker != null)
+                    {
+                        resultStr = Repositories.DeleteWorker(SelectedWorker);
+                        SetNullValuesToProperties();
+                        UpdateAllWorkersView();
+                    }
+                    ShowMessageToUser(resultStr);
+                });
+            }
+        }
+
+        private RelayCommand deleteDuty;
+        public RelayCommand DeleteDuty
+        {
+            get
+            {
+                return deleteDuty ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Нужно выбрать запись!";
+                    if (SelectedDuty != null)
+                    {
+                        resultStr = Repositories.DeleteDuty(SelectedDuty);
+                        SetNullValuesToProperties();
+                        UpdateAllDutiesView();
                     }
                     ShowMessageToUser(resultStr);
                 });
@@ -599,8 +816,11 @@ namespace gaiEntiry.ViewModel
             {
                 return exitCommand ?? new RelayCommand(obj =>
                 {
-                    Application.Current.Shutdown();
-                    
+                    //Application.Current.Shutdown();
+                    MessageBox.Show(Convert.ToString(Application.Current));
+
+
+
                 });
             }
         }
@@ -621,7 +841,58 @@ namespace gaiEntiry.ViewModel
         #endregion
 
         #region updateViews
-     
+        private void UpdateAllAutoView()
+        {
+            AllAutos = Repositories.GetAllAutos();
+            AutoView.AllAutosView.ItemsSource = null;
+            AutoView.AllAutosView.Items.Clear();
+            AutoView.AllAutosView.ItemsSource = allAutos;
+            AutoView.AllAutosView.Items.Refresh();
+        }
+
+        private void UpdateAllDriversView()
+        {
+            AllDrivers = Repositories.GetAllDrivers();
+            DriverView.AllDriversView.ItemsSource = null;
+            DriverView.AllDriversView.Items.Clear();
+            DriverView.AllDriversView.ItemsSource = allDrivers;
+            DriverView.AllDriversView.Items.Refresh();
+        }
+
+        private void UpdateAllIllegalTypesView()
+        {
+            AllIllegalTypes = Repositories.GetAllIllegalTypes();
+            IllegalTypeView.AllIllegalTypesView.ItemsSource = null;
+            IllegalTypeView.AllIllegalTypesView.Items.Clear();
+            IllegalTypeView.AllIllegalTypesView.ItemsSource = AllIllegalTypes;
+            IllegalTypeView.AllIllegalTypesView.Items.Refresh();
+        }
+
+        private void UpdateAllRanksView()
+        {
+            AllRanks = Repositories.GetAllRanks();
+            RankView.AllRanksView.ItemsSource = null;
+            RankView.AllRanksView.Items.Clear();
+            RankView.AllRanksView.ItemsSource = allRanks;
+            RankView.AllRanksView.Items.Refresh();
+        }
+        private void UpdateAllWorkersView()
+        {
+            AllWorkers = Repositories.GetAllWorkers();
+            WorkerView.AllWorkersView.ItemsSource = null;
+            WorkerView.AllWorkersView.Items.Clear();
+            WorkerView.AllWorkersView.ItemsSource = allWorkers;
+            WorkerView.AllWorkersView.Items.Refresh();
+        }
+
+        public void UpdateAllDutiesView()
+        {
+            AllDuties = Repositories.GetAllDuties();
+            DutyView.AllDutiesView.ItemsSource = null;
+            DutyView.AllDutiesView.Items.Clear();
+            DutyView.AllDutiesView.ItemsSource = allDuties;
+            DutyView.AllDutiesView.Items.Refresh();
+        }
         private void SetNullValuesToProperties()
         {
             //для автомобиля
@@ -677,6 +948,62 @@ namespace gaiEntiry.ViewModel
             }
         }
 
+        private void OpenAddNewWorkerViewMethod()
+        {
+            AddNewWorkerView obj = new AddNewWorkerView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openAddNewWorkerView;
+        public RelayCommand OpenAddNewWorkerView
+        {
+            get
+            {
+                return openAddNewWorkerView ?? new RelayCommand(obj =>
+                {
+                    OpenAddNewWorkerViewMethod();
+                });
+            }
+        }
+
+
+        private void EditWorkerViewMethod(Worker Worker)
+        {
+            EditWorkerView obj = new EditWorkerView(Worker);
+            SetCenterPositionAndOpen(obj);
+        }
+        private RelayCommand editWorkerView;
+        public RelayCommand EditWorkerView
+        {
+            get
+            {
+                return editWorkerView ?? new RelayCommand(obj =>
+                {
+                    EditWorkerViewMethod(SelectedWorker);
+                });
+            }
+        }
+
+        private void OpenWorkerViewMethod()
+        {
+            WorkerView obj = new WorkerView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openWorkerView;
+
+        public RelayCommand OpenWorkerView
+        {
+            get
+            {
+                return openWorkerView ?? new RelayCommand(obj =>
+                {
+                    OpenWorkerViewMethod();
+
+                });
+            }
+        }
+
         private void EditAutoViewMethod(Auto auto)
         {
             EditAutoView obj = new EditAutoView(auto);
@@ -714,8 +1041,28 @@ namespace gaiEntiry.ViewModel
             }
         }
 
-        
+
         //Водители
+        private void OpenDriverViewMethod()
+        {
+            DriverView obj = new DriverView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openDriverView;
+
+        public RelayCommand OpenDriverView
+        {
+            get
+            {
+                return openDriverView ?? new RelayCommand(obj =>
+                {
+                    OpenDriverViewMethod();
+
+                });
+            }
+        }
+
         private void OpenAddNewDriverViewMethod()
         {
             AddNewDriverView obj = new AddNewDriverView();
@@ -831,6 +1178,61 @@ namespace gaiEntiry.ViewModel
             }
         }
 
+        //Дежурство
+        private void OpenAddNewDutyViewMethod()
+        {
+            AddNewDutyView obj = new AddNewDutyView();
+            SetCenterPositionAndOpen(obj);
+        }
+        private void OpenEditDutyViewMethod(Duty Duty)
+        {
+            EditDutyView obj = new EditDutyView(Duty);
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand editDutyView;
+        public RelayCommand EditDutyView
+        {
+            get
+            {
+                return editDutyView ?? new RelayCommand(obj =>
+                {
+                    OpenEditDutyViewMethod(SelectedDuty);
+                });
+            }
+        }
+
+        private RelayCommand openAddNewDutyView;
+        public RelayCommand OpenAddNewDutyView
+        {
+            get
+            {
+                return openAddNewDutyView ?? new RelayCommand(obj =>
+                {
+                    OpenAddNewDutyViewMethod();
+                });
+            }
+        }
+
+        private void OpenDutyViewMethod()
+        {
+            DutyView obj = new DutyView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openDutyView;
+
+        public RelayCommand OpenDutyView
+        {
+            get
+            {
+                return openDutyView ?? new RelayCommand(obj =>
+                {
+                    OpenDutyViewMethod();
+
+                });
+            }
+        }
 
         //IllegalType 
 
@@ -911,9 +1313,11 @@ namespace gaiEntiry.ViewModel
             }
         }
         #endregion
-        
+
         #endregion
+
         #region Inotify
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged(String propertyName)
@@ -922,6 +1326,16 @@ namespace gaiEntiry.ViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
+        }
+        
+        protected virtual void RaisePropertyChanged(PropertyChangedEventArgs e)
+        {
+            var handler = PropertyChanged;
+            if (handler != null) handler(this, e);
+        }
+        protected void NoticePropertyChanged(string propertyName)
+        {
+            RaisePropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
         #endregion
     }

@@ -15,7 +15,7 @@
         <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Height="34" Margin="243.4,37,0,0" VerticalAlignment="Top" Width="113" Grid.Column="1" Command="{Binding OpenAddNewAutoView}"/>
         <Button  Content="Изменить"  Margin="243.4,92,42,294.2" Grid.Column="1" Command="{Binding EditAutoView}" />
         <Button  Content="Удалить"  Margin="243.4,142,42,244.2" Grid.Column="1" Command="{Binding DeleteAuto}"  />
-        <Button  Content="Назад"  Margin="244.4,196,40,190.2"  RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+        <Button  Content="Назад"  Margin="244.4,196,40,190.2"  RenderTransformOrigin="0.5,0.5" Grid.Column="1" Command="{Binding ExitCommand}">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleY="-1" ScaleX="-1"/>
@@ -25,7 +25,8 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <ListView x:Name="ViewAllUsers" ItemsSource="{Binding AllAutos}"
+        <ListView x:Name="ViewAllAutos" ItemsSource="{Binding AllAutos}"
+                  
                           SelectedItem="{Binding SelectedAuto}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="427" Grid.ColumnSpan="2" >
             <ListView.View>
                 <GridView>

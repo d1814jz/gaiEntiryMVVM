@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +14,7 @@ namespace gaiEntiry
         //+получить пользователей
         public static List<User> GetAllUsers()
         {
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var result = db.User.ToList();
                 return result;
@@ -23,6 +26,15 @@ namespace gaiEntiry
             using (gaiEngEntities db = new gaiEngEntities())
             {
                 var result = db.Auto.ToList();
+                return result;
+            }
+        }
+
+        public static ObservableCollection<Auto> GetAllAutosOc()
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                ObservableCollection<Auto> result = new ObservableCollection<Auto>(db.Auto.ToList());
                 return result;
             }
         }
@@ -42,7 +54,7 @@ namespace gaiEntiry
                         Brand = Brand,
                         Year = Year,
                         VinNumber = VinNumber
-                
+
                     };
                     db.Auto.Add(newAuto);
                     db.SaveChanges();
@@ -53,11 +65,11 @@ namespace gaiEntiry
         }
 
         //+изменить автомобиль 
-  
+
         public static string EditAuto(Auto oldAuto, string newBrand, string newModel, int newYear, string newVinNumber)
         {
             string result = "Такого автомобиля не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 Auto auto = db.Auto.FirstOrDefault(u => u.id == oldAuto.id);
                 auto.Model = newModel;
@@ -88,10 +100,21 @@ namespace gaiEntiry
             }
             return result;
         }
+
+        //получить автомобиль по id
+        public static Auto GetAutoById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Auto auto = db.Auto.FirstOrDefault(u => u.id == id);
+                return auto;
+            }
+        }
+
         //+получить виды нарушений
         public static List<IllegalType> GetAllIllegalTypes()
         {
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var result = db.IllegalType.ToList();
                 return result;
@@ -102,7 +125,7 @@ namespace gaiEntiry
         public static string CreateIllegalType(string IllegalType, int Fine, bool Notice, int Tod)
         {
             string result = "Такой вид нарушения уже существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 bool checkIsExist = db.IllegalType.Any(u => u.IllegalType1 == IllegalType
                     && u.Fine == Fine && u.Tod == Tod && u.Notice == Notice);
@@ -126,7 +149,7 @@ namespace gaiEntiry
         public static string EditIllegalType(IllegalType oldIllegalType, string newIllegalType, int newFine, bool newNotice, int newTod)
         {
             string result = "Такого вида нарушения не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 IllegalType illegalType = db.IllegalType.FirstOrDefault(u => u.id == oldIllegalType.id);
                 illegalType.IllegalType1 = newIllegalType;
@@ -145,7 +168,7 @@ namespace gaiEntiry
         public static string DeleteIllegalType(IllegalType illegalType)
         {
             string result = "Такого вида нарушения не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var tmp = db.IllegalType.Where(u => u.id == illegalType.id).FirstOrDefault(); ;
                 db.IllegalType.Remove(tmp);
@@ -156,10 +179,20 @@ namespace gaiEntiry
         }
 
 
+        //Получить вид нарушения по id
+        public static IllegalType GetIllegalTypeById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                IllegalType it = db.IllegalType.FirstOrDefault(u => u.id == id);
+                return it;
+            }
+        }
+
         //+получить водителей
         public static List<Driver> GetAllDrivers()
         {
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var result = db.Driver.ToList();
                 return result;
@@ -167,7 +200,7 @@ namespace gaiEntiry
         }
         //+создать водителя
 
-        public static string CreateDriver(string LastName, string FirstName, string Surname, string Address, string NumberDL )
+        public static string CreateDriver(string LastName, string FirstName, string Surname, string Address, string NumberDL)
         {
             string result = "Такой водитель уже существует";
             using (gaiEngEntities db = new gaiEngEntities())
@@ -191,13 +224,13 @@ namespace gaiEntiry
                     result = "Водитель добавлен";
                 }
                 return result;
-            }      
+            }
         }
 
 
         //+изменить водителя
-        public static string EditDriver(Driver oldDriver, string newFirstName, string newLastName, string newSurname, 
-            string newAddress, string newNumberDL )
+        public static string EditDriver(Driver oldDriver, string newFirstName, string newLastName, string newSurname,
+            string newAddress, string newNumberDL)
         {
             string result = "Такого водителя не существует";
             using (gaiEngEntities db = new gaiEngEntities())
@@ -220,7 +253,7 @@ namespace gaiEntiry
         public static string DeleteDriver(Driver driver)
         {
             string result = "Такого водителя не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var tmp = db.Driver.Where(u => u.id == driver.id).FirstOrDefault();
                 db.Driver.Remove(tmp);
@@ -230,10 +263,21 @@ namespace gaiEntiry
             return result;
         }
 
+        //получить водителя по id
+
+        public static Driver GetDriverById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Driver driver = db.Driver.FirstOrDefault(u => u.id == id);
+                return driver;
+            }
+        }
+
         //+получить звания
         public static List<Rank> GetAllRanks()
         {
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var result = db.Rank.ToList();
                 return result;
@@ -266,7 +310,7 @@ namespace gaiEntiry
         public static string EditRank(Rank oldRank, string newRank)
         {
             string result = "Такого звания не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 Rank rank = db.Rank.FirstOrDefault(u => u.id == oldRank.id);
                 rank.Rank1 = newRank;
@@ -281,7 +325,7 @@ namespace gaiEntiry
         public static string DeleteRank(Rank rank)
         {
             string result = "Такого звания не существует";
-            using(gaiEngEntities db = new gaiEngEntities())
+            using (gaiEngEntities db = new gaiEngEntities())
             {
                 var tmp = db.Rank.Where(u => u.id == rank.id).FirstOrDefault();
                 db.Rank.Remove(tmp);
@@ -291,25 +335,229 @@ namespace gaiEntiry
             return result;
         }
 
+
+        //получить звание по id
+
+        public static Rank GetRankById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Rank rank = db.Rank.FirstOrDefault(u => u.id == id);
+                return rank;
+            }
+        }
+
+        //получить сотрудника по id звания
+
+        public static List<Worker> GetAllWorkersByRankId(int id)
+        {
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                List<Worker> workers = (from worker in GetAllWorkers() where worker.idRank == id select worker).ToList();
+                return workers;
+            }
+        }
+
+        //получить звание по id сотрудника
+
+        public static List<Rank> GetAllRanksByWorkerId(int id)
+        {
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                List<Rank> ranks = (from rank in GetAllRanks() where rank.id == id select rank).ToList();
+                return ranks;
+            }
+        }
         //-все нарушения
+        public static List<Illegal> GetAllIllegals()
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                var result = db.Illegal.ToList();
+                return result;
+            }
+        }
         //-добавить нарушение
         //-удалить нарушение
         //-изменить нарушение
-        
+
         //-все сотрудники
-        //-добавить сотрудник
+        public static List<Worker> GetAllWorkers()
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                var result = db.Worker.ToList();
+                return result;
+            }
+        }
+
+
+        //-добавить сотрудника
+        public static string CreateWorker(string LastName, string FirstName, string Surname, Rank rank)
+        {
+            string result = "Такой сотрудник уже есть";
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                bool checkIsExitst = db.Worker.Any(u => u.FirsName == FirstName && u.LastName == u.LastName && u.Surname == Surname && u.idRank == rank.id);
+                if (!checkIsExitst)
+                {
+                    Worker newWorker = new Worker
+                    {
+                        LastName = LastName,
+                        FirsName = FirstName,
+                        Surname = Surname,
+                        idRank = rank.id
+                    };
+                    db.Worker.Add(newWorker);
+                    db.SaveChanges();
+                    result = "Сотрудник добавлен";
+                }
+                return result;
+            }
+        }
+        //изменить сотрудника
+
+        public static string EditWorker(Worker oldWorker, string newLastName, string newFirstName, string newSurname, Rank newRank)
+        {
+            string result = "Такого сотрудника не существует";
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                Worker worker = db.Worker.FirstOrDefault(u => u.id == oldWorker.id);
+                if(worker != null)
+                {
+                    worker.FirsName = newFirstName;
+                    worker.LastName = newLastName;
+                    worker.Surname = newSurname;
+                    worker.idRank = newRank.id;
+                    db.SaveChanges();
+                    result = $"Сострудник изменен";
+                }
+            }
+            return result;
+        }
+
         //-удалить сотрудника
-        //-изменить сотрудника
+        public static string DeleteWorker(Worker worker)
+        {
+            string result = "Такого звания не существует";
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                var tmp = db.Worker.Where(u => u.id == worker.id).FirstOrDefault();
+                db.Worker.Remove(tmp);
+                db.SaveChanges();
+                result = "Сотрудник удален";
+            }
+            return result;
+        }
+
+        public static Worker GetWorkerById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Worker worker = db.Worker.FirstOrDefault(u => u.id == id);
+                return worker;
+            }
+        }
 
         //-все дежурства
+        public static List<Duty> GetAllDuties()
+        {
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                var result = db.Duty.ToList();
+                return result;
+            }
+        }
         //-добавить дежурство
+        public static string CreateDuty(DateTime date, string place, Worker worker) 
+        {
+            string result = "Уже существует";
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                bool checkIsExist = db.Duty.Any(u => u.Date == date && u.Place == place && u.idWorker == worker.id);
+                if (!checkIsExist)
+                {
+                    Duty newDuty = new Duty
+                    {
+                        Date = date,
+                        Place = place,
+                        idWorker = worker.id
+                    };
+                    db.Duty.Add(newDuty);
+                    db.SaveChanges();
+                    result = "Дежурство добавлено";
+                }
+                return result;
+            }      
+        }
         //-удалить дежурство
-        //-изменить дежурство
+        public static string DeleteDuty(Duty duty)
+        {
+            string result = "Такого дежурства не существует";
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                var tmp = db.Duty.Where(u => u.Date == duty.Date && u.Place == duty.Place && u.idWorker == duty.idWorker)
+                    .FirstOrDefault();
+                db.Duty.Remove(tmp);
+                db.SaveChanges();
+                result = "Дежурство удалено";
+            }
+            return result;
+        }
 
+        //-изменить дежурство
+        public static string EditDuty(Duty oldDuty, DateTime newDate, string newPlace, Worker newWorker)
+        {
+            string result = "Такого дежурства не существует";
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Duty duty = db.Duty.FirstOrDefault(u => u.id == oldDuty.id);
+                duty.Date = newDate;
+                duty.Place = newPlace;
+                duty.idWorker = newWorker.id;
+                db.SaveChanges();
+                result = "Дежурство изменено";
+            }
+            return result;
+        }
+
+        public static Duty GetDutyById(int id)
+        {
+            using (gaiEngEntities db = new gaiEngEntities())
+            {
+                Duty duty = db.Duty.FirstOrDefault(u => u.id == id);
+                return duty;
+            }
+        }
+        //Получить дежурство по id сотрудника
+        public static List<Duty> GetAllDutiesByWorkerId(int id)
+        {
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                List<Duty> duties = (from duty in GetAllDuties() where duty.idWorker == id select duty).ToList();
+                return duties;
+            }
+        }
+
+        //Получить сотрудика по id дежурства
+        public static List<Worker> GetAllWorkersByDutyId(int id)
+        {
+            using(gaiEngEntities db = new gaiEngEntities())
+            {
+                List<Worker> workers = (from worker in GetAllWorkers() where worker.id == id select worker).ToList();
+                return workers;
+            }
+        }
         //-получить учет 
         //-добавить учет
         //-удалить учет
         //-изменить учет
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
     }
 }

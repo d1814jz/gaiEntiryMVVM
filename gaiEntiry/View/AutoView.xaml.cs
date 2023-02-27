@@ -20,10 +20,11 @@ namespace gaiEntiry.View
     /// </summary>
     public partial class AutoView : Window
     {
-        
+        public static ListView AllAutosView;
         public AutoView()
         {
             InitializeComponent();
+            AllAutosView = ViewAllAutos;
             DataContext = new RepositoriesVM();
    
         }

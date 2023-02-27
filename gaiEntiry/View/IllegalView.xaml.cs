@@ -1,5 +1,4 @@
-﻿using gaiEntiry.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,17 +15,13 @@ using System.Windows.Shapes;
 namespace gaiEntiry.View
 {
     /// <summary>
-    /// Interaction logic for IllegalTypeView.xaml
+    /// Interaction logic for IllegalView.xaml
     /// </summary>
-    public partial class IllegalTypeView : Window
+    public partial class IllegalView : Window
     {
-        public static ListView AllIllegalTypesView;
-        public IllegalTypeView()
+        public IllegalView()
         {
             InitializeComponent();
-            AllIllegalTypesView = ViewAllIllegalTypes;
-            DataContext = new RepositoriesVM();
-
         }
     }
 }

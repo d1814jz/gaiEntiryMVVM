@@ -1,0 +1,42 @@
+﻿<Window x:Class="gaiEntiry.Add.AddNewDutyView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico"
+        xmlns:local="clr-namespace:gaiEntiry.Add"
+        mc:Ignorable="d"
+        Title="Добавить дежурство" Height="300" Width="300"
+        Name="AddNewDutyVw">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Дата"/>
+            <TextBox Name="DateBlock" Text="{Binding DutyDate}"/>
+            <TextBlock Text="Место"/>
+            <TextBox Name="PlaceBlock" Text="{Binding DutyPlace}"/>
+            <TextBlock Text="Сотрудник"/>
+            <ComboBox ItemsSource="{Binding AllWorkers}" SelectedItem="{Binding DutyWorker}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding FirsName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Добавить дежурство" Command="{Binding AddNewDuty}"
+                CommandParameter="{Binding ElementName=AddNewDutyVw}"/>
+    </Grid>
+</Window>

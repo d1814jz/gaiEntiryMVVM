@@ -20,9 +20,11 @@ namespace gaiEntiry.View
     /// </summary>
     public partial class DriverView : Window
     {
+        public static ListView AllDriversView;
         public DriverView()
         {
             InitializeComponent();
+            AllDriversView = ViewAllDrivers;
             DataContext = new RepositoriesVM();
         }
     }
