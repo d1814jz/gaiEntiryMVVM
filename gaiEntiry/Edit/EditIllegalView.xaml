@@ -1,0 +1,81 @@
+﻿<Window x:Class="gaiEntiry.Edit.EditIllegalView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico"
+        xmlns:local="clr-namespace:gaiEntiry.Edit"
+        Title="Добавить водителя" Height="415" Width="300"
+        Name="EditIllegalVw">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Место"/>
+            <TextBox Name="LastNameBlock" Text="{Binding IllegalPlace}"/>
+            <TextBlock Text="Описание"/>
+            <TextBox Name="FirstNameBlock" Text="{Binding IllegalDescription}"/>
+            <TextBlock Text="Дежурство"/>
+            <ComboBox ItemsSource="{Binding AllDuties}" SelectedItem="{Binding IllegalDuty}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding DutyWorker.LastName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding DutyWorker.FirsName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding DutyWorker.Surname}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Place}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Date}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Водитель"/>
+            <ComboBox ItemsSource="{Binding AllDrivers}" SelectedItem="{Binding IllegalDriver}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding FirstName}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Surname}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Автомобиль"/>
+            <ComboBox ItemsSource="{Binding AllAutos}" SelectedItem="{Binding IllegalAuto}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Brand}"/>
+                            <TextBlock Text=" "/>
+                            <TextBlock Text="{Binding Model}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Вид нарушения"/>
+            <ComboBox ItemsSource="{Binding AllIllegalTypes}" SelectedItem="{Binding IllegalIllegalType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding IllegalType1}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Изменить нарушение" Command="{Binding EditIllegal}"
+                CommandParameter="{Binding ElementName=EditIllegalVw}"/>
+    </Grid>
+</Window>

@@ -34,6 +34,14 @@ namespace gaiEntiry
             }
         }
 
+        //DutyIllegal
+        public List<Illegal> DutyIllegal
+        {
+            get
+            {
+                return Repositories.GetAllIllegalsByDutyId(id);
+            }
+        }
         
     }
 }

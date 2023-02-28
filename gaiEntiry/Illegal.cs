@@ -26,5 +26,39 @@ namespace gaiEntiry
         public virtual Driver Driver { get; set; }
         public virtual Duty Duty { get; set; }
         public virtual IllegalType IllegalType { get; set; }
+       
+
+        //IllegalAuto
+        public Auto IllegalAuto
+        {
+            get
+            {
+                return Repositories.GetAutoById(idAuto);
+            }
+        }
+        //IllegalDriver
+        public Driver IllegalDriver
+        {
+            get
+            {
+                return Repositories.GetDriverById(idDriver);
+            }
+        }
+        //IllegalDuty
+        public Duty IllegalDuty
+        {
+            get
+            {
+                return Repositories.GetDutyById(idDuty);
+            }
+        }
+        //IllegalIllegalType
+        public IllegalType IllegalIllegalType
+        {
+            get
+            {
+                return Repositories.GetIllegalTypeById(idIllegalType);
+            }
+        }
     }
 }

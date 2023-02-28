@@ -43,5 +43,7 @@ namespace gaiEntiry
                 return Repositories.GetAllDutiesByWorkerId(id);
             }
         }
+
+        
     }
 }

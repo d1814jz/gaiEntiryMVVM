@@ -281,6 +281,14 @@ namespace gaiEntiry.ViewModel
         public static System.DateTime DutyDate { get; set; }
         public static string DutyPlace { get; set; }
 
+        public static int Illegalid { get; set; }
+        public static int IllegalidIllegalType { get; set; }
+        public static int IllegalidDuty { get; set; }
+        public static int IllegalidAuto { get; set; }
+        public static int IllegalidDriver { get; set; }
+        public static string IllegalPlace { get; set; }
+        public static string IllegalDescription { get; set; }
+ 
 
 
         //другие свойства
@@ -291,6 +299,7 @@ namespace gaiEntiry.ViewModel
         public static Rank SelectedRank { get; set; }
         public static Worker SelectedWorker{ get; set; }
         public static Duty SelectedDuty { get; set; }
+        public static Illegal SelectedIllegal { get; set; }
        
 
 
@@ -299,6 +308,14 @@ namespace gaiEntiry.ViewModel
         public static Worker RankWorker { get; set; }
 
         public static Worker DutyWorker { get; set; }
+        public static Illegal AutoIllegal { get; set; }
+        public static Illegal DriverIllegal { get; set; }
+        public static Illegal IllegalTypeIllegal { get; set; }
+        public static Illegal DutyIllegal { get; set; }
+        public static Auto IllegalAuto { get; set; }
+        public static Driver IllegalDriver { get; set; }
+        public static Duty IllegalDuty { get; set; }
+        public static IllegalType IllegalIllegalType { get; set; }
 
         public static   Worker WorkerDuty { get; set; }
         //public static Department PositionDepartment { get; set; }
@@ -398,6 +415,17 @@ namespace gaiEntiry.ViewModel
             {
                 allWorkers = value;
                 NotifyPropertyChanged("AllWorkers");
+            }
+        }
+
+        private List<Illegal> allIllegals = Repositories.GetAllIllegals();
+        public List<Illegal> AllIllegals
+        {
+            get { return allIllegals; }
+            set
+            {
+                allIllegals = value;
+                NotifyPropertyChanged("AllIllegals");
             }
         }
         #endregion
@@ -557,6 +585,28 @@ namespace gaiEntiry.ViewModel
                 });
             }
         }
+
+        private RelayCommand addNewIllegal;
+        public RelayCommand AddNewIllegal
+        {
+            get
+            {
+                return addNewIllegal ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                    if (IllegalPlace != null && DutyPlace != IllegalDescription)
+                    {
+                        //CreateIllegal(string place, string description, IllegalType illegalType, Duty duty, Auto auto, Driver driver)
+                        resultStr = Repositories.CreateIllegal(IllegalPlace, IllegalDescription, IllegalIllegalType, IllegalDuty, IllegalAuto, IllegalDriver);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllIllegalsView();
+                    }
+                });
+            }
+        }
         #endregion
 
         #region editRecord
@@ -653,6 +703,30 @@ namespace gaiEntiry.ViewModel
                         SetNullValuesToProperties();
                         wnd.Close();
                         UpdateAllDutiesView();
+                    }
+                    else
+                        ShowMessageToUser(resultStr);
+                });
+            }
+        }
+
+        private RelayCommand editIllegal;
+        public RelayCommand EditIllegal
+        {
+            get
+            {
+                return editIllegal ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = "Сотрудник не выбран";
+                    if (SelectedIllegal != null)
+                    {
+                        resultStr = Repositories.EditIllegal(SelectedIllegal, IllegalPlace, IllegalDescription, IllegalIllegalType,
+                            IllegalDuty,IllegalAuto,IllegalDriver);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllIllegalsView();
                     }
                     else
                         ShowMessageToUser(resultStr);
@@ -779,6 +853,25 @@ namespace gaiEntiry.ViewModel
                 });
             }
         }
+
+        private RelayCommand deleteIllegal;
+        public RelayCommand DeleteIllegal
+        {
+            get
+            {
+                return deleteIllegal ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Нужно выбрать запись!";
+                    if (SelectedIllegal != null)
+                    {
+                        resultStr = Repositories.DeleteIllegal(SelectedIllegal);
+                        SetNullValuesToProperties();
+                        UpdateAllIllegalsView();
+                    }
+                    ShowMessageToUser(resultStr);
+                });
+            }
+        }
         #endregion
 
 
@@ -893,6 +986,16 @@ namespace gaiEntiry.ViewModel
             DutyView.AllDutiesView.ItemsSource = allDuties;
             DutyView.AllDutiesView.Items.Refresh();
         }
+
+        public void UpdateAllIllegalsView()
+        {
+            AllIllegals = Repositories.GetAllIllegals();    
+            IllegalView.AllIllegalsView.ItemsSource = null;
+            IllegalView.AllIllegalsView.Items.Clear();
+            IllegalView.AllIllegalsView.ItemsSource = allIllegals;
+            IllegalView.AllIllegalsView.Items.Refresh();
+        }
+
         private void SetNullValuesToProperties()
         {
             //для автомобиля
@@ -1234,6 +1337,61 @@ namespace gaiEntiry.ViewModel
             }
         }
 
+        //Нарушения
+        private void OpenAddNewIllegalViewMethod()
+        {
+            AddNewIllegalView obj = new AddNewIllegalView();
+            SetCenterPositionAndOpen(obj);
+        }
+        private void OpenEditIllegalViewMethod(Illegal Illegal)
+        {
+            EditIllegalView obj = new EditIllegalView(Illegal);
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand editIllegalView;
+        public RelayCommand EditIllegalView
+        {
+            get
+            {
+                return editIllegalView ?? new RelayCommand(obj =>
+                {
+                    OpenEditIllegalViewMethod(SelectedIllegal);
+                });
+            }
+        }
+
+        private RelayCommand openAddNewIllegalView;
+        public RelayCommand OpenAddNewIllegalView
+        {
+            get
+            {
+                return openAddNewIllegalView ?? new RelayCommand(obj =>
+                {
+                    OpenAddNewIllegalViewMethod();
+                });
+            }
+        }
+
+        private void OpenIllegalViewMethod()
+        {
+            IllegalView obj = new IllegalView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openIllegalView;
+
+        public RelayCommand OpenIllegalView
+        {
+            get
+            {
+                return openIllegalView ?? new RelayCommand(obj =>
+                {
+                    OpenIllegalViewMethod();
+
+                });
+            }
+        }
         //IllegalType 
 
         #region illegalType

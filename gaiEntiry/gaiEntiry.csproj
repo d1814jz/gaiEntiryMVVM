@@ -201,6 +201,9 @@
     <Compile Include="Add\AddNewDriverView.xaml.cs">
       <DependentUpon>AddNewDriverView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Add\AddNewIllegalView.xaml.cs">
+      <DependentUpon>AddNewIllegalView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Add\AddNewDutyView.xaml.cs">
       <DependentUpon>AddNewDutyView.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,9 @@
     </Compile>
     <Compile Include="Edit\EditIllegalTypeView.xaml.cs">
       <DependentUpon>EditIllegalTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Edit\EditIllegalView.xaml.cs">
+      <DependentUpon>EditIllegalView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Edit\EditRankView.xaml.cs">
       <DependentUpon>EditRankView.xaml</DependentUpon>
@@ -318,6 +324,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Add\AddNewIllegalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Add\AddNewDutyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -347,6 +357,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Edit\EditIllegalTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edit\EditIllegalView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

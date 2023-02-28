@@ -3,10 +3,53 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico"
         xmlns:local="clr-namespace:gaiEntiry.View"
         mc:Ignorable="d"
-        Title="IllegalView" Height="450" Width="800">
-    <Grid>
-        
+        Title="Нарушения" Height="450.8" Width="1196">
+    <Grid Margin="0,0,3,0.6">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="243*"/>
+            <ColumnDefinition Width="350*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Height="34" Margin="568.6,43,0,0" VerticalAlignment="Top" Width="113" Grid.Column="1" Command="{Binding OpenAddNewIllegalView}"/>
+        <Button  Content="Изменить"  Margin="568.6,98,19.4,288" Grid.Column="1" Command="{Binding EditIllegalView}" />
+        <Button  Content="Удалить"  Margin="568.6,157,19.4,229" Grid.Column="1" Command="{Binding DeleteIllegal}"  />
+        <Button  Content="Назад"  Margin="569.6,213,22.4,176"  RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-180"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <ListView x:Name="ViewAllIllegals" ItemsSource="{Binding AllIllegals}"
+                          SelectedItem="{Binding SelectedIllegal}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="1011" Grid.ColumnSpan="2"  >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Фамилия"                                            
+                                            DisplayMemberBinding="{Binding Path=IllegalDriver.LastName}"/>
+                    <GridViewColumn Header="Имя" 
+                                            DisplayMemberBinding="{Binding Path=IllegalDriver.FirstName}"/>
+                    <GridViewColumn Header="Отчество"
+                                            DisplayMemberBinding="{Binding Path=IllegalDriver.Surname}"/>
+                    <GridViewColumn Header="Марка"
+                                            DisplayMemberBinding="{Binding Path=IllegalAuto.Brand}"/>
+                    <GridViewColumn Header="Модель"
+                                            DisplayMemberBinding="{Binding Path=IllegalAuto.Model}"/>
+                    <GridViewColumn Header="Номер"
+                                            DisplayMemberBinding="{Binding Path=IllegalIllegalType.IllegalType1}"/>
+                    <GridViewColumn Header="Дата"
+                                            DisplayMemberBinding="{Binding Path=IllegalDuty.Date}"/>
+                    <GridViewColumn Header="Место"
+                                            DisplayMemberBinding="{Binding Path=Place}"/>
+                    <GridViewColumn Header="Описание"
+                                            DisplayMemberBinding="{Binding Path=Description}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
     </Grid>
 </Window>

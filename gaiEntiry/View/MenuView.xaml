@@ -20,7 +20,7 @@
                 <MenuItem x:Name="Rank" Header="Звания" Command="{Binding OpenRankView}"/>
 
             </MenuItem>
-            <MenuItem Header="Нарушения"></MenuItem>
+            <MenuItem Header="Нарушения" Command="{Binding OpenIllegalView}"></MenuItem>
             <MenuItem Header="Дежурство"  Command="{Binding OpenDutyView}"></MenuItem>
             <MenuItem Header="Учет"></MenuItem>
             <MenuItem Header="Кадры" Command="{Binding OpenWorkerView}"></MenuItem>

@@ -28,5 +28,23 @@ namespace gaiEntiry
     
         public virtual ICollection<Accounting> Accounting { get; set; }
         public virtual ICollection<Illegal> Illegal { get; set; }
+
+        //AutoIllegal
+        /*
+         public List<Worker> WorkerRank
+        {
+            get
+            {
+                return Repositories.GetAllWorkersByRankId(id);
+            }
+        }
+         */
+        public List<Illegal> AutoIllegal
+        {
+            get
+            {
+                return Repositories.GetAllIllegalsByAutoId(id);
+            }
+        }
     }
 }

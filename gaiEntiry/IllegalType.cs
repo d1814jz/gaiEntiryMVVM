@@ -26,5 +26,14 @@ namespace gaiEntiry
         public int Tod { get; set; }
     
         public virtual ICollection<Illegal> Illegal { get; set; }
+        
+        //IllegalTypeIllegal
+        public List<Illegal> IllegalTypeIllegal
+        {
+            get
+            {
+                return Repositories.GetAllIllegalsByIllegalTypeId(id);
+            }
+        }
     }
 }
