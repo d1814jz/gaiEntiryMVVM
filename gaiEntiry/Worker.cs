@@ -44,6 +44,14 @@ namespace gaiEntiry
             }
         }
 
+        public List<Accounting> WorkerAccounting
+        {
+            get
+            {
+                return Repositories.GetAllAccountingsByWorkerId(id);
+            }
+        }
+
         
     }
 }

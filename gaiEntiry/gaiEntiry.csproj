@@ -195,6 +195,9 @@
     <Compile Include="Accounting.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Add\AddNewAccountingView.xaml.cs">
+      <DependentUpon>AddNewAccountingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Add\AddNewAutoView.xaml.cs">
       <DependentUpon>AddNewAutoView.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,9 @@
     </Compile>
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Edit\EditAccountingView.xaml.cs">
+      <DependentUpon>EditAccountingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Edit\EditAutoView.xaml.cs">
       <DependentUpon>EditAutoView.xaml</DependentUpon>
     </Compile>
@@ -283,6 +289,9 @@
     </Compile>
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\RepositoriesVM.cs" />
+    <Compile Include="View\AccountingView.xaml.cs">
+      <DependentUpon>AccountingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AutoView.xaml.cs">
       <DependentUpon>AutoView.xaml</DependentUpon>
     </Compile>
@@ -316,6 +325,10 @@
     <Compile Include="Worker.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Page Include="Add\AddNewAccountingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Add\AddNewAutoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -341,6 +354,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Add\AddNewWorkerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edit\EditAccountingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -384,6 +401,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AccountingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AutoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

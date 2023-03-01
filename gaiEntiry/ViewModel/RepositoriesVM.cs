@@ -288,7 +288,15 @@ namespace gaiEntiry.ViewModel
         public static int IllegalidDriver { get; set; }
         public static string IllegalPlace { get; set; }
         public static string IllegalDescription { get; set; }
- 
+
+        public static int Accountingid { get; set; }
+        public static int AccountingidWorker { get; set; }
+        public static int AccountingidDriver { get; set; }
+        public static int AccountingidAuto { get; set; }
+        public static string AccountingNumber { get; set; }
+        public static string AccountingColor { get; set; }
+        public static System.DateTime AccountingFirstDate { get; set; }
+        public static System.DateTime AccountingLastDate { get; set; }
 
 
         //другие свойства
@@ -300,6 +308,7 @@ namespace gaiEntiry.ViewModel
         public static Worker SelectedWorker{ get; set; }
         public static Duty SelectedDuty { get; set; }
         public static Illegal SelectedIllegal { get; set; }
+        public static Accounting SelectedAccounting { get; set; }
        
 
 
@@ -318,6 +327,13 @@ namespace gaiEntiry.ViewModel
         public static IllegalType IllegalIllegalType { get; set; }
 
         public static   Worker WorkerDuty { get; set; }
+
+        public static Accounting AutoAccounting { get; set; }
+        public static Accounting DriverAccounting { get; set; }
+        public static Accounting WorkerAccounting { get; set; }
+        public static Auto AccountingAuto { get; set; }
+        public static Driver AccountingDriver { get; set; }
+        public static Worker AccountingWorker { get; set; }
         //public static Department PositionDepartment { get; set; }
 
 
@@ -426,6 +442,17 @@ namespace gaiEntiry.ViewModel
             {
                 allIllegals = value;
                 NotifyPropertyChanged("AllIllegals");
+            }
+        }
+
+        private List<Accounting> allAccountings = Repositories.GetAllAccountings();
+        public List<Accounting> AllAccountings
+        {
+            get { return allAccountings; }
+            set
+            {
+                allAccountings = value;
+                NotifyPropertyChanged("AllAccountings");
             }
         }
         #endregion
@@ -543,28 +570,6 @@ namespace gaiEntiry.ViewModel
             }
         }
 
-        /*RelayCommand addNewDriver;
-        public RelayCommand AddNewDriver
-        {
-            get
-            {
-                return addNewDriver ?? new RelayCommand(obj =>
-                {
-                    Window wnd = obj as Window;
-                    string resultStr = string.Empty;
-                    if (DriverFirstName != null && DriverLastName != null && DriverSurname != null &&
-                        DriverAddress != null && DriverNumberDL != null)
-                    {
-                        resultStr = Repositories.CreateDriver(DriverLastName, DriverFirstName, DriverSurname, DriverAddress, DriverNumberDL);
-                        ShowMessageToUser(resultStr);
-                        SetNullValuesToProperties();
-                        wnd.Close();
-                        UpdateAllDriversView();
-                    }
-                });
-
-            }
-        }*/
         private RelayCommand addNewDuty;
         public RelayCommand AddNewDuty
         {
@@ -597,12 +602,33 @@ namespace gaiEntiry.ViewModel
                     string resultStr = string.Empty;
                     if (IllegalPlace != null && DutyPlace != IllegalDescription)
                     {
-                        //CreateIllegal(string place, string description, IllegalType illegalType, Duty duty, Auto auto, Driver driver)
                         resultStr = Repositories.CreateIllegal(IllegalPlace, IllegalDescription, IllegalIllegalType, IllegalDuty, IllegalAuto, IllegalDriver);
                         ShowMessageToUser(resultStr);
                         SetNullValuesToProperties();
                         wnd.Close();
                         UpdateAllIllegalsView();
+                    }
+                });
+            }
+        }
+
+        private RelayCommand addNewAccounting;
+        public RelayCommand AddNewAccounting
+        {
+            get
+            {
+                return addNewAccounting ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                if (AccountingColor != null && AccountingNumber != null)
+                    {
+                        resultStr = Repositories.CreateAccounting(AccountingNumber, AccountingColor, AccountingFirstDate, AccountingLastDate,
+                            AccountingWorker, AccountingDriver, AccountingAuto);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllAccountingsView();
                     }
                 });
             }
@@ -734,6 +760,27 @@ namespace gaiEntiry.ViewModel
             }
         }
 
+        private RelayCommand editAccounting;
+        public RelayCommand EditAccounting
+        {
+            get
+            {
+                return editAccounting ?? new RelayCommand(obj =>
+                {
+                    Window wnd = obj as Window;
+                    string resultStr = string.Empty;
+                    if (AccountingColor != null && AccountingNumber != null && AccountingAuto != null && AccountingidDriver != null 
+                        && AccountingidWorker != null)
+                    {
+                        resultStr = Repositories.EditAccounting(SelectedAccounting,AccountingNumber, AccountingColor, AccountingFirstDate, AccountingLastDate, AccountingWorker, AccountingDriver, AccountingAuto);
+                        ShowMessageToUser(resultStr);
+                        SetNullValuesToProperties();
+                        wnd.Close();
+                        UpdateAllAccountingsView();
+                    }
+                });
+            }
+        }
         #endregion
 
         #region deleteRecord
@@ -872,6 +919,25 @@ namespace gaiEntiry.ViewModel
                 });
             }
         }
+
+        private RelayCommand deleteAccounting;
+        public RelayCommand DeleteAccounting
+        {
+            get
+            {
+                return deleteAccounting ?? new RelayCommand(obj =>
+                {
+                    string resultStr = "Нужно выбрать запись!";
+                    if (SelectedAccounting != null)
+                    {
+                        resultStr = Repositories.DeleteAccounting(SelectedAccounting);
+                        SetNullValuesToProperties();
+                        UpdateAllAccountingsView();
+                    }
+                    ShowMessageToUser(resultStr);
+                });
+            }
+        }
         #endregion
 
 
@@ -909,8 +975,7 @@ namespace gaiEntiry.ViewModel
             {
                 return exitCommand ?? new RelayCommand(obj =>
                 {
-                    //Application.Current.Shutdown();
-                    MessageBox.Show(Convert.ToString(Application.Current));
+                    Application.Current.Shutdown();
 
 
 
@@ -995,6 +1060,16 @@ namespace gaiEntiry.ViewModel
             IllegalView.AllIllegalsView.ItemsSource = allIllegals;
             IllegalView.AllIllegalsView.Items.Refresh();
         }
+
+        public void UpdateAllAccountingsView()
+        {
+            AllAccountings = Repositories.GetAllAccountings();
+            AccountingView.AllAccountingsView.ItemsSource = null;
+            AccountingView.AllAccountingsView.Items.Clear();
+            AccountingView.AllAccountingsView.ItemsSource = allAccountings;
+            AccountingView.AllAccountingsView.Items.Refresh();
+        }
+
 
         private void SetNullValuesToProperties()
         {
@@ -1392,6 +1467,63 @@ namespace gaiEntiry.ViewModel
                 });
             }
         }
+
+        //Учет
+        private void OpenAddNewAccountingViewMethod()
+        {
+            AddNewAccountingView obj = new AddNewAccountingView();
+            SetCenterPositionAndOpen(obj);
+        }
+        private void OpenEditAccountingViewMethod(Accounting Accounting)
+        {
+            EditAccountingView obj = new EditAccountingView(Accounting);
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand editAccountingView;
+        public RelayCommand EditAccountingView
+        {
+            get
+            {
+                return editAccountingView ?? new RelayCommand(obj =>
+                {
+                    OpenEditAccountingViewMethod(SelectedAccounting);
+                });
+            }
+        }
+
+        private RelayCommand openAddNewAccountingView;
+        public RelayCommand OpenAddNewAccountingView
+        {
+            get
+            {
+                return openAddNewAccountingView ?? new RelayCommand(obj =>
+                {
+                    OpenAddNewAccountingViewMethod();
+                });
+            }
+        }
+
+        private void OpenAccountingViewMethod()
+        {
+            AccountingView obj = new AccountingView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openAccountingView;
+
+        public RelayCommand OpenAccountingView
+        {
+            get
+            {
+                return openAccountingView ?? new RelayCommand(obj =>
+                {
+                    OpenAccountingViewMethod();
+
+                });
+            }
+        }
+
         //IllegalType 
 
         #region illegalType

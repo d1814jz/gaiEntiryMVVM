@@ -22,9 +22,9 @@
             </MenuItem>
             <MenuItem Header="Нарушения" Command="{Binding OpenIllegalView}"></MenuItem>
             <MenuItem Header="Дежурство"  Command="{Binding OpenDutyView}"></MenuItem>
-            <MenuItem Header="Учет"></MenuItem>
+            <MenuItem Header="Учет" Command="{Binding OpenAccountingView}"></MenuItem>
             <MenuItem Header="Кадры" Command="{Binding OpenWorkerView}"></MenuItem>
-            <MenuItem Header="Выход"></MenuItem>
+            <MenuItem Header="Выход" Command="{Binding ExitCommand}"></MenuItem>
 
 
         </Menu>

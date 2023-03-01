@@ -46,5 +46,13 @@ namespace gaiEntiry
                 return Repositories.GetAllIllegalsByAutoId(id);
             }
         }
+
+        public List<Accounting> AutoAccounting
+        {
+            get
+            {
+                return Repositories.GetAllAccountingsByAutoId(id);
+            }
+        }
     }
 }

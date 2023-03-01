@@ -16,16 +16,6 @@
         <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Height="34" Margin="28.6,96,0,0" VerticalAlignment="Top" Width="113" Grid.Column="1" Command="{Binding OpenAddNewRankView}"/>
         <Button  Content="Изменить"  Margin="29.4,146,30.6,242" Grid.Column="1" Command="{Binding EditRankView}" />
         <Button  Content="Удалить"  Margin="28.4,196,30.6,192" Grid.Column="1" Command="{Binding DeleteRank}"  />
-        <Button  Content="Назад"  Margin="26.4,245,31.6,143"  RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
         <ListView x:Name="ViewAllRanks" ItemsSource="{Binding AllRanks}"
                           SelectedItem="{Binding SelectedRank}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="217" >
             <ListView.View>

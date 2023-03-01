@@ -38,5 +38,12 @@ namespace gaiEntiry
                 return Repositories.GetAllIllegalsByDriverId(id);
             }
         }
+        public List<Accounting> DriverAccounting
+        {
+            get
+            {
+                return Repositories.GetAllAccountingsByDriverId(id);
+            }
+        }
     }
 }

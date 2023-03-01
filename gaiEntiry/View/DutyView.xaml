@@ -15,16 +15,6 @@
         <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Height="34" Margin="255,37,0,0" VerticalAlignment="Top" Width="113" Grid.Column="1" Command="{Binding OpenAddNewDutyView}"/>
         <Button  Content="Изменить"  Margin="257,92,28.8,294.2" Grid.Column="1" Command="{Binding EditDutyView}" />
         <Button  Content="Удалить"  Margin="257,142,28.8,244.2" Grid.Column="1" Command="{Binding DeleteDuty}"  />
-        <Button  Content="Назад"  Margin="257,196,27.8,190.2"  RenderTransformOrigin="0.5,0.5" Grid.Column="1">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
         <ListView x:Name="ViewAllDuties" ItemsSource="{Binding AllDuties}"
                           SelectedItem="{Binding SelectedDuty}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="612" Grid.ColumnSpan="2" >
             <ListView.View>

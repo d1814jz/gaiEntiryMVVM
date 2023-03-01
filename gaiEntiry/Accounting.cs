@@ -26,5 +26,32 @@ namespace gaiEntiry
         public virtual Auto Auto { get; set; }
         public virtual Driver Driver { get; set; }
         public virtual Worker Worker { get; set; }
+
+
+        public Auto AccountingAuto
+        {
+            get
+            {
+                return Repositories.GetAutoById(idAuto);
+            }
+        }
+
+        public Driver AccountingDriver
+        {
+            get
+            {
+                return Repositories.GetDriverById(idDriver);
+            }
+        }
+
+        public Worker AccountingWorker
+        {
+            get
+            {
+                return Repositories.GetWorkerById(idWorker);
+            }
+        }
     }
+
+    
 }

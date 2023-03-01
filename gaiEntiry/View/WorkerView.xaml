@@ -16,16 +16,6 @@
         <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Height="34" Margin="126.6,91,0,0" VerticalAlignment="Top" Width="113" Grid.Column="1" Command="{Binding OpenAddNewWorkerView}" Grid.ColumnSpan="2"/>
         <Button  Content="Изменить"  Margin="126.6,141,246.2,247" Grid.Column="1" Command="{Binding EditWorkerView}" Grid.ColumnSpan="2" />
         <Button  Content="Удалить"  Margin="125.6,191,246.2,197" Grid.Column="1" Command="{Binding DeleteWorker}" Grid.ColumnSpan="2"  />
-        <Button  Content="Назад"  Margin="123.6,240,247.2,148"  RenderTransformOrigin="0.5,0.5" Grid.Column="1" Grid.ColumnSpan="2">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleY="-1" ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
         <ListView x:Name="ViewAllWorkers" ItemsSource="{Binding AllWorkers}"
                           SelectedItem="{Binding SelectedWorker}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="520" Grid.ColumnSpan="2" >
             <ListView.View>
