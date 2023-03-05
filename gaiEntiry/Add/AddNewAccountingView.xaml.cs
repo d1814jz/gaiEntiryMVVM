@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewAccountingView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new AccountingViewModel();
         }
     }
 }

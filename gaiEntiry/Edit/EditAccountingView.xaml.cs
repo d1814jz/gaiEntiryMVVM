@@ -23,13 +23,13 @@ namespace gaiEntiry.Edit
         public EditAccountingView(Accounting accountingToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedAccounting = accountingToEdit;
-            RepositoriesVM.AccountingNumber = accountingToEdit.Number;
-            RepositoriesVM.AccountingColor = accountingToEdit.Color;
-            RepositoriesVM.AccountingidAuto = accountingToEdit.idAuto;
-            RepositoriesVM.AccountingidDriver = accountingToEdit.idDriver;
-            RepositoriesVM.AccountingidWorker = accountingToEdit.idWorker;
+            DataContext = new AccountingViewModel();
+            AccountingViewModel.SelectedAccounting = accountingToEdit;
+            AccountingViewModel.AccountingNumber = accountingToEdit.Number;
+            AccountingViewModel.AccountingColor = accountingToEdit.Color;
+            AccountingViewModel.AccountingidAuto = accountingToEdit.idAuto;
+            AccountingViewModel.AccountingidDriver = accountingToEdit.idDriver;
+            AccountingViewModel.AccountingidWorker = accountingToEdit.idWorker;
         }
     }
 }

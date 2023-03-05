@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewIllegalTypeView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new IllegalTypeViewModel();
         }
     }
 }

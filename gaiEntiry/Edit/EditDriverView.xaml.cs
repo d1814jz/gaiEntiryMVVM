@@ -23,13 +23,13 @@ namespace gaiEntiry.Edit
         public EditDriverView(Driver driverToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedDriver = driverToEdit;
-            RepositoriesVM.DriverFirstName = driverToEdit.FirstName;
-            RepositoriesVM.DriverLastName = driverToEdit.LastName;
-            RepositoriesVM.DriverSurname = driverToEdit.Surname;
-            RepositoriesVM.DriverAddress = driverToEdit.Address;
-            RepositoriesVM.DriverNumberDL = driverToEdit.NumberDL;
+            DataContext = new DriverViewModel();
+            DriverViewModel.SelectedDriver = driverToEdit;
+            DriverViewModel.DriverFirstName = driverToEdit.FirstName;
+            DriverViewModel.DriverLastName = driverToEdit.LastName;
+            DriverViewModel.DriverSurname = driverToEdit.Surname;
+            DriverViewModel.DriverAddress = driverToEdit.Address;
+            DriverViewModel.DriverNumberDL = driverToEdit.NumberDL;
         }
     }
 }

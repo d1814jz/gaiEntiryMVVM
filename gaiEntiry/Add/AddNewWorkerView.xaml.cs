@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewWorkerView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new WorkerViewModel();
         }
     }
 }

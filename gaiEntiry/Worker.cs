@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.Repositories;
     using gaiEntiry.ViewModel;
     using System;
     using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetRankById(idRank);
+                return RankRepositories.GetRankById(idRank);
             }
         }
 
@@ -40,7 +41,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllDutiesByWorkerId(id);
+                return DutyRepositories.GetAllDutiesByWorkerId(id);
             }
         }
 
@@ -48,7 +49,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllAccountingsByWorkerId(id);
+                return AccountingRepositories.GetAllAccountingsByWorkerId(id);
             }
         }
 

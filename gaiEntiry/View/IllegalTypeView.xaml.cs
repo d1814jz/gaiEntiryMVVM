@@ -25,7 +25,7 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllIllegalTypesView = ViewAllIllegalTypes;
-            DataContext = new RepositoriesVM();
+            DataContext = new IllegalTypeViewModel();
 
         }
     }

@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -23,12 +22,12 @@ namespace gaiEntiry.Edit
         public EditAutoView(Auto autoToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedAuto = autoToEdit;
-            RepositoriesVM.AutoModel = autoToEdit.Model;
-            RepositoriesVM.AutoBrand = autoToEdit.Brand;
-            RepositoriesVM.AutoYear = autoToEdit.Year;
-            RepositoriesVM.AutoVinNumber = autoToEdit.VinNumber;
+            DataContext = new AutoViewModel();
+            AutoViewModel.SelectedAuto = autoToEdit;
+            AutoViewModel.AutoModel = autoToEdit.Model;
+            AutoViewModel.AutoBrand = autoToEdit.Brand;
+            AutoViewModel.AutoYear = autoToEdit.Year;
+            AutoViewModel.AutoVinNumber = autoToEdit.VinNumber;
 
             /*DataManageVM.SelectedDepartment = departmentToEdit;
             DataManageVM.DepartmentName = departmentToEdit.Name;*/

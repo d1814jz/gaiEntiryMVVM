@@ -24,7 +24,7 @@ namespace gaiEntiry.View
         public DutyView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new DutyViewModel();
             AllDutiesView = ViewAllDuties;
 
         }

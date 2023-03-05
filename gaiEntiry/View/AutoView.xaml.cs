@@ -25,8 +25,8 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllAutosView = ViewAllAutos;
-            DataContext = new RepositoriesVM();
-   
+            DataContext = new AutoViewModel();
+
         }
     }
 }

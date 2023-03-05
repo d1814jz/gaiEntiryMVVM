@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewDutyView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new DutyViewModel();
         }
     }
 }

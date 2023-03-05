@@ -24,7 +24,7 @@ namespace gaiEntiry.Add
         public AddNewAutoView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new AutoViewModel();
         }
     }
 }

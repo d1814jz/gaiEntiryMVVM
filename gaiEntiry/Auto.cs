@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -43,7 +44,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllIllegalsByAutoId(id);
+                return IllegalRepositories.GetAllIllegalsByAutoId(id);
             }
         }
 
@@ -51,7 +52,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllAccountingsByAutoId(id);
+                return AccountingRepositories.GetAllAccountingsByAutoId(id);
             }
         }
     }

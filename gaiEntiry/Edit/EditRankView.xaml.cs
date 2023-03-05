@@ -23,9 +23,9 @@ namespace gaiEntiry.Edit
         public EditRankView(Rank rankToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedRank = rankToEdit;
-            RepositoriesVM.RankRank1 = rankToEdit.Rank1;
+            DataContext = new RankViewModel();
+            RankViewModel.SelectedRank = rankToEdit;
+            RankViewModel.RankRank1 = rankToEdit.Rank1;
         }
     }
 }

@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewRankView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new RankViewModel();
         }
     }
 }

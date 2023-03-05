@@ -23,10 +23,10 @@ namespace gaiEntiry.Edit
         public EditIllegalView(Illegal illegalToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedIllegal = illegalToEdit;
-            RepositoriesVM.IllegalDescription = illegalToEdit.Description;
-            RepositoriesVM.IllegalPlace = illegalToEdit.Place;
+            DataContext = new IllegalViewModel();
+            IllegalViewModel.SelectedIllegal = illegalToEdit;
+            IllegalViewModel.IllegalDescription = illegalToEdit.Description;
+            IllegalViewModel.IllegalPlace = illegalToEdit.Place;
             /*RepositoriesVM.IllegalidAuto = illegalToEdit.idAuto;
             RepositoriesVM.IllegalidDriver = illegalToEdit.idDriver;
             RepositoriesVM.IllegalidDuty = illegalToEdit.idDuty;

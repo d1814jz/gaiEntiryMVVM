@@ -25,7 +25,7 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllRanksView = ViewAllRanks;
-            DataContext = new RepositoriesVM();
+            DataContext = new RankViewModel();
         }
     }
 }

@@ -23,12 +23,12 @@ namespace gaiEntiry.Edit
         public EditIllegalTypeView(IllegalType illegalTypeToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedIllegalType = illegalTypeToEdit;
-            RepositoriesVM.IllegalTypeIllegalType1 = illegalTypeToEdit.IllegalType1;
-            RepositoriesVM.IllegalTypeFine = illegalTypeToEdit.Fine;
-            RepositoriesVM.IllegalTypeNotice = illegalTypeToEdit.Notice;
-            RepositoriesVM.IllegalTypeTod = illegalTypeToEdit.Tod;
+            DataContext = new IllegalTypeViewModel();
+            IllegalTypeViewModel.SelectedIllegalType = illegalTypeToEdit;
+            IllegalTypeViewModel.IllegalTypeIllegalType1 = illegalTypeToEdit.IllegalType1;
+            IllegalTypeViewModel.IllegalTypeFine = illegalTypeToEdit.Fine;
+            IllegalTypeViewModel.IllegalTypeNotice = illegalTypeToEdit.Notice;
+            IllegalTypeViewModel.IllegalTypeTod = illegalTypeToEdit.Tod;
         }
     }
 }

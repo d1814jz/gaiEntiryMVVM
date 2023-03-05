@@ -24,7 +24,7 @@ namespace gaiEntiry.View
         public AccountingView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new AccountingViewModel();
             AllAccountingsView = ViewAllAccountings;
         }
     }

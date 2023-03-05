@@ -253,7 +253,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\Repositories.cs" />
+    <Compile Include="Repositories\AccountingRepositories.cs" />
+    <Compile Include="Repositories\AutoRepositories.cs" />
+    <Compile Include="Repositories\DriverRepositories.cs" />
+    <Compile Include="Repositories\DutyRepositories.cs" />
+    <Compile Include="Repositories\IllegalRepositories.cs" />
+    <Compile Include="Repositories\IllegalTypeRepositories.cs" />
+    <Compile Include="Repositories\RankRepositories.cs" />
     <Compile Include="Driver.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -284,11 +290,21 @@
     <Compile Include="Rank.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\UserRepositories.cs" />
+    <Compile Include="Repositories\WorkerRepositories.cs" />
     <Compile Include="User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\AccountingViewModel.cs" />
+    <Compile Include="ViewModel\AutoViewModel.cs" />
+    <Compile Include="ViewModel\DriverViewModel.cs" />
+    <Compile Include="ViewModel\DutyViewModel.cs" />
+    <Compile Include="ViewModel\IllegalTypeViewModel.cs" />
+    <Compile Include="ViewModel\IllegalViewModel.cs" />
+    <Compile Include="ViewModel\RankViewModel.cs" />
     <Compile Include="ViewModel\RepositoriesVM.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="ViewModel\WorkerViewModel.cs" />
     <Compile Include="View\AccountingView.xaml.cs">
       <DependentUpon>AccountingView.xaml</DependentUpon>
     </Compile>

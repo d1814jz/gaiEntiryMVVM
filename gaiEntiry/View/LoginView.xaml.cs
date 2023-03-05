@@ -1,4 +1,5 @@
-﻿using gaiEntiry.ViewModel;
+﻿using gaiEntiry.Repositories;
+using gaiEntiry.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Linq;
@@ -24,7 +25,7 @@ namespace gaiEntiry.View
         public LoginView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new UserViewModel();
         }
     }
 }

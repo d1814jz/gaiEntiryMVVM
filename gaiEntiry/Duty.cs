@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -30,7 +31,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetWorkerById(idWorker);
+                return WorkerRepositories.GetWorkerById(idWorker);
             }
         }
 
@@ -39,7 +40,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllIllegalsByDutyId(id);
+                return IllegalRepositories.GetAllIllegalsByDutyId(id);
             }
         }
         

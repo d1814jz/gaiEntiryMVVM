@@ -6,7 +6,7 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
+using gaiEntiry.Repositories;
 namespace gaiEntiry
 {
     using System;
@@ -32,7 +32,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAutoById(idAuto);
+                return AutoRepositories.GetAutoById(idAuto);
             }
         }
 
@@ -40,7 +40,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetDriverById(idDriver);
+                return DriverRepositories.GetDriverById(idDriver);
             }
         }
 
@@ -48,7 +48,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetWorkerById(idWorker);
+                return WorkerRepositories.GetWorkerById(idWorker);
             }
         }
     }

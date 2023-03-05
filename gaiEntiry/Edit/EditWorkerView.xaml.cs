@@ -23,12 +23,12 @@ namespace gaiEntiry.Edit
         public EditWorkerView(Worker workerToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedWorker = workerToEdit;
-            RepositoriesVM.WorkerLastName = workerToEdit.LastName;
-            RepositoriesVM.WorkerFirstName = workerToEdit.FirsName;
-            RepositoriesVM.WorkerSurname = workerToEdit.Surname;
-            RepositoriesVM.WorkeridRank = workerToEdit.idRank;
+            DataContext = new WorkerViewModel();
+            WorkerViewModel.SelectedWorker = workerToEdit;
+            WorkerViewModel.WorkerLastName = workerToEdit.LastName;
+            WorkerViewModel.WorkerFirstName = workerToEdit.FirsName;
+            WorkerViewModel.WorkerSurname = workerToEdit.Surname;
+            WorkerViewModel.WorkeridRank = workerToEdit.idRank;
         }
     }
 }

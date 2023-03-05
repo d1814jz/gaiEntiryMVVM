@@ -23,7 +23,7 @@ namespace gaiEntiry.Add
         public AddNewDriverView()
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
+            DataContext = new DriverViewModel();
         }
     }
 }

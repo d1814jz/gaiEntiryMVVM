@@ -25,7 +25,7 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllDriversView = ViewAllDrivers;
-            DataContext = new RepositoriesVM();
+            DataContext = new DriverViewModel();
         }
     }
 }

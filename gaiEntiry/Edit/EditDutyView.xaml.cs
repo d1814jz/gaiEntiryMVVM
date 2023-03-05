@@ -23,11 +23,11 @@ namespace gaiEntiry.Edit
         public EditDutyView(Duty dutyToEdit)
         {
             InitializeComponent();
-            DataContext = new RepositoriesVM();
-            RepositoriesVM.SelectedDuty = dutyToEdit;
-            RepositoriesVM.DutyDate = dutyToEdit.Date;
-            RepositoriesVM.DutyPlace = dutyToEdit.Place;
-            RepositoriesVM.DutyidWorker = dutyToEdit.idWorker;
+            DataContext = new DutyViewModel();
+            DutyViewModel.SelectedDuty = dutyToEdit;
+            DutyViewModel.DutyDate = dutyToEdit.Date;
+            DutyViewModel.DutyPlace = dutyToEdit.Place;
+            DutyViewModel.DutyidWorker = dutyToEdit.idWorker;
 
         }
     }

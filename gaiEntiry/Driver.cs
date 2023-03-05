@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -35,14 +36,14 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAllIllegalsByDriverId(id);
+                return IllegalRepositories.GetAllIllegalsByDriverId(id);
             }
         }
         public List<Accounting> DriverAccounting
         {
             get
             {
-                return Repositories.GetAllAccountingsByDriverId(id);
+                return AccountingRepositories.GetAllAccountingsByDriverId(id);
             }
         }
     }

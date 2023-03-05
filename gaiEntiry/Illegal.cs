@@ -9,6 +9,7 @@
 
 namespace gaiEntiry
 {
+    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -33,7 +34,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetAutoById(idAuto);
+                return AutoRepositories.GetAutoById(idAuto);
             }
         }
         //IllegalDriver
@@ -41,7 +42,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetDriverById(idDriver);
+                return DriverRepositories.GetDriverById(idDriver);
             }
         }
         //IllegalDuty
@@ -49,7 +50,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetDutyById(idDuty);
+                return DutyRepositories.GetDutyById(idDuty);
             }
         }
         //IllegalIllegalType
@@ -57,7 +58,7 @@ namespace gaiEntiry
         {
             get
             {
-                return Repositories.GetIllegalTypeById(idIllegalType);
+                return IllegalTypeRepositories.GetIllegalTypeById(idIllegalType);
             }
         }
     }

@@ -25,7 +25,7 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllWorkersView = ViewAllWorkers;
-            DataContext = new RepositoriesVM();
+            DataContext = new WorkerViewModel();
         }
     }
 }
