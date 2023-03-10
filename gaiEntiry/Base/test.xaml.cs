@@ -1,5 +1,4 @@
-﻿
-using gaiEntiry.ViewModel;
+﻿using gaiEntiry.Base.VIewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,19 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace gaiEntiry.View
+namespace gaiEntiry.Base
 {
     /// <summary>
-    /// Interaction logic for AccountingView.xaml
+    /// Interaction logic for test.xaml
     /// </summary>
-    public partial class AccountingView : Window
+    public partial class test : Window
     {
-        public static ListView AllAccountingsView;
-        public AccountingView()
+        public test()
         {
             InitializeComponent();
-            DataContext = new AccountingViewModel();
-            AllAccountingsView = ViewAllAccountings;
+            DataContext = new AutoBaseViewModel();
         }
     }
 }

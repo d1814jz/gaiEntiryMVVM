@@ -13,5 +13,6 @@ namespace gaiEntiry
     /// </summary>
     public partial class App : Application
     {
+        public static bool IsDesignTime { get; internal set; }
     }
 }

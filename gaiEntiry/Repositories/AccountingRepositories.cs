@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using gaiEntiry.Repositories;
 
-namespace gaiEntiry.Repositories
+namespace gaiEntiry.Repositories 
 {
-    class AccountingRepositories
+    class AccountingRepositories 
     {
         //-получить учет 
         public static List<Accounting> GetAllAccountings()
@@ -23,6 +24,8 @@ namespace gaiEntiry.Repositories
             Driver driver, Auto auto)
         {
             string result = "Уже существует";
+            
+            
             using (gaiEngEntities db = new gaiEngEntities())
             {
                 bool checkIsExist = db.Accounting.Any(u => u.Number == number && u.Color == color && u.FirstDate == firstDate
