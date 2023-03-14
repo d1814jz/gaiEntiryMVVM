@@ -4,9 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using gaiEntiry.Interface;
 using gaiEntiry.Repositories;
 
-namespace gaiEntiry.Repositories
+namespace gaiEntiry.Repositories 
 {
     class AutoRepositories
     {
@@ -19,14 +20,6 @@ namespace gaiEntiry.Repositories
             }
         }
 
-        public static ObservableCollection<Auto> GetAllAutosOc()
-        {
-            using (gaiEngEntities db = new gaiEngEntities())
-            {
-                ObservableCollection<Auto> result = new ObservableCollection<Auto>(db.Auto.ToList());
-                return result;
-            }
-        }
         //+создать автомобиль 
 
         public static string CreateAuto(string Brand, string Model, int Year, string VinNumber)

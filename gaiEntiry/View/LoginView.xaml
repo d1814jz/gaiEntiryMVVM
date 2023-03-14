@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.View"
-        xmlns:vm="clr-namespace:gaiEntiry.ViewModel"
+        xmlns:vm="clr-namespace:gaiEntiry.ViewsModel"
         mc:Ignorable="d"
         Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico"
         Title="LoginView" Height="527.92" Width="322.872">

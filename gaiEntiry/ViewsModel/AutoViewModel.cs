@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace gaiEntiry.ViewModel
+namespace gaiEntiry.ViewsModel
 {
     class AutoViewModel
     {
@@ -25,16 +25,6 @@ namespace gaiEntiry.ViewModel
         //все автомобили
         private static List<Auto> allAutos = AutoRepositories.GetAllAutos();
         //public static List<Auto> list = Repositories.GetAllAutos();
-        private ObservableCollection<Auto> allAutosOc = AutoRepositories.GetAllAutosOc();
-        public ObservableCollection<Auto> AllAutosOc
-        {
-            get { return allAutosOc; }
-            set
-            {
-                allAutosOc = value;
-                NoticePropertyChanged(nameof(AllAutosOc));
-            }
-        }
         public List<Auto> AllAutos
         {
             get { return allAutos; }

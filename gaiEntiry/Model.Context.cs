@@ -9,6 +9,8 @@
 
 namespace gaiEntiry
 {
+    //using Microsoft.EntityFrameworkCore;
+    //using Microsoft.EntityFrameworkCore;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -19,12 +21,18 @@ namespace gaiEntiry
             : base("name=gaiEngEntities")
         {
         }
-    
+        
+        /*public gaiEngEntities(DbContextOptions<gaiEngEntities> options) : base(options)
+        {
+
+        }
+        */
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public DbSet<Accounting> Accounting { get; set; }
         public DbSet<Auto> Auto { get; set; }
         public DbSet<Driver> Driver { get; set; }

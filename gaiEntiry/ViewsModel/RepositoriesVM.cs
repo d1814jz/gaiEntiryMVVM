@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace gaiEntiry.ViewModel
+namespace gaiEntiry.ViewsModel
 {
     class RepositoriesVM : INotifyPropertyChanged
     {

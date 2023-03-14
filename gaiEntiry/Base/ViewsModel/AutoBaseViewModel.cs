@@ -11,15 +11,21 @@ using System.Windows.Data;
 using System.Windows.Input;
 using MathCore.WPF.ViewModels;
 using gaiEntiry.Base.Service;
+using MathCore.ViewModels;
+using System.Windows;
+using gaiEntiry.Base.Repository;
 
-namespace gaiEntiry.Base.VIewModel
+namespace gaiEntiry.Base.ViewsModel
 {
-    class AutoBaseViewModel
+    class AutoBaseViewModel : MathCore.ViewModels.ViewModel
     {
-        private readonly IRepository<Auto> _AutosRepository;
-        private readonly IUserDialog _UserDialog;
+        public IRepository<Auto> _AutosRepository;
+        public IUserDialog _UserDialog;
 
-        private ObservableCollection<Auto> _Autos;
+        
+        public ObservableCollection<Auto> testAuto => _AutosRepository.Items.ToObservableCollection();
+        
+        /*private ObservableCollection<Auto> _Autos;
 
         public ObservableCollection<Auto> Autos
         {
@@ -40,15 +46,7 @@ namespace gaiEntiry.Base.VIewModel
             }
         }
 
-        private bool Set(ref ObservableCollection<Auto> autos, ObservableCollection<Auto> value)
-        {
-            throw new NotImplementedException();
-        }
 
-        private void OnPropertyChanged(string v)
-        {
-            throw new NotImplementedException();
-        }
 
         private CollectionViewSource _AutosViewSource;
 
@@ -61,12 +59,6 @@ namespace gaiEntiry.Base.VIewModel
 
         /// <summary>Выбранный автомобиль</summary>
         public Auto SelectedAuto { get => _SelectedAuto; set => Set(ref _SelectedAuto, value); }
-
-        private void Set(ref Auto selectedAuto, Auto value)
-        {
-            throw new NotImplementedException();
-        }
-
 
         #endregion
 
@@ -86,25 +78,25 @@ namespace gaiEntiry.Base.VIewModel
         /// <summary>Логика выполнения - Команда загрузки данных из репозитория</summary>
         private async Task OnLoadDataCommandExecuted()
         {
+            Autos = (await _AutosRepository.Items.ToArrayAsync()).ToObservableCollection();
             //Autos = (await _AutosRepository.Items.ToArrayAsync()).ToObservableCollection();
-            Autos = new ObservableCollection<Auto>( _AutosRepository.Items.ToObservableCollection());
         }
 
         #endregion
 
-        #region Command AddNewAutoCommand - Добавление новой книги
+        #region Command AddNewAutoCommand - Добавление нового автомобиля
 
-        /// <summary>Добавление новой книги</summary>
+        /// <summary>Добавление автомобиля</summary>
         private ICommand _AddNewAutoCommand;
 
-        /// <summary>Добавление новой книги</summary>
+        /// <summary>Добавление автомобиля</summary>
         public ICommand AddNewAutoCommand => _AddNewAutoCommand
             ?? new LambdaCommand(OnAddNewAutoCommandExecuted, CanAddNewAutoCommandExecute);
 
-        /// <summary>Проверка возможности выполнения - Добавление новой книги</summary>
+        /// <summary>Проверка возможности выполнения - Добавление автомобиля</summary>
         private bool CanAddNewAutoCommandExecute() => true;
 
-        /// <summary>Логика выполнения - Добавление новой книги</summary>
+        /// <summary>Логика выполнения - Добавление автомобиля</summary>
         private void OnAddNewAutoCommandExecuted()
         {
             var new_Auto = new Auto();
@@ -119,19 +111,19 @@ namespace gaiEntiry.Base.VIewModel
 
         #endregion
 
-        #region Command RemoveAutoCommand : Auto - Удаление указанной книги
+        #region Command RemoveAutoCommand : Auto - Удаление автомобиля
 
-        /// <summary>Удаление указанной книги</summary>
+        /// <summary>Удаление указанной автомобиля</summary>
         private ICommand _RemoveAutoCommand;
 
-        /// <summary>Удаление указанной книги</summary>
+        /// <summary>Удаление автомобиля</summary>
         public ICommand RemoveAutoCommand => _RemoveAutoCommand
             ?? new LambdaCommand<Auto>(OnRemoveAutoCommandExecuted, CanRemoveAutoCommandExecute);
 
-        /// <summary>Проверка возможности выполнения - Удаление указанной книги</summary>
+        /// <summary>Проверка возможности выполнения - Удаление автомобиля</summary>
         private bool CanRemoveAutoCommandExecute(Auto p) => p != null || SelectedAuto != null;
 
-        /// <summary>Проверка возможности выполнения - Удаление указанной книги</summary>
+        /// <summary>Проверка возможности выполнения - Удалениеавтомобиля</summary>
         private void OnRemoveAutoCommandExecuted(Auto p)
         {
             var Auto_to_remove = p ?? SelectedAuto;
@@ -147,12 +139,24 @@ namespace gaiEntiry.Base.VIewModel
         }
 
         #endregion
+        */
 
-        /*public AutoBaseViewModel(IRepository<Auto> AutosRepository, IUserDialog UserDialog)
+        public AutoBaseViewModel(IRepository<Auto> AutosRepository)
         {
             _AutosRepository = AutosRepository;
-            _UserDialog = UserDialog;
-        }*/
+        }
 
+
+
+
+        /*public ObservableCollection<Auto> Autos
+        {
+            get { return _Autos; }
+            set
+            {
+                _Autos = value;
+                OnPropertyChanged(nameof(Autos));
+            }
+        }*/
     }
 }

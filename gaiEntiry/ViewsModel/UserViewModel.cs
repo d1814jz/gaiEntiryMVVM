@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace gaiEntiry.ViewModel
+namespace gaiEntiry.ViewsModel
 {
     class UserViewModel
     {

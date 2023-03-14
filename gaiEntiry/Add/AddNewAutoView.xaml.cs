@@ -1,4 +1,4 @@
-﻿using gaiEntiry.ViewModel;
+﻿using gaiEntiry.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Linq;

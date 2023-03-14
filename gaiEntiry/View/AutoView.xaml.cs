@@ -1,4 +1,5 @@
-﻿using gaiEntiry.ViewModel;
+﻿using gaiEntiry.Interface;
+using gaiEntiry.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace gaiEntiry.View
         {
             InitializeComponent();
             AllAutosView = ViewAllAutos;
-            DataContext = new AutoViewModel();
+            //DataContext = new AutoViewModel();
 
         }
     }

@@ -5,25 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base"
         mc:Ignorable="d"
-        Title="test" Height="502.66" Width="895.745">
+        DataContext="{Binding AutoBaseViewModel, Source={StaticResource Locator}}"
+        Title="test" Height="502.66" Width="1000">
 
     <Grid>
-        <ListView x:Name="AutosView" ItemsSource="{Binding Autos}"
-                  
-                          SelectedItem="{Binding SelectedAuto}" Height="377" Margin="25,19,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.581,0.503" HorizontalAlignment="Left" Width="794" Grid.ColumnSpan="2" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Марка"                                            
-                                            DisplayMemberBinding="{Binding Path= Brand}"/>
-                    <GridViewColumn Header="Модель"
-                                            DisplayMemberBinding="{Binding Path=Model}"/>
-                    <GridViewColumn Header="Vin номер"
-                                            DisplayMemberBinding="{Binding Path=VinNumber}"/>
-                    <GridViewColumn Header="Год выпуска"
-                                            DisplayMemberBinding="{Binding Path=Year}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="770,428,0,0" VerticalAlignment="Top" Width="75" Command="{Binding LoadDataCommand}"/>
+        <ListBox Name="Cars" ItemsSource="{Binding testAuto}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Brand}" />
+                        <TextBlock Text="{Binding Path=Model}"/>
+                        <TextBlock Text="{Binding Path=Year}"/>
+                        <TextBlock Text="{Binding Path=VinNumber}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
+
 </Window>

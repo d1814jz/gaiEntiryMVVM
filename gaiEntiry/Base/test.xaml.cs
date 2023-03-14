@@ -1,4 +1,4 @@
-﻿using gaiEntiry.Base.VIewModel;
+﻿using gaiEntiry.Base.ViewsModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,6 @@ namespace gaiEntiry.Base
         public test()
         {
             InitializeComponent();
-            DataContext = new AutoBaseViewModel();
         }
     }
 }

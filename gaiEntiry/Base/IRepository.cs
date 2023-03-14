@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace gaiEntiry.Base
 {
-    interface IRepository<T> where T : class, new()
+    public interface IRepository<T> where T : class, new()
     {
         IQueryable<T> Items { get; }
 

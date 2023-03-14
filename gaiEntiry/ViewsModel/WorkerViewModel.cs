@@ -10,15 +10,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace gaiEntiry.ViewModel
+namespace gaiEntiry.ViewsModel
 {
-    class RankViewModel
+    class WorkerViewModel
     {
-        public static int Rankid { get; set; }
-        public static string RankRank1 { get; set; }
-        public static Rank SelectedRank { get; set; }
-        public static Worker RankWorker { get; set; }
-        //все звания
+        public static int Workerid { get; set; }
+        public static int WorkeridRank { get; set; }
+        public static string WorkerLastName { get; set; }
+        public static string WorkerFirstName { get; set; }
+        public static string WorkerSurname { get; set; }
+        public static Worker SelectedWorker { get; set; }
+        public static Rank WorkerRank { get; set; }
+        public static Accounting WorkerAccounting { get; set; }
+
+        private List<Worker> allWorkers = WorkerRepositories.GetAllWorkers();
+        public List<Worker> AllWorkers
+        {
+            get { return allWorkers; }
+            set
+            {
+                allWorkers = value;
+                NotifyPropertyChanged("AllWorkers");
+            }
+        }
+
         private List<Rank> allRanks = RankRepositories.GetAllRanks();
         public List<Rank> AllRanks
         {
@@ -30,44 +45,45 @@ namespace gaiEntiry.ViewModel
             }
         }
 
-        private RelayCommand addNewRank;
-        public RelayCommand AddNewRank
+
+        private RelayCommand addNewWorker;
+        public RelayCommand AddNewWorker
         {
             get
             {
-                return addNewRank ?? new RelayCommand(obj =>
+                return addNewWorker ?? new RelayCommand(obj =>
                 {
                     Window wnd = obj as Window;
                     string resultStr = string.Empty;
-                    if (RankRank1 != null)
+                    if (WorkerFirstName != null && WorkerLastName != null && WorkerSurname != null)
                     {
-                        resultStr = RankRepositories.CreateRank(RankRank1);
+                        resultStr = WorkerRepositories.CreateWorker(WorkerLastName, WorkerFirstName, WorkerSurname, WorkerRank);
                         ShowMessageToUser(resultStr);
                         //SetNullValuesToProperties();
                         wnd.Close();
-                        UpdateAllRanksView();
+                        UpdateAllWorkersView();
                     }
                 });
             }
         }
 
-        private RelayCommand editRank;
-        public RelayCommand EditRank
+        private RelayCommand editWorker;
+        public RelayCommand EditWorker
         {
             get
             {
-                return editRank ?? new RelayCommand(obj =>
+                return editWorker ?? new RelayCommand(obj =>
                 {
                     Window wnd = obj as Window;
-                    string resultStr = "Звание не выбрано";
-                    if (SelectedRank != null)
+                    string resultStr = "Сотрудник не выбран";
+                    if (SelectedWorker != null)
                     {
-                        resultStr = RankRepositories.EditRank(SelectedRank, RankRank1);
+                        resultStr = WorkerRepositories.EditWorker(SelectedWorker, WorkerLastName, WorkerFirstName, WorkerSurname, WorkerRank);
                         ShowMessageToUser(resultStr);
                         //SetNullValuesToProperties();
 
                         wnd.Close();
-                        UpdateAllRanksView();
+                        UpdateAllWorkersView();
                     }
                     else
                         ShowMessageToUser(resultStr);
@@ -75,71 +91,69 @@ namespace gaiEntiry.ViewModel
             }
         }
 
-        private RelayCommand deleteRank;
-        public RelayCommand DeleteRank
+        private RelayCommand deleteWorker;
+        public RelayCommand DeleteWorker
         {
             get
             {
-                return deleteRank ?? new RelayCommand(obj =>
+                return deleteWorker ?? new RelayCommand(obj =>
                 {
                     string resultStr = "Нужно выбрать запись!";
-                    if (SelectedRank != null)
+                    if (SelectedWorker != null)
                     {
-                        resultStr = RankRepositories.DeleteRank(SelectedRank);
+                        resultStr = WorkerRepositories.DeleteWorker(SelectedWorker);
                         //SetNullValuesToProperties();
-                        UpdateAllRanksView();
-
+                        UpdateAllWorkersView();
                     }
                     ShowMessageToUser(resultStr);
                 });
             }
         }
 
-        private void UpdateAllRanksView()
+        private void UpdateAllWorkersView()
         {
-            AllRanks = RankRepositories.GetAllRanks();
-            RankView.AllRanksView.ItemsSource = null;
-            RankView.AllRanksView.Items.Clear();
-            RankView.AllRanksView.ItemsSource = allRanks;
-            RankView.AllRanksView.Items.Refresh();
+            AllWorkers = WorkerRepositories.GetAllWorkers();
+            WorkerView.AllWorkersView.ItemsSource = null;
+            WorkerView.AllWorkersView.Items.Clear();
+            WorkerView.AllWorkersView.ItemsSource = allWorkers;
+            WorkerView.AllWorkersView.Items.Refresh();
         }
 
-        private void OpenAddNewRankViewMethod()
+        private void OpenAddNewWorkerViewMethod()
         {
-            AddNewRankView obj = new AddNewRankView();
-            SetCenterPositionAndOpen(obj);
-        }
-        private void OpenEditRankViewMethod(Rank rank)
-        {
-            EditRankView obj = new EditRankView(rank);
+            AddNewWorkerView obj = new AddNewWorkerView();
             SetCenterPositionAndOpen(obj);
         }
 
-        private RelayCommand editRankView;
-        public RelayCommand EditRankView
+        private RelayCommand openAddNewWorkerView;
+        public RelayCommand OpenAddNewWorkerView
         {
             get
             {
-                return editRankView ?? new RelayCommand(obj =>
+                return openAddNewWorkerView ?? new RelayCommand(obj =>
                 {
-                    OpenEditRankViewMethod(SelectedRank);
+                    OpenAddNewWorkerViewMethod();
                 });
             }
         }
 
-        private RelayCommand openAddNewRankView;
-        public RelayCommand OpenAddNewRankView
+
+        private void EditWorkerViewMethod(Worker Worker)
+        {
+            EditWorkerView obj = new EditWorkerView(Worker);
+            SetCenterPositionAndOpen(obj);
+        }
+        private RelayCommand editWorkerView;
+        public RelayCommand EditWorkerView
         {
             get
             {
-                return openAddNewRankView ?? new RelayCommand(obj =>
+                return editWorkerView ?? new RelayCommand(obj =>
                 {
-                    OpenAddNewRankViewMethod();
+                    EditWorkerViewMethod(SelectedWorker);
                 });
             }
         }
-
-        
 
         #region Inotify
 

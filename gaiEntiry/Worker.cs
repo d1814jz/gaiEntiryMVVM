@@ -10,7 +10,7 @@
 namespace gaiEntiry
 {
     using gaiEntiry.Repositories;
-    using gaiEntiry.ViewModel;
+    using gaiEntiry.ViewsModel;
     using System;
     using System.Collections.Generic;
     

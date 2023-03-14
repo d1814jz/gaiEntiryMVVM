@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using gaiEntiry.Interface;
 using gaiEntiry.Repositories;
 
 namespace gaiEntiry.Repositories 
