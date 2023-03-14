@@ -336,14 +336,10 @@
     </Compile>
     <Compile Include="Base\AppSettings.cs" />
     <Compile Include="Base\DbRepository.cs" />
-    <Compile Include="Base\DependencyInjection\DbRegistrator.cs" />
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="Base\IUserDialog.cs" />
-    <Compile Include="Base\DependencyInjection\RepositoryRegistrator.cs" />
     <Compile Include="Base\Repository\AutosRepository.cs" />
-    <Compile Include="Base\DependencyInjection\ServicesRegistrator.cs" />
     <Compile Include="Base\Service\UserDialogService.cs" />
-    <Compile Include="Base\DependencyInjection\ViewModelRegistrator.cs" />
     <Compile Include="Base\test.xaml.cs">
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>

@@ -25,10 +25,6 @@ namespace gaiEntiry
                 .ConfigureServices((hostContext, services) =>
                 {
                     IConfiguration configuration = hostContext.Configuration;
-                    services.AddScoped<AutoBaseViewModel>();
-                    services.AddRepositoriesInProject();
-                    services.AddViewModels();
-                    services.AddServices();
                     AppSettings.Configuration = configuration;
                     AppSettings.ConnectionString = configuration.GetConnectionString("gaiEngEntities");
 
@@ -37,6 +33,8 @@ namespace gaiEntiry
                     optionBuilder.UseSqlServer("gaiEngEntities");
 
                     services.AddScoped<gaiEngEntities>(d => new gaiEngEntities());
+                    services.AddScoped<AutoBaseViewModel>();
+                    services.AddTransient<IRepository<Auto>, DbRepository<Auto>>();
                     services.ToList();
 
 
