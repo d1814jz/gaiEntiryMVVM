@@ -335,7 +335,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Base\AppSettings.cs" />
-    <Compile Include="Base\DbHelper.cs" />
     <Compile Include="Base\DbRepository.cs" />
     <Compile Include="Base\DependencyInjection\DbRegistrator.cs" />
     <Compile Include="Base\IRepository.cs" />
