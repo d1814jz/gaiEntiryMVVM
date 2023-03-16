@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:gaiEntiry"
              xmlns:vm="clr-namespace:gaiEntiry.Base.DependencyInjection"
-             StartupUri="Base/test.xaml">
+             xmlns:l="clr-namespace:gaiEntiry.Command"
+             StartupUri="Base/View/MenuBaseView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator"/>
+            <l:DialogResultCommand x:Key="DialogResultCommand"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

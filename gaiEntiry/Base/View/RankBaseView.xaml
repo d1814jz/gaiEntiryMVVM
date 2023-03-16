@@ -1,0 +1,20 @@
+﻿<Window x:Class="gaiEntiry.Base.View.RankBaseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{Binding RankBaseViewModel, Source={StaticResource Locator}}"
+        Title="Виды нарушнией" Height="502.66" Width="1029.6">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="0,0,3.2,-0.2">
+        <DataGrid x:Name="RankView" ItemsSource="{Binding RankView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedRank}" IsReadOnly="True" Margin="0,0,183,0"/>
+        <Button Content="Добавить" Command="{Binding AddNewRankCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Редактировать" Command="{Binding OnAddEditRankCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Удалить" Command="{Binding RemoveRankCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
+    </Grid>
+</Window>

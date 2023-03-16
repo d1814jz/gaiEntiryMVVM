@@ -12,7 +12,6 @@ namespace gaiEntiry.Base
         IQueryable<T> Items { get; }
 
         T Get(int id);
-
         T Add(T item);
 
         void Update(T item);

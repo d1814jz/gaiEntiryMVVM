@@ -22,10 +22,21 @@ namespace gaiEntiry.Base.ViewsModel
         public IRepository<Auto> _AutosRepository;
         public IUserDialog _UserDialog;
 
+        //_AutosRepository.Items.ToObservableCollection();
+        /*
+         public List<Driver> AllDrivers
+        {
+            get { return allDrivers; }
+            set
+            {
+                allDrivers = value;
+                NotifyPropertyChanged("AllDrivers");
+            }
+        }
+         */
         
-        public ObservableCollection<Auto> testAuto => _AutosRepository.Items.ToObservableCollection();
-        
-        /*private ObservableCollection<Auto> _Autos;
+        private ObservableCollection<Auto> _Autos;
+
 
         public ObservableCollection<Auto> Autos
         {
@@ -34,19 +45,19 @@ namespace gaiEntiry.Base.ViewsModel
             {
                 if (Set(ref _Autos, value))
                 {
+                    _Autos = value;
                     _AutosViewSource = new CollectionViewSource
                     {
                         Source = value,
                     };
 
                     _AutosViewSource.View.Refresh();
+                    //_Autos = value;
 
                     OnPropertyChanged(nameof(AutosView));
                 }
             }
         }
-
-
 
         private CollectionViewSource _AutosViewSource;
 
@@ -78,8 +89,11 @@ namespace gaiEntiry.Base.ViewsModel
         /// <summary>Логика выполнения - Команда загрузки данных из репозитория</summary>
         private async Task OnLoadDataCommandExecuted()
         {
-            Autos = (await _AutosRepository.Items.ToArrayAsync()).ToObservableCollection();
+            //_Autos = _AutosRepository.Items.ToObservableCollection(); 
             //Autos = (await _AutosRepository.Items.ToArrayAsync()).ToObservableCollection();
+            _Autos = _AutosRepository.Items.ToObservableCollection();
+            Autos = _AutosRepository.Items.ToObservableCollection(); 
+            //_Autos = (await _AutosRepository.Items.ToArrayAsync()).ToObservableCollection();
         }
 
         #endregion
@@ -88,23 +102,40 @@ namespace gaiEntiry.Base.ViewsModel
 
         /// <summary>Добавление автомобиля</summary>
         private ICommand _AddNewAutoCommand;
+        private ICommand _OnAddEditAutoCommand;
 
         /// <summary>Добавление автомобиля</summary>
         public ICommand AddNewAutoCommand => _AddNewAutoCommand
             ?? new LambdaCommand(OnAddNewAutoCommandExecuted, CanAddNewAutoCommandExecute);
 
+        public ICommand OnAddEditAutoCommand => _OnAddEditAutoCommand
+            ?? new LambdaCommand(OnAddEditAutoCommandExecuted, CanAddNewAutoCommandExecute);
+
         /// <summary>Проверка возможности выполнения - Добавление автомобиля</summary>
         private bool CanAddNewAutoCommandExecute() => true;
+        private bool CanAddEditAutoCommandExecute() => true;
 
         /// <summary>Логика выполнения - Добавление автомобиля</summary>
+
+        private void OnAddEditAutoCommandExecuted()
+        {
+            var edit_auto = SelectedAuto;
+            if (!_UserDialog.Edit(edit_auto))
+                return;
+            _AutosRepository.Update(edit_auto);
+            AutosView.Refresh();
+            //Autos.Add(_AutosRepository.Update(edit_auto));
+            //Autos.Add(_AutosRepository.Add(SelectedAuto));
+        }
+
         private void OnAddNewAutoCommandExecuted()
         {
             var new_Auto = new Auto();
 
             if (!_UserDialog.Edit(new_Auto))
                 return;
-
-            _Autos.Add(_AutosRepository.Add(new_Auto));
+            //_AutosRepository.Add(new_Auto);
+            Autos.Add(_AutosRepository.Add(new_Auto));
 
             SelectedAuto = new_Auto;
         }
@@ -128,7 +159,7 @@ namespace gaiEntiry.Base.ViewsModel
         {
             var Auto_to_remove = p ?? SelectedAuto;
 
-            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить автомобиль {Auto_to_remove.Model} {Auto_to_remove.Brand}?", "Удаление автомобиля"))
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить автомобиль {Auto_to_remove.Brand} {Auto_to_remove.Model}?", "Удаление автомобиля"))
                 return;
 
             _AutosRepository.Remove(Auto_to_remove.id);
@@ -139,11 +170,11 @@ namespace gaiEntiry.Base.ViewsModel
         }
 
         #endregion
-        */
 
-        public AutoBaseViewModel(IRepository<Auto> AutosRepository)
+        public AutoBaseViewModel(IRepository<Auto> AutosRepository, IUserDialog UserDialog)
         {
             _AutosRepository = AutosRepository;
+            _UserDialog = UserDialog;
         }
 
 

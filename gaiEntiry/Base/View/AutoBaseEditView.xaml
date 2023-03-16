@@ -1,0 +1,30 @@
+﻿<Window x:Class="gaiEntiry.Base.View.AutoBaseEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View"
+        DataContext="{Binding AutoBaseEditViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="Функиця" Height="450" Width="276.8">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Марка"/>
+            <TextBox Name="ModelBlock" Text="{Binding Model}"/>
+            <TextBlock Text="Модель"/>
+            <TextBox Name="BrandBlock" Text="{Binding Brand}"/>
+            <TextBlock Text="Год"/>
+            <TextBox Name="YearBlock" Text="{Binding Year}"/>
+            <TextBlock Text="Vin номер"/>
+            <TextBox Name="VinNumberBlock" Text="{Binding VinNumber}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>
+    </Grid>
+</Window>

@@ -344,8 +344,76 @@
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\DependencyInjection\ViewModelLocator.cs" />
+    <Compile Include="Base\ViewsModel\AccountingBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AccountingBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AutoBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\AutoBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DriverBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DriverBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IllegalBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IllegalBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IllegalTypeBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IllegalTypeBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\MenuBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\RankBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\RankBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\WorkerBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\WorkerBaseViewModel.cs" />
+    <Compile Include="Base\View\AccountingBaseEditView.xaml.cs">
+      <DependentUpon>AccountingBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AccountingBaseView.xaml.cs">
+      <DependentUpon>AccountingBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AutoBaseEditView.xaml.cs">
+      <DependentUpon>AutoBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AutoBaseView.xaml.cs">
+      <DependentUpon>AutoBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DriverBaseEditView.xaml.cs">
+      <DependentUpon>DriverBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DriverBaseView.xaml.cs">
+      <DependentUpon>DriverBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DutyBaseEditView.xaml.cs">
+      <DependentUpon>DutyBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DutyBaseView.xaml.cs">
+      <DependentUpon>DutyBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IllegalBaseEditView.xaml.cs">
+      <DependentUpon>IllegalBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IllegalBaseView.xaml.cs">
+      <DependentUpon>IllegalBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IllegalTypeBaseEditView.xaml.cs">
+      <DependentUpon>IllegalTypeBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IllegalTypeBaseView.xaml.cs">
+      <DependentUpon>IllegalTypeBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\MenuBaseView.xaml.cs">
+      <DependentUpon>MenuBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\RankBaseEditView.xaml.cs">
+      <DependentUpon>RankBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\RankBaseView.xaml.cs">
+      <DependentUpon>RankBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\WorkerBaseEditView.xaml.cs">
+      <DependentUpon>WorkerBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\WorkerBaseView.xaml.cs">
+      <DependentUpon>WorkerBaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Command\Command.cs" />
+    <Compile Include="Command\DialogResultCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Edit\EditAccountingView.xaml.cs">
       <DependentUpon>EditAccountingView.xaml</DependentUpon>
@@ -499,6 +567,74 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Base\test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccountingBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccountingBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AutoBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AutoBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DriverBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DriverBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DutyBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DutyBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IllegalBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IllegalBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IllegalTypeBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IllegalTypeBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\MenuBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\RankBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\RankBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\WorkerBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\WorkerBaseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
