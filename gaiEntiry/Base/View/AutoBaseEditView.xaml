@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding AutoBaseEditViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="Функиця" Height="450" Width="276.8">
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

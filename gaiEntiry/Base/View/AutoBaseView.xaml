@@ -5,16 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{Binding AutoBaseViewModel, Source={StaticResource Locator}}"
-        Title="Автомобили" Height="502.66" Width="1029.6">
+        Title="Автомобили" Height="502.66" Width="499.187"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid Margin="0,0,3.2,-0.2">
-        <DataGrid x:Name="AutosView" ItemsSource="{Binding AutosView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAuto}" IsReadOnly="True" Margin="0,0,183,0"/>
-        <Button Content="Добавить" Command="{Binding AddNewAutoCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
-        <Button Content="Редактировать" Command="{Binding OnAddEditAutoCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
-        <Button Content="Удалить" Command="{Binding RemoveAutoCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
+    <Grid Margin="0,0,3.8,-0.2" Height="473" VerticalAlignment="Bottom" RenderTransformOrigin="0.552,0.499">
+        <DataGrid x:Name="AutosView" ItemsSource="{Binding AutosView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAuto}" IsReadOnly="True" AutoGenerateColumns="false" Width="338" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Path=Brand}"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=Model}"/>
+                <DataGridTextColumn Header="Год выпуска" Binding="{Binding Path=Year}"/>
+                <DataGridTextColumn Header="Vin номер" Binding="{Binding Path=VinNumber}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" Command="{Binding AddNewAutoCommand}" HorizontalAlignment="Left" Margin="354,30,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Редактировать" Command="{Binding OnAddEditAutoCommand}" HorizontalAlignment="Left" Margin="354,69,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Удалить" Command="{Binding RemoveAutoCommand}" HorizontalAlignment="Left" Margin="354,112,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
     </Grid>
 </Window>

@@ -5,14 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{Binding DutyBaseViewModel, Source={StaticResource Locator}}"
-        Title="Сотрудники" Height="502.66" Width="1029.6">
+        Title="Дежурство" Height="502.66" Width="1029.6"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="0,0,3.2,-0.2">
-        <DataGrid x:Name="WorkerView" ItemsSource="{Binding DutyView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDuty}" IsReadOnly="True" Margin="0,0,183,0"/>
+        <DataGrid x:Name="WorkerView" ItemsSource="{Binding DutyView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDuty}" IsReadOnly="True" Margin="0,0,183,0" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Сотрудник Фамилия" Binding="{Binding Path=Worker.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Worker.LastName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Worker.Surname}"/>
+                <DataGridTextColumn Header="Марка автомобиля" Binding="{Binding Path=ServiceCar.Brand}"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=ServiceCar.Model}"/>
+                <DataGridTextColumn Header="Гос. номер" Binding="{Binding Path=ServiceCar.Number}"/>
+                <DataGridTextColumn Header="Тип точки дежурства" Binding="{Binding Path=DutyDots.DutyDotsType.Type}"/>
+                <DataGridTextColumn Header="Район" Binding="{Binding Path=DutyDots.District.District1}"/>
+                <DataGridTextColumn Header="Начальная точка" Binding="{Binding Path=DutyDots.FirstPlace}"/>
+                <DataGridTextColumn Header="Конечная точка" Binding="{Binding Path=DutyDots.LastPlace}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="Добавить" Command="{Binding AddNewDutyCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Редактировать" Command="{Binding OnAddEditDutyCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Удалить" Command="{Binding RemoveDutyCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>

@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding DutyBaseEditViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="Функиця" Height="450" Width="276.8">
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -17,11 +18,50 @@
                     VerticalAlignment="Center"
                     Width="200">
             <TextBlock Text="Сотрудник"/>
-            <TextBox Name="WorkerBlock" Text="{Binding idWorker}"/>
+            <ComboBox ItemsSource="{Binding WorkersView}" SelectedItem="{Binding SelectedWorker}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Автомобиль"/>
+            <ComboBox ItemsSource="{Binding ServiceCarsView}" SelectedItem="{Binding SelectedServiceCar}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Brand}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Model}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Number}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Точка дежурства"/>
+            <ComboBox ItemsSource="{Binding DutyDotssView}" SelectedItem="{Binding SelectedDutyDots}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding DutyDotsType.Type}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding District.District1}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstPlace}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding LastPlace}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Дата"/>
             <TextBox Name="DateBlock" Text="{Binding Date}"/>
-            <TextBlock Text="Место"/>
-            <TextBox Name="PlaceBlock" Text="{Binding Place}"/>
 
         </StackPanel>
         <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>

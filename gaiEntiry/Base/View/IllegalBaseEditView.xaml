@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding IllegalBaseEditViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="Функиця" Height="450" Width="276.8">
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -16,18 +17,83 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Width="200">
-            <TextBlock Text="Вид нарушения"/>
-            <TextBox Name="WorkerBlock" Text="{Binding idIllegalType}"/>
             <TextBlock Text="Дежурство"/>
-            <TextBox Name="DutyBlock" Text="{Binding idDuty}"/>
-            <TextBlock Text="Автомобиль"/>
-            <TextBox Name="AutoBlock" Text="{Binding idAuto}"/>
+            <ComboBox ItemsSource="{Binding DutysView}" SelectedItem="{Binding SelectedDuty}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Worker.LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Worker.FirstName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Worker.Surname}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding ServiceCar.Brand}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding ServiceCar.Model}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding ServiceCar.Number}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding DutyDots.DutyDotsType.Type}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding DutyDots.District.District1}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding DutyDots.FirstPlace}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding DutyDots.LastPlace}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Date}"></TextBlock>
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Водитель"/>
-            <TextBox Name="DriverBlock" Text="{Binding idDriver}"/>
+            <ComboBox ItemsSource="{Binding DriversView}" SelectedItem="{Binding SelectedDriver}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Автомобиль"/>
+            <ComboBox ItemsSource="{Binding AutosView}" SelectedItem="{Binding SelectedAuto}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Brand}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Model}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Year}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding VinNumber}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Вид нарушения"/>
+            <ComboBox ItemsSource="{Binding IllegalTypesView}" SelectedItem="{Binding SelectedIllegalType}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding IllegalType1}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Fine}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Место"/>
             <TextBox Name="PlaceBlock" Text="{Binding Place}"/>
             <TextBlock Text="Описание"/>
-            <TextBox Name="DescriptionBlock" Text="{Binding Description}"/>
+            <TextBox Name="DescriptionBlock" Text="{Binding Description}" Height="88"/>
 
         </StackPanel>
         <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>

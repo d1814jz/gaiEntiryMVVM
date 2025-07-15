@@ -8,7 +8,7 @@ namespace gaiEntiry.Base.ViewsModel
 {
     class AutoBaseEditViewModel : MathCore.ViewModels.ViewModel
     {
-        public int AutoId;
+        //public int AutoId;
         private string _Model;
         public string Model { get => _Model; set => Set(ref _Model, value); }
         private string _Brand;
@@ -27,7 +27,7 @@ namespace gaiEntiry.Base.ViewsModel
             VinNumber = auto.VinNumber;
         }
         public AutoBaseEditViewModel()
-            : this(new Auto { Brand = "1", Model = "1", Year = 1, VinNumber = "1" })
+            : this(new Auto {})
         {
 
         }

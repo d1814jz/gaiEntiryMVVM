@@ -9,7 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -17,37 +16,12 @@ namespace gaiEntiry
     {
         public Rank()
         {
-            this.Worker = new HashSet<Worker>();
+            this.History = new HashSet<History>();
         }
     
         public int id { get; set; }
         public string Rank1 { get; set; }
     
-        public virtual Rank Rank11 { get; set; }
-        public virtual Rank Rank2 { get; set; }
-        public virtual ICollection<Worker> Worker { get; set; }
-
-        /*public Rank RankWorker
-        {
-            get
-            {
-                return Repositories.GetRankById(id);
-            }
-        }*/
-
-        /*public List<User> PositionUsers
-        {
-            get
-            {
-                return DataWorker.GetAllUsersByPositionId(Id);
-            }
-        }*/
-        public List<Worker> WorkerRank
-        {
-            get
-            {
-                return RankRepositories.GetAllWorkersByRankId(id);
-            }
-        }
+        public virtual ICollection<History> History { get; set; }
     }
 }

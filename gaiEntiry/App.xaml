@@ -4,11 +4,13 @@
              xmlns:local="clr-namespace:gaiEntiry"
              xmlns:vm="clr-namespace:gaiEntiry.Base.DependencyInjection"
              xmlns:l="clr-namespace:gaiEntiry.Command"
-             StartupUri="Base/View/MenuBaseView.xaml">
+             xmlns:c="clr-namespace:gaiEntiry.Base.Service"
+             StartupUri="Base/View/AuthorizationBaseView.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator"/>
             <l:DialogResultCommand x:Key="DialogResultCommand"/>
+            <c:ConverterService x:Key="Convert"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

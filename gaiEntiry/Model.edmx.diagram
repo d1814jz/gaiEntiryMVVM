@@ -4,25 +4,52 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4bb6201b01e64657861417de752c606d" Name="Diagram1">
-        <EntityTypeShape EntityType="gaiEngModel.Accounting" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Auto" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Driver" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Duty" Width="1.5" PointX="3.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Illegal" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.IllegalType" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Rank" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.User" Width="1.5" PointX="5.75" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="gaiEngModel.Worker" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <AssociationConnector Association="gaiEngModel.FK_Accounting_Auto" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Accounting_Driver" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Accounting_Worker" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Illegal_Auto" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Illegal_Driver" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Illegal_Duty" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Illegal_IllegalType" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Rank_Rank" ManuallyRouted="false" />
-        <AssociationConnector Association="gaiEngModel.FK_Worker_Rank" ManuallyRouted="false" />
+      <Diagram DiagramId="1b20f09518f246528e21c3381a0b1817" Name="Diagram1">
+        <EntityTypeShape EntityType="gaiEntiry.Accident" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.AccidentMember" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Accounting" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Auto" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.District" Width="1.5" PointX="1.5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Driver" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Duty" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.DutyDots" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.DutyDotsType" Width="1.5" PointX="1.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.History" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.IAP" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Illegal" Width="1.5" PointX="8.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.IllegalType" Width="1.5" PointX="6" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Log" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Position" Width="1.5" PointX="0.75" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Rank" Width="1.5" PointX="0.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.ServiceCar" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Street" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.TypesOfIAP" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.User" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gaiEntiry.Worker" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="gaiEntiry.FK_Accident_Street" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Accident_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_AccidentMember_Accident" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_AccidentMember_Auto" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_AccidentMember_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Accounting_Accounting" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Accounting_Auto" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Accounting_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Illegal_Auto" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_DutyDots_District" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Street_District" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Illegal_Driver" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Duty_DutyDots" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Duty_ServiceCar" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Duty_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Illegal_Duty" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_DutyDots_DutyDotsType" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_History_Position" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_History_Rank" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_History_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_IAP_TypesOfIAP" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_IAP_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Illegal_Illegal" ManuallyRouted="false" />
+        <AssociationConnector Association="gaiEntiry.FK_Illegal_IllegalType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

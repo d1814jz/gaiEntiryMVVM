@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding MenuBaseViewModel, Source={StaticResource Locator}}"
-        Title="Главное меню" Height="489.336" Width="869.93"
+        Title="Главное меню. Администратор" Height="489.336" Width="869.93"
         Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Window.Background>
         <ImageBrush ImageSource="D:\Проекты (нет)\Практика\gaiEntiry\gaiEntiry\Resources\background.jpg"/>
@@ -15,19 +15,55 @@
         <Menu Height="30" VerticalAlignment="Top" Margin="0,0,0.2,0">
             <MenuItem Header="Справочники" >
                 <MenuItem x:Name="Auto" Header="Автомобили" Command="{Binding OpenAutoBaseView}"/>
+                <MenuItem x:Name="ServiceCar" Header="Служебные автомобили" Command="{Binding OpenServiceCarBaseView}"/>
                 <MenuItem x:Name="Driver" Header="Водители" Command="{Binding OpenDriverBaseView}"/>
                 <MenuItem x:Name="IllegalType" Header="Виды нарушений" Command="{Binding OpenIllegalTypeBaseView}"/>
+                <MenuItem x:Name="TypesOfIAP" Header="Виды поощрений" Command="{Binding OpenTypesOfIAPBaseView}"/>
+                <MenuItem x:Name="DutyDotsType" Header="Виды точек дежурства" Command="{Binding OpenDutyDotsTypeBaseView}"/>
+                <MenuItem x:Name="District" Header="Районы" Command="{Binding OpenDistrictBaseView}"/>
                 <MenuItem x:Name="Rank" Header="Звания" Command="{Binding OpenRankBaseView}"/>
+                <MenuItem x:Name="Position" Header="Должности" Command="{Binding OpenPositionBaseView}"/>
 
             </MenuItem>
-            <MenuItem Header="Нарушения" Command="{Binding OpenIllegalBaseView}"></MenuItem>
-            <MenuItem Header="Дежурство"  Command="{Binding OpenDutyBaseView}"></MenuItem>
-            <MenuItem Header="Учет" Command="{Binding OpenAccountingBaseView}"></MenuItem>
-            <MenuItem Header="Кадры" Command="{Binding OpenWorkerBaseView}"></MenuItem>
+            <MenuItem Header="Нарушения" >
+                <MenuItem x:Name="Illegal" Header="Нарушения"  Command="{Binding OpenIllegalBaseView}"></MenuItem>
+                <MenuItem Header="ДТП" >
+                    <MenuItem x:Name="Accident" Header="ДТП"  Command="{Binding OpenAccidentBaseView}"></MenuItem>
+                    <MenuItem x:Name="AccidentMember" Header="Участники ДТП" Command="{Binding OpenAccidentMemberBaseView}"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Дежурство" >
+                <MenuItem x:Name="DutyD" Header="Дежурство"  Command="{Binding OpenDutyBaseView}"></MenuItem>
+                <MenuItem x:Name="ServiceCar1" Header="Служебные автомобили" Command="{Binding OpenServiceCarBaseView}"/>
+                <MenuItem x:Name="DutyDotsType1" Header="Виды точек дежурства" Command="{Binding OpenDutyDotsTypeBaseView}"/>
+                <MenuItem x:Name="DutyDots" Header="Точки дежурства"  Command="{Binding OpenDutyDotsBaseView}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Учет">
+                <MenuItem Header="Учет" Command="{Binding OpenAccountingBaseView}"></MenuItem>
+                <MenuItem Header="Водители" Command="{Binding OpenDriverBaseView}"></MenuItem>
+                <MenuItem Header="Автомобили" Command="{Binding OpenAutoBaseView}"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Кадры">
+                <MenuItem Header="Кадры" Command="{Binding OpenWorkerBaseView}"></MenuItem>
+                <MenuItem Header="История" Command="{Binding OpenHistoryBaseView}"></MenuItem>
+                <MenuItem Header="Поощрения и взыскания" Command="{Binding OpenIAPBaseView}"></MenuItem>
+                <MenuItem Header="Виды поощрений и взысканий" Command="{Binding OpenTypesOfIAPBaseView}"></MenuItem>
+                <MenuItem x:Name="Position1" Header="Должности" Command="{Binding OpenPositionBaseView}"/>
+            </MenuItem>
+            <MenuItem Header="Отчет">
+                <MenuItem Header="ДТП" Command="{Binding OpenAccidentReportBaseView}"></MenuItem>
+                <MenuItem Header="Учет" Command="{Binding OpenAccountingReportBaseView}"></MenuItem>
+                <MenuItem Header="Дежурства" Command="{Binding OpenDutyReportBaseView}"></MenuItem>
+                <MenuItem Header="Нарушения" Command="{Binding OpenIllegalReportBaseView}"></MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="Пользователи" Command="{Binding OpenUserBaseView}"></MenuItem>
+                <MenuItem Header="История подключений" Command="{Binding OpenLogBaseView}"></MenuItem>
+            </MenuItem>
             <MenuItem Header="Выход" Command="{Binding ExitCommand}"></MenuItem>
 
 
         </Menu>
-
     </Grid>
 </Window>

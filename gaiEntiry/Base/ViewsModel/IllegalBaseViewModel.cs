@@ -138,7 +138,7 @@ namespace gaiEntiry.Base.ViewsModel
         {
             var Illegal_to_remove = p ?? SelectedIllegal;
 
-            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить дежурство?", "Удаление дежурства"))
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить нарушение?", "Удаление нарушения"))
                 return;
 
             _IllegalRepository.Remove(Illegal_to_remove.id);

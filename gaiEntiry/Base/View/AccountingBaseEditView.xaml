@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding AccountingBaseEditViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="Функиця" Height="450" Width="276.8">
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -17,11 +18,48 @@
                     VerticalAlignment="Center"
                     Width="200">
             <TextBlock Text="Сотрудник"/>
-            <TextBox Name="WorkerBlock" Text="{Binding idWorker}"/>
+            <ComboBox ItemsSource="{Binding WorkersView}" SelectedItem="{Binding SelectedWorker}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Водитель"/>
-            <TextBox Name="DriverBlock" Text="{Binding idDriver}"/>
+            <ComboBox ItemsSource="{Binding DriversView}" SelectedItem="{Binding SelectedDriver}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Автомобиль"/>
-            <TextBox Name="AutoBlock" Text="{Binding idAuto}"/>
+            <ComboBox ItemsSource="{Binding AutosView}" SelectedItem="{Binding SelectedAuto}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Brand}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Model}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding Year}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding VinNumber}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
             <TextBlock Text="Гос. номер"/>
             <TextBox Name="NumberBlock" Text="{Binding Number}"/>
             <TextBlock Text="Цвет"/>

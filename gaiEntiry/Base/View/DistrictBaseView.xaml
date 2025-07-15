@@ -1,0 +1,26 @@
+﻿<Window x:Class="gaiEntiry.Base.View.DistrictBaseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{Binding DistrictBaseViewModel, Source={StaticResource Locator}}"
+        Title="Районы" Height="502.66" Width="358.8"
+        Icon="D:\Проекты (нет)\Практика\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="0,0,3.2,-0.2">
+        <DataGrid x:Name="DistrictsView" ItemsSource="{Binding DistrictsView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDistrict}" IsReadOnly="True" AutoGenerateColumns="false" Width="193" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Район" Binding="{Binding Path=District1}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" Command="{Binding AddNewDistrictCommand}" HorizontalAlignment="Left" Margin="224,32,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Редактировать" Command="{Binding OnAddEditDistrictCommand}" HorizontalAlignment="Left" Margin="224,71,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Удалить" Command="{Binding RemoveDistrictCommand}" HorizontalAlignment="Left" Margin="224,114,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+    </Grid>
+</Window>

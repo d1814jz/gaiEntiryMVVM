@@ -6,7 +6,7 @@
 //    Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using gaiEntiry.Repositories;
+
 namespace gaiEntiry
 {
     using System;
@@ -21,37 +21,10 @@ namespace gaiEntiry
         public string Number { get; set; }
         public string Color { get; set; }
         public System.DateTime FirstDate { get; set; }
-        public System.DateTime LastDate { get; set; }
+        public Nullable<System.DateTime> LastDate { get; set; }
     
+        public virtual Worker Worker { get; set; }
         public virtual Auto Auto { get; set; }
         public virtual Driver Driver { get; set; }
-        public virtual Worker Worker { get; set; }
-
-
-        public Auto AccountingAuto
-        {
-            get
-            {
-                return AutoRepositories.GetAutoById(idAuto);
-            }
-        }
-
-        public Driver AccountingDriver
-        {
-            get
-            {
-                return DriverRepositories.GetDriverById(idDriver);
-            }
-        }
-
-        public Worker AccountingWorker
-        {
-            get
-            {
-                return WorkerRepositories.GetWorkerById(idWorker);
-            }
-        }
     }
-
-    
 }

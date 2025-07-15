@@ -9,7 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -22,27 +21,13 @@ namespace gaiEntiry
     
         public int id { get; set; }
         public int idWorker { get; set; }
+        public int idServiceCar { get; set; }
+        public int idDutyDots { get; set; }
         public System.DateTime Date { get; set; }
-        public string Place { get; set; }
     
+        public virtual DutyDots DutyDots { get; set; }
+        public virtual ServiceCar ServiceCar { get; set; }
+        public virtual Worker Worker { get; set; }
         public virtual ICollection<Illegal> Illegal { get; set; }
-
-        public Worker DutyWorker
-        {
-            get
-            {
-                return WorkerRepositories.GetWorkerById(idWorker);
-            }
-        }
-
-        //DutyIllegal
-        public List<Illegal> DutyIllegal
-        {
-            get
-            {
-                return IllegalRepositories.GetAllIllegalsByDutyId(id);
-            }
-        }
-        
     }
 }

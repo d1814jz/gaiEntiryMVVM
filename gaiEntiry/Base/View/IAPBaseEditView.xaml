@@ -1,0 +1,51 @@
+﻿<Window x:Class="gaiEntiry.Base.View.IAPBaseEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View"
+        DataContext="{Binding IAPBaseEditViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Сотрудник"/>
+            <ComboBox ItemsSource="{Binding WorkersView}" SelectedItem="{Binding SelectedWorker}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding LastName}"></TextBlock>
+                            <TextBlock Text=" "></TextBlock>
+                            <TextBlock Text="{Binding FirstName}"></TextBlock>
+                            <TextBlock Text="{Binding Surname}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Вид повышения/взыскания"/>
+            <ComboBox ItemsSource="{Binding TypesOfIAPsView}" SelectedItem="{Binding SelectedTypesOfIAP}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Type}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <TextBlock Text="Дата"/>
+            <TextBox Name="WorkerBlock" Text="{Binding Date}"/>
+            <TextBlock Text="Описание"/>
+            <TextBox Name="DescriptionBlock" Text="{Binding Description}"/>
+
+        </StackPanel>
+        <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>
+    </Grid>
+</Window>

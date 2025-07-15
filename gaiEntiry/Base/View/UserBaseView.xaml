@@ -1,0 +1,34 @@
+﻿<Window x:Class="gaiEntiry.Base.View.UserBaseView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{Binding UserBaseViewModel, Source={StaticResource Locator}}"
+        Title="Пользователи" Height="502.66" Width="428"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="0,0,3.2,-0.2">
+        <DataGrid x:Name="UserView" ItemsSource="{Binding UserView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedUser}" IsReadOnly="True" AutoGenerateColumns="false" Width="266" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Логин" Binding="{Binding Path=Login}"/>
+                <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}"/>
+                <DataGridTextColumn Header="Тип" Binding="{Binding Path=Type}" Width="*">
+                    <DataGridTextColumn.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="ToolTip" Value="1 - Администратор, 2 - Начальник, 3 - Оператор" />
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" Command="{Binding AddNewUserCommand}" HorizontalAlignment="Left" Margin="300,25,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Редактировать" Command="{Binding OnAddEditUserCommand}" HorizontalAlignment="Left" Margin="300,64,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Удалить" Command="{Binding RemoveUserCommand}" HorizontalAlignment="Left" Margin="300,107,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+    </Grid>
+</Window>

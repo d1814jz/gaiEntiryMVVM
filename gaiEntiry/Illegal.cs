@@ -9,7 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -26,40 +25,8 @@ namespace gaiEntiry
         public virtual Auto Auto { get; set; }
         public virtual Driver Driver { get; set; }
         public virtual Duty Duty { get; set; }
+        public virtual Illegal Illegal1 { get; set; }
+        public virtual Illegal Illegal2 { get; set; }
         public virtual IllegalType IllegalType { get; set; }
-       
-
-        //IllegalAuto
-        public Auto IllegalAuto
-        {
-            get
-            {
-                return AutoRepositories.GetAutoById(idAuto);
-            }
-        }
-        //IllegalDriver
-        public Driver IllegalDriver
-        {
-            get
-            {
-                return DriverRepositories.GetDriverById(idDriver);
-            }
-        }
-        //IllegalDuty
-        public Duty IllegalDuty
-        {
-            get
-            {
-                return DutyRepositories.GetDutyById(idDuty);
-            }
-        }
-        //IllegalIllegalType
-        public IllegalType IllegalIllegalType
-        {
-            get
-            {
-                return IllegalTypeRepositories.GetIllegalTypeById(idIllegalType);
-            }
-        }
     }
 }

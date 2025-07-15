@@ -36,6 +36,7 @@ namespace gaiEntiry
 
                     services.AddTransient<IUserDialog, UserDialogService>();
 
+                    #region ViewModel
                     services.AddScoped<gaiEngEntities>(d => new gaiEngEntities());
                     services.AddScoped<AutoBaseViewModel>();
                     services.AddScoped<AutoBaseEditViewModel>();
@@ -53,19 +54,70 @@ namespace gaiEntiry
                     services.AddScoped<IllegalBaseEditViewModel>();
                     services.AddScoped<AccountingBaseViewModel>();
                     services.AddScoped<AccountingBaseEditViewModel>();
+                    services.AddScoped<DistrictBaseViewModel>();
+                    services.AddScoped<DistrictBaseEditViewModel>();
+                    services.AddScoped<PositionBaseViewModel>();
+                    services.AddScoped<PositionBaseEditViewModel>();
+                    services.AddScoped<TypesOfIAPBaseEditViewModel>();
+                    services.AddScoped<TypesOfIAPBaseViewModel>();
+                    services.AddScoped<DutyDotsTypeBaseEditViewModel>();
+                    services.AddScoped<DutyDotsTypeBaseViewModel>();
+                    services.AddScoped<StreetBaseViewModel>();
+                    services.AddScoped<StreetBaseEditViewModel>();
+                    services.AddScoped<HistoryBaseViewModel>();
+                    services.AddScoped<HistoryBaseEditViewModel>();
+                    services.AddScoped<ServiceCarBaseViewModel>();
+                    services.AddScoped<ServiceCarBaseEditViewModel>();
+                    services.AddScoped<IAPBaseViewModel>();
+                    services.AddScoped<IAPBaseEditViewModel>();
+                    services.AddScoped<UserBaseViewModel>();
+                    services.AddScoped<UserBaseEditViewModel>();
+                    services.AddScoped<AccidentMemberBaseViewModel>();
+                    services.AddScoped<AccidentMemberBaseEditViewModel>();
+                    services.AddScoped<DutyDotsBaseViewModel>();
+                    services.AddScoped<DutyDotsBaseEditViewModel>();
+                    services.AddScoped<AccidentBaseViewModel>();
+                    services.AddScoped<AccidentBaseEditViewModel>();
+                    services.AddScoped<AuthorizationBaseViewModel>();
+                    services.AddScoped<AccidentReportViewModel>();
+                    services.AddScoped<IllegalReportViewModel>();
+                    services.AddScoped<DutyReportViewModel>();
+                    services.AddScoped<AccountingReportViewModel>();
+                    services.AddScoped<LogBaseViewModel>();
 
                     services.AddScoped<MenuBaseViewModel>();
 
+                    #endregion
+
+                    #region Repositories
                     services.AddTransient<IRepository<Auto>, DbRepository<Auto>>();
                     services.AddTransient<IRepository<Driver>, DbRepository<Driver>>();
                     services.AddTransient<IRepository<IllegalType>, DbRepository<IllegalType>>();
                     services.AddTransient<IRepository<Rank>, DbRepository<Rank>>();
+                   //services.AddTransient<IRepository<Worker>, DbRepository<Worker>>();
                     services.AddTransient<IRepository<Worker>, DbRepository<Worker>>();
-                    services.AddTransient<IRepository<Worker>, DbRepository<Worker>>();
-                    services.AddTransient<IRepository<Duty>, DbRepository<Duty>>();
-                    services.AddTransient<IRepository<Worker>, DbRepository<Worker>>();
-                    services.AddTransient<IRepository<Illegal>, DbRepository<Illegal>>();
-                    services.AddTransient<IRepository<Accounting>, DbRepository<Accounting>>();
+                    services.AddTransient<IRepository<Duty>, DutyRepository>();
+                    //services.AddTransient<IRepository<Worker>, DbRepository<Worker>>();
+                    services.AddTransient<IRepository<Worker>, WorkerRepository>();
+                    //services.AddTransient<IRepository<Illegal>, DbRepository<Illegal>>();
+                    services.AddTransient<IRepository<Illegal>, IllegalRepository>();
+                    services.AddTransient<IRepository<Accounting>, AccountingRepository>();
+                    services.AddTransient<IRepository<District>, DbRepository<District>>();
+                    services.AddTransient<IRepository<Position>, DbRepository<Position>>();
+                    services.AddTransient<IRepository<TypesOfIAP>, DbRepository<TypesOfIAP>>();
+                    services.AddTransient<IRepository<DutyDotsType>, DbRepository<DutyDotsType>>();
+                    services.AddTransient<IRepository<Street>, StreetRepository>();
+                    services.AddTransient<IRepository<History>, HistoryRepository>();
+                    services.AddTransient<IRepository<ServiceCar>, DbRepository<ServiceCar>>();
+                    services.AddTransient<IRepository<IAP>, IAPRepository>();
+                    services.AddTransient<IRepository<User>, DbRepository<User>>();
+                    services.AddTransient<IRepository<AccidentMember>, AccidentMemberRepository>();
+                    services.AddTransient<IRepository<Accident>, AccidentRepository>();
+                    services.AddTransient<IRepository<DutyDots>, DutyDotsRepository>();
+                    services.AddTransient<IRepository<User>, DbRepository<User>>();
+                    services.AddTransient<IRepository<Log>, DbRepository<Log>>();
+
+                    #endregion
                     services.ToList();
 
 

@@ -9,7 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -17,6 +16,7 @@ namespace gaiEntiry
     {
         public Driver()
         {
+            this.AccidentMember = new HashSet<AccidentMember>();
             this.Accounting = new HashSet<Accounting>();
             this.Illegal = new HashSet<Illegal>();
         }
@@ -28,23 +28,8 @@ namespace gaiEntiry
         public string Address { get; set; }
         public string NumberDL { get; set; }
     
+        public virtual ICollection<AccidentMember> AccidentMember { get; set; }
         public virtual ICollection<Accounting> Accounting { get; set; }
         public virtual ICollection<Illegal> Illegal { get; set; }
-
-        //DriverIllegal
-        public List<Illegal> DriverIllegal
-        {
-            get
-            {
-                return IllegalRepositories.GetAllIllegalsByDriverId(id);
-            }
-        }
-        public List<Accounting> DriverAccounting
-        {
-            get
-            {
-                return AccountingRepositories.GetAllAccountingsByDriverId(id);
-            }
-        }
     }
 }

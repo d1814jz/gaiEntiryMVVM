@@ -1,4 +1,5 @@
-﻿using MathCore.WPF.Commands;
+﻿using gaiEntiry.Base.View;
+using MathCore.WPF.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 
@@ -140,7 +142,7 @@ namespace gaiEntiry.Base.ViewsModel
         {
             var Worker_to_remove = p ?? SelectedWorker;
 
-            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить сотрудника: {Worker_to_remove.FirsName} {Worker_to_remove.LastName} {Worker_to_remove.Surname}?", "Удаление сотрудника"))
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить сотрудника: {Worker_to_remove.FirstName} {Worker_to_remove.LastName} {Worker_to_remove.Surname}?", "Удаление сотрудника"))
                 return;
 
             _WorkerRepository.Remove(Worker_to_remove.id);
@@ -157,6 +159,53 @@ namespace gaiEntiry.Base.ViewsModel
             _WorkerRepository = WorkerRepository;
             //_RankRepository = RankRepository;
             _UserDialog = UserDialog;
+        }
+
+        private void SetCenterPositionAndOpen(Window window)
+        {
+            window.Owner = App.Current.MainWindow;
+            window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            window.ShowDialog();
+        }
+
+        private void OpenHistoryBaseViewMethod()
+        {
+            HistoryBaseView obj = new HistoryBaseView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openHistoryBaseView;
+
+        public RelayCommand OpenHistoryBaseView
+        {
+            get
+            {
+                return openHistoryBaseView ?? new RelayCommand(obj =>
+                {
+                    OpenHistoryBaseViewMethod();
+
+                });
+            }
+        }
+
+        private void OpenIAPBaseViewMethod()
+        {
+            IAPBaseView obj = new IAPBaseView();
+            SetCenterPositionAndOpen(obj);
+        }
+
+        private RelayCommand openIAPBaseView;
+
+        public RelayCommand OpenIAPBaseView
+        {
+            get
+            {
+                return openIAPBaseView ?? new RelayCommand(obj =>
+                {
+                    OpenIAPBaseViewMethod();
+
+                });
+            }
         }
     }
 }

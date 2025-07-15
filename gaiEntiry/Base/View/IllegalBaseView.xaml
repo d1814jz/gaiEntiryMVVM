@@ -6,14 +6,35 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{Binding IllegalBaseViewModel, Source={StaticResource Locator}}"
-        Title="Виды нарушнией" Height="502.66" Width="1029.6">
+        Title="Нарушения" Height="502.66" Width="1029.6"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="0,0,3.2,-0.2">
-        <DataGrid x:Name="IllegalTypesView" ItemsSource="{Binding IllegalView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedIllegal}" IsReadOnly="True" Margin="0,0,183,0"/>
+        <DataGrid x:Name="IllegalTypesView" ItemsSource="{Binding IllegalView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedIllegal}" IsReadOnly="True" Margin="0,0,183,0" AutoGenerateColumns="false" Width="Auto" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Штраф" Binding="{Binding Path=IllegalType.IllegalType1}"/>
+                <DataGridTextColumn Header="Штраф б.в." Binding="{Binding Path=IllegalType.Fine}"/>
+                <DataGridTextColumn Header="Владелец Фамилия" Binding="{Binding Path=Driver.LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Driver.FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Driver.Surname}"/>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Path=Auto.Brand}"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=Auto.Model}"/>
+                <DataGridTextColumn Header="Год выпуска" Binding="{Binding Path=Auto.Year}"/>
+                <DataGridTextColumn Header="Vin номер" Binding="{Binding Path=Auto.VinNumber}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Duty.Date}"/>
+                <DataGridTextColumn Header="Сотрудник Фамилия" Binding="{Binding Path=Duty.Worker.LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Duty.Worker.FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Duty.Worker.Surname}"/>
+                
+                
+
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="Добавить" Command="{Binding AddNewIllegalCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Редактировать" Command="{Binding OnAddEditIllegalCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Удалить" Command="{Binding RemoveIllegalCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>

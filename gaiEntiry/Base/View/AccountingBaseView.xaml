@@ -5,14 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{Binding AccountingBaseViewModel, Source={StaticResource Locator}}"
-        Title="Учет" Height="502.66" Width="1029.6">
+        Title="Учет" Height="502.66" Width="1029.6"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="0,0,3.2,-0.2">
-        <DataGrid x:Name="DriversView" ItemsSource="{Binding AccountingsView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAccounting}" IsReadOnly="True" Margin="0,0,183,0"/>
+        <DataGrid x:Name="DriversView" ItemsSource="{Binding AccountingsView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedAccounting}" IsReadOnly="True" Margin="0,0,183,0" AutoGenerateColumns="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Сотрудник Фамилия" Binding="{Binding Path=Worker.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Worker.LastName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Worker.Surname}"/>
+                <DataGridTextColumn Header="Владелец Фамилия" Binding="{Binding Path=Driver.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Driver.LastName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Driver.Surname}"/>
+                <DataGridTextColumn Header="Марка" Binding="{Binding Path=Auto.Brand}"/>
+                <DataGridTextColumn Header="Модель" Binding="{Binding Path=Auto.Model}"/>
+                <DataGridTextColumn Header="Год выпуска" Binding="{Binding Path=Auto.Year}"/>
+                <DataGridTextColumn Header="Vin номер" Binding="{Binding Path=Auto.VinNumber}"/>
+                <DataGridTextColumn Header="Гос номер" Binding="{Binding Path=Number}"/>
+                <DataGridTextColumn Header="Цвет" Binding="{Binding Path=Color}"/>
+                <DataGridTextColumn Header="Дата постановки" Binding="{Binding Path=FirstDate}"/>
+                <DataGridTextColumn Header="Дата снятия" Binding="{Binding Path=LastDate}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
         <Button Content="Добавить" Command="{Binding AddNewAccountingCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Редактировать" Command="{Binding OnAddEditAccountingCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
         <Button Content="Удалить" Command="{Binding RemoveAccountingCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>

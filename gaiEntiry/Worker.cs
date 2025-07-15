@@ -9,8 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
-    using gaiEntiry.ViewsModel;
     using System;
     using System.Collections.Generic;
     
@@ -18,41 +16,24 @@ namespace gaiEntiry
     {
         public Worker()
         {
+            this.Accident = new HashSet<Accident>();
             this.Accounting = new HashSet<Accounting>();
+            this.Duty = new HashSet<Duty>();
+            this.History = new HashSet<History>();
+            this.IAP = new HashSet<IAP>();
         }
     
         public int id { get; set; }
-        public int idRank { get; set; }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string FirsName { get; set; }
         public string Surname { get; set; }
+        public System.DateTime Birth { get; set; }
+        public string Address { get; set; }
     
+        public virtual ICollection<Accident> Accident { get; set; }
         public virtual ICollection<Accounting> Accounting { get; set; }
-        public virtual Rank Rank { get; set; }
-        public Rank WorkerRank
-        {
-            get
-            {
-                return RankRepositories.GetRankById(idRank);
-            }
-        }
-
-        public List<Duty> WorkerDuty
-        {
-            get
-            {
-                return DutyRepositories.GetAllDutiesByWorkerId(id);
-            }
-        }
-
-        public List<Accounting> WorkerAccounting
-        {
-            get
-            {
-                return AccountingRepositories.GetAllAccountingsByWorkerId(id);
-            }
-        }
-
-        
+        public virtual ICollection<Duty> Duty { get; set; }
+        public virtual ICollection<History> History { get; set; }
+        public virtual ICollection<IAP> IAP { get; set; }
     }
 }

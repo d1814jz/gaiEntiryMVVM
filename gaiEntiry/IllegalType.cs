@@ -9,7 +9,6 @@
 
 namespace gaiEntiry
 {
-    using gaiEntiry.Repositories;
     using System;
     using System.Collections.Generic;
     
@@ -23,18 +22,9 @@ namespace gaiEntiry
         public int id { get; set; }
         public string IllegalType1 { get; set; }
         public int Fine { get; set; }
-        public bool Notice { get; set; }
+        public string Notice { get; set; }
         public int Tod { get; set; }
     
         public virtual ICollection<Illegal> Illegal { get; set; }
-        
-        //IllegalTypeIllegal
-        public List<Illegal> IllegalTypeIllegal
-        {
-            get
-            {
-                return IllegalRepositories.GetAllIllegalsByIllegalTypeId(id);
-            }
-        }
     }
 }

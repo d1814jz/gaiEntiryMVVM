@@ -1,0 +1,30 @@
+﻿<Window x:Class="gaiEntiry.Base.Report.View.DutyReportView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        DataContext="{Binding DutyReportViewModel, Source={StaticResource Locator}}"
+        Title="Отчет дежурство" Height="502.66" Width="611.6"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid Margin="0,0,3.2,-0.2">
+        <DataGrid x:Name="DriversView" ItemsSource="{Binding DutysView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDuty}" IsReadOnly="True" AutoGenerateColumns="false" Width="448" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Сотрудник Фамилия" Binding="{Binding Path=Worker.FirstName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=Worker.LastName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Worker.Surname}"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Path=Date}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Отчёт" Command="{Binding OnReportCommand}" HorizontalAlignment="Left" Margin="474,34,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Name="SelectPathButton" Content="Выбрать путь" Command="{Binding SelectPath}" HorizontalAlignment="Left" Margin="474,74,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Name="OpenFolderButton" Content="Показать в папке" Command="{Binding OpenFolder}" HorizontalAlignment="Left" Margin="474,117,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Name="OpenFileButton" Content="Открыть" Command="{Binding  OnOpenFileCommand}" HorizontalAlignment="Left" Margin="474,155,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+    </Grid>
+</Window>

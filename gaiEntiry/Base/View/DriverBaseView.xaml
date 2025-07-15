@@ -5,16 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gaiEntiry.Base.View" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{Binding DriverBaseViewModel, Source={StaticResource Locator}}"
-        Title="Водители" Height="502.66" Width="1029.6">
+        Title="Водители" Height="502.66" Width="741.6"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="0,0,3.2,-0.2">
-        <DataGrid x:Name="DriversView" ItemsSource="{Binding DriversView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDriver}" IsReadOnly="True" Margin="0,0,183,0"/>
-        <Button Content="Добавить" Command="{Binding AddNewDriverCommand}" HorizontalAlignment="Left" Margin="884,39,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
-        <Button Content="Редактировать" Command="{Binding OnAddEditDriverCommand}" HorizontalAlignment="Left" Margin="884,78,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
-        <Button Content="Удалить" Command="{Binding RemoveDriverCommand}" HorizontalAlignment="Left" Margin="884,121,-100,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <DataGrid x:Name="DriversView" ItemsSource="{Binding DriversView, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedDriver}" IsReadOnly="True" AutoGenerateColumns="false" Width="572" Height="Auto" 
+          HorizontalAlignment="Left">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=LastName}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Path=FirstName}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Surname}"/>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Address}"/>
+                <DataGridTextColumn Header="Номер водительского удостоверения" Binding="{Binding Path=NumberDL}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Добавить" Command="{Binding AddNewDriverCommand}" HorizontalAlignment="Left" Margin="603,33,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Редактировать" Command="{Binding OnAddEditDriverCommand}" HorizontalAlignment="Left" Margin="603,72,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
+        <Button Content="Удалить" Command="{Binding RemoveDriverCommand}" HorizontalAlignment="Left" Margin="603,115,0,0" VerticalAlignment="Top" Width="100" Height="25"/>
     </Grid>
 </Window>

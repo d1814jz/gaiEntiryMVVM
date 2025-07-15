@@ -23,6 +23,7 @@ namespace gaiEntiry.Base
         }
 
         public virtual IQueryable<T> Items => _db.Set<T>();
+        
         /*public async Task<T> AddAsync(T item, CancellationToken Cancel = default)
         {
             if (item is null) throw new ArgumentNullException(nameof(item));

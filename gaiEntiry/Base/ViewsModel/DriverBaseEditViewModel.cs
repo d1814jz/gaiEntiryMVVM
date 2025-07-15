@@ -29,7 +29,7 @@ namespace gaiEntiry.Base.ViewsModel
         }
 
         public DriverBaseEditViewModel() 
-            : this(new Driver { LastName = "1", FirstName = "1", Surname = "1",Address = "1", NumberDL = "1" })
+            : this(new Driver {})
         {
 
         }

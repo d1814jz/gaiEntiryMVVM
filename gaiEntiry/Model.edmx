@@ -4,7 +4,28 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="gaiEngModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="gaiEntiry.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accident">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idStreet" Type="int" Nullable="false" />
+          <Property Name="idWorker" Type="int" Nullable="false" />
+          <Property Name="Place" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AccidentMember">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAccident" Type="int" Nullable="false" />
+          <Property Name="idDriver" Type="int" Nullable="false" />
+          <Property Name="idAuto" Type="int" Nullable="false" />
+          <Property Name="Criminal" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
         <EntityType Name="Accounting">
           <Key>
             <PropertyRef Name="id" />
@@ -16,7 +37,7 @@
           <Property Name="Number" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FirstDate" Type="date" Nullable="false" />
-          <Property Name="LastDate" Type="date" Nullable="false" />
+          <Property Name="LastDate" Type="date" />
         </EntityType>
         <EntityType Name="Auto">
           <Key>
@@ -27,6 +48,13 @@
           <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Year" Type="int" Nullable="false" />
           <Property Name="VinNumber" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="District" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -45,8 +73,46 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idWorker" Type="int" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="Place" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idServiceCar" Type="int" Nullable="false" />
+          <Property Name="idDutyDots" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DutyDots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDutyDotsType" Type="int" Nullable="false" />
+          <Property Name="idDistrict" Type="int" Nullable="false" />
+          <Property Name="FirstPlace" Type="varchar(max)" Nullable="false" />
+          <Property Name="LastPlace" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DutyDotsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idWorker" Type="int" Nullable="false" />
+          <Property Name="idRank" Type="int" Nullable="false" />
+          <Property Name="idPosition" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IAP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idWorker" Type="int" Nullable="false" />
+          <Property Name="idTypesOfIAP" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Illegal">
           <Key>
@@ -57,18 +123,33 @@
           <Property Name="idDuty" Type="int" Nullable="false" />
           <Property Name="idAuto" Type="int" Nullable="false" />
           <Property Name="idDriver" Type="int" Nullable="false" />
-          <Property Name="Place" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Place" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="IllegalType">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IllegalType" Type="varchar(max)" Nullable="false" />
+          <Property Name="IllegalType" Type="varchar(max)" />
           <Property Name="Fine" Type="int" Nullable="false" />
-          <Property Name="Notice" Type="bit" Nullable="false" />
+          <Property Name="Notice" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Tod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
@@ -77,25 +158,123 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Rank" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="ServiceCar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDistrict" Type="int" Nullable="false" />
+          <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypesOfIAP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" Nullable="false" />
+          <Property Name="Encouraging" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Login" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idRank" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="FirsName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Birth" Type="date" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Accident_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Accident" Type="Self.Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accident">
+              <PropertyRef Name="idStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accident_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Accident" Type="Self.Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accident">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Accident">
+          <End Role="Accident" Type="Self.Accident" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accident">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idAccident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Auto">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Driver">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounting_Accounting">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accounting">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Accounting_Auto">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
           <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
@@ -120,14 +299,122 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Accounting_Worker">
+        <Association Name="FK_Duty_DutyDots">
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyDots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="idDutyDots" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_ServiceCar">
+          <End Role="ServiceCar" Type="Self.ServiceCar" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="idServiceCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Worker">
           <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
-          <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Worker">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Accounting">
+            <Dependent Role="Duty">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DutyDots_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DutyDots">
+              <PropertyRef Name="idDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DutyDots_DutyDotsType">
+          <End Role="DutyDotsType" Type="Self.DutyDotsType" Multiplicity="1" />
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyDotsType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DutyDots">
+              <PropertyRef Name="idDutyDotsType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAP_TypesOfIAP">
+          <End Role="TypesOfIAP" Type="Self.TypesOfIAP" Multiplicity="1" />
+          <End Role="IAP" Type="Self.IAP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfIAP">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IAP">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAP_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="IAP" Type="Self.IAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IAP">
               <PropertyRef Name="idWorker" />
             </Dependent>
           </ReferentialConstraint>
@@ -168,6 +455,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Illegal_Illegal">
+          <End Role="Illegal" Type="Self.Illegal" Multiplicity="1" />
+          <End Role="Illegal1" Type="Self.Illegal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Illegal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Illegal1">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Illegal_IllegalType">
           <End Role="IllegalType" Type="Self.IllegalType" Multiplicity="1" />
           <End Role="Illegal" Type="Self.Illegal" Multiplicity="*" />
@@ -180,40 +479,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rank_Rank">
-          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
-          <End Role="Rank1" Type="Self.Rank" Multiplicity="0..1" />
+        <Association Name="FK_Street_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Rank">
+            <Principal Role="District">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Rank1">
-              <PropertyRef Name="id" />
+            <Dependent Role="Street">
+              <PropertyRef Name="idDistrict" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Worker_Rank">
-          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
-          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rank">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Worker">
-              <PropertyRef Name="idRank" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="gaiEngModelStoreContainer">
+        <EntityContainer Name="gaiEntiryStoreContainer">
+          <EntitySet Name="Accident" EntityType="Self.Accident" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccidentMember" EntityType="Self.AccidentMember" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Accounting" EntityType="Self.Accounting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Driver" EntityType="Self.Driver" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Duty" EntityType="Self.Duty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DutyDots" EntityType="Self.DutyDots" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DutyDotsType" EntityType="Self.DutyDotsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="History" EntityType="Self.History" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IAP" EntityType="Self.IAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Illegal" EntityType="Self.Illegal" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IllegalType" EntityType="Self.IllegalType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Log" EntityType="Self.Log" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rank" EntityType="Self.Rank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceCar" EntityType="Self.ServiceCar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Street" EntityType="Self.Street" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypesOfIAP" EntityType="Self.TypesOfIAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Accident_Street" Association="Self.FK_Accident_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Accident" EntitySet="Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accident_Worker" Association="Self.FK_Accident_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Accident" EntitySet="Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Accident" Association="Self.FK_AccidentMember_Accident">
+            <End Role="Accident" EntitySet="Accident" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Auto" Association="Self.FK_AccidentMember_Auto">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Driver" Association="Self.FK_AccidentMember_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounting_Accounting" Association="Self.FK_Accounting_Accounting">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Accounting" EntitySet="Accounting" />
+          </AssociationSet>
           <AssociationSet Name="FK_Accounting_Auto" Association="Self.FK_Accounting_Auto">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Accounting" EntitySet="Accounting" />
@@ -222,9 +545,45 @@
             <End Role="Driver" EntitySet="Driver" />
             <End Role="Accounting" EntitySet="Accounting" />
           </AssociationSet>
-          <AssociationSet Name="FK_Accounting_Worker" Association="Self.FK_Accounting_Worker">
+          <AssociationSet Name="FK_Duty_DutyDots" Association="Self.FK_Duty_DutyDots">
+            <End Role="DutyDots" EntitySet="DutyDots" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_ServiceCar" Association="Self.FK_Duty_ServiceCar">
+            <End Role="ServiceCar" EntitySet="ServiceCar" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Worker" Association="Self.FK_Duty_Worker">
             <End Role="Worker" EntitySet="Worker" />
-            <End Role="Accounting" EntitySet="Accounting" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DutyDots_District" Association="Self.FK_DutyDots_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="DutyDots" EntitySet="DutyDots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DutyDots_DutyDotsType" Association="Self.FK_DutyDots_DutyDotsType">
+            <End Role="DutyDotsType" EntitySet="DutyDotsType" />
+            <End Role="DutyDots" EntitySet="DutyDots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Position" Association="Self.FK_History_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Rank" Association="Self.FK_History_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Worker" Association="Self.FK_History_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAP_TypesOfIAP" Association="Self.FK_IAP_TypesOfIAP">
+            <End Role="TypesOfIAP" EntitySet="TypesOfIAP" />
+            <End Role="IAP" EntitySet="IAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAP_Worker" Association="Self.FK_IAP_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="IAP" EntitySet="IAP" />
           </AssociationSet>
           <AssociationSet Name="FK_Illegal_Auto" Association="Self.FK_Illegal_Auto">
             <End Role="Auto" EntitySet="Auto" />
@@ -238,24 +597,51 @@
             <End Role="Duty" EntitySet="Duty" />
             <End Role="Illegal" EntitySet="Illegal" />
           </AssociationSet>
+          <AssociationSet Name="FK_Illegal_Illegal" Association="Self.FK_Illegal_Illegal">
+            <End Role="Illegal" EntitySet="Illegal" />
+            <End Role="Illegal1" EntitySet="Illegal" />
+          </AssociationSet>
           <AssociationSet Name="FK_Illegal_IllegalType" Association="Self.FK_Illegal_IllegalType">
             <End Role="IllegalType" EntitySet="IllegalType" />
             <End Role="Illegal" EntitySet="Illegal" />
           </AssociationSet>
-          <AssociationSet Name="FK_Rank_Rank" Association="Self.FK_Rank_Rank">
-            <End Role="Rank" EntitySet="Rank" />
-            <End Role="Rank1" EntitySet="Rank" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Worker_Rank" Association="Self.FK_Worker_Rank">
-            <End Role="Rank" EntitySet="Rank" />
-            <End Role="Worker" EntitySet="Worker" />
+          <AssociationSet Name="FK_Street_District" Association="Self.FK_Street_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Street" EntitySet="Street" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="gaiEngModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="gaiEntiry" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accident">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idStreet" Type="Int32" Nullable="false" />
+          <Property Name="idWorker" Type="Int32" Nullable="false" />
+          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Accident_Street" FromRole="Accident" ToRole="Street" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Accident_Worker" FromRole="Accident" ToRole="Worker" />
+          <NavigationProperty Name="AccidentMember" Relationship="Self.FK_AccidentMember_Accident" FromRole="Accident" ToRole="AccidentMember" />
+        </EntityType>
+        <EntityType Name="AccidentMember">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAccident" Type="Int32" Nullable="false" />
+          <Property Name="idDriver" Type="Int32" Nullable="false" />
+          <Property Name="idAuto" Type="Int32" Nullable="false" />
+          <Property Name="Criminal" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accident" Relationship="Self.FK_AccidentMember_Accident" FromRole="AccidentMember" ToRole="Accident" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK_AccidentMember_Auto" FromRole="AccidentMember" ToRole="Auto" />
+          <NavigationProperty Name="Driver" Relationship="Self.FK_AccidentMember_Driver" FromRole="AccidentMember" ToRole="Driver" />
+        </EntityType>
         <EntityType Name="Accounting">
           <Key>
             <PropertyRef Name="id" />
@@ -267,10 +653,10 @@
           <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FirstDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="LastDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Accounting_Accounting" FromRole="Accounting" ToRole="Worker" />
           <NavigationProperty Name="Auto" Relationship="Self.FK_Accounting_Auto" FromRole="Accounting" ToRole="Auto" />
           <NavigationProperty Name="Driver" Relationship="Self.FK_Accounting_Driver" FromRole="Accounting" ToRole="Driver" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK_Accounting_Worker" FromRole="Accounting" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Auto">
           <Key>
@@ -281,8 +667,18 @@
           <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Year" Type="Int32" Nullable="false" />
           <Property Name="VinNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccidentMember" Relationship="Self.FK_AccidentMember_Auto" FromRole="Auto" ToRole="AccidentMember" />
           <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Auto" FromRole="Auto" ToRole="Accounting" />
           <NavigationProperty Name="Illegal" Relationship="Self.FK_Illegal_Auto" FromRole="Auto" ToRole="Illegal" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="District1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DutyDots" Relationship="Self.FK_DutyDots_District" FromRole="District" ToRole="DutyDots" />
+          <NavigationProperty Name="Street" Relationship="Self.FK_Street_District" FromRole="District" ToRole="Street" />
         </EntityType>
         <EntityType Name="Driver">
           <Key>
@@ -294,6 +690,7 @@
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NumberDL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AccidentMember" Relationship="Self.FK_AccidentMember_Driver" FromRole="Driver" ToRole="AccidentMember" />
           <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Driver" FromRole="Driver" ToRole="Accounting" />
           <NavigationProperty Name="Illegal" Relationship="Self.FK_Illegal_Driver" FromRole="Driver" ToRole="Illegal" />
         </EntityType>
@@ -303,9 +700,59 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idWorker" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idServiceCar" Type="Int32" Nullable="false" />
+          <Property Name="idDutyDots" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DutyDots" Relationship="Self.FK_Duty_DutyDots" FromRole="Duty" ToRole="DutyDots" />
+          <NavigationProperty Name="ServiceCar" Relationship="Self.FK_Duty_ServiceCar" FromRole="Duty" ToRole="ServiceCar" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_Duty_Worker" FromRole="Duty" ToRole="Worker" />
           <NavigationProperty Name="Illegal" Relationship="Self.FK_Illegal_Duty" FromRole="Duty" ToRole="Illegal" />
+        </EntityType>
+        <EntityType Name="DutyDots">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDutyDotsType" Type="Int32" Nullable="false" />
+          <Property Name="idDistrict" Type="Int32" Nullable="false" />
+          <Property Name="FirstPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="District" Relationship="Self.FK_DutyDots_District" FromRole="DutyDots" ToRole="District" />
+          <NavigationProperty Name="Duty" Relationship="Self.FK_Duty_DutyDots" FromRole="DutyDots" ToRole="Duty" />
+          <NavigationProperty Name="DutyDotsType" Relationship="Self.FK_DutyDots_DutyDotsType" FromRole="DutyDots" ToRole="DutyDotsType" />
+        </EntityType>
+        <EntityType Name="DutyDotsType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DutyDots" Relationship="Self.FK_DutyDots_DutyDotsType" FromRole="DutyDotsType" ToRole="DutyDots" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idWorker" Type="Int32" Nullable="false" />
+          <Property Name="idRank" Type="Int32" Nullable="false" />
+          <Property Name="idPosition" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Position" Relationship="Self.FK_History_Position" FromRole="History" ToRole="Position" />
+          <NavigationProperty Name="Rank" Relationship="Self.FK_History_Rank" FromRole="History" ToRole="Rank" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_History_Worker" FromRole="History" ToRole="Worker" />
+        </EntityType>
+        <EntityType Name="IAP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idWorker" Type="Int32" Nullable="false" />
+          <Property Name="idTypesOfIAP" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TypesOfIAP" Relationship="Self.FK_IAP_TypesOfIAP" FromRole="IAP" ToRole="TypesOfIAP" />
+          <NavigationProperty Name="Worker" Relationship="Self.FK_IAP_Worker" FromRole="IAP" ToRole="Worker" />
         </EntityType>
         <EntityType Name="Illegal">
           <Key>
@@ -316,11 +763,13 @@
           <Property Name="idDuty" Type="Int32" Nullable="false" />
           <Property Name="idAuto" Type="Int32" Nullable="false" />
           <Property Name="idDriver" Type="Int32" Nullable="false" />
-          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Place" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Auto" Relationship="Self.FK_Illegal_Auto" FromRole="Illegal" ToRole="Auto" />
           <NavigationProperty Name="Driver" Relationship="Self.FK_Illegal_Driver" FromRole="Illegal" ToRole="Driver" />
           <NavigationProperty Name="Duty" Relationship="Self.FK_Illegal_Duty" FromRole="Illegal" ToRole="Duty" />
+          <NavigationProperty Name="Illegal1" Relationship="Self.FK_Illegal_Illegal" FromRole="Illegal" ToRole="Illegal1" />
+          <NavigationProperty Name="Illegal2" Relationship="Self.FK_Illegal_Illegal" FromRole="Illegal1" ToRole="Illegal" />
           <NavigationProperty Name="IllegalType" Relationship="Self.FK_Illegal_IllegalType" FromRole="Illegal" ToRole="IllegalType" />
         </EntityType>
         <EntityType Name="IllegalType">
@@ -328,11 +777,27 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IllegalType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IllegalType1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Fine" Type="Int32" Nullable="false" />
-          <Property Name="Notice" Type="Boolean" Nullable="false" />
+          <Property Name="Notice" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Tod" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Illegal" Relationship="Self.FK_Illegal_IllegalType" FromRole="IllegalType" ToRole="Illegal" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_Position" FromRole="Position" ToRole="History" />
         </EntityType>
         <EntityType Name="Rank">
           <Key>
@@ -340,31 +805,134 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rank1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Rank11" Relationship="Self.FK_Rank_Rank" FromRole="Rank" ToRole="Rank1" />
-          <NavigationProperty Name="Rank2" Relationship="Self.FK_Rank_Rank" FromRole="Rank1" ToRole="Rank" />
-          <NavigationProperty Name="Worker" Relationship="Self.FK_Worker_Rank" FromRole="Rank" ToRole="Worker" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_Rank" FromRole="Rank" ToRole="History" />
+        </EntityType>
+        <EntityType Name="ServiceCar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Duty" Relationship="Self.FK_Duty_ServiceCar" FromRole="ServiceCar" ToRole="Duty" />
+        </EntityType>
+        <EntityType Name="Street">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDistrict" Type="Int32" Nullable="false" />
+          <Property Name="Street1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accident" Relationship="Self.FK_Accident_Street" FromRole="Street" ToRole="Accident" />
+          <NavigationProperty Name="District" Relationship="Self.FK_Street_District" FromRole="Street" ToRole="District" />
+        </EntityType>
+        <EntityType Name="TypesOfIAP">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Encouraging" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IAP" Relationship="Self.FK_IAP_TypesOfIAP" FromRole="TypesOfIAP" ToRole="IAP" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Worker">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idRank" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FirsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Worker" FromRole="Worker" ToRole="Accounting" />
-          <NavigationProperty Name="Rank" Relationship="Self.FK_Worker_Rank" FromRole="Worker" ToRole="Rank" />
+          <Property Name="Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Accident" Relationship="Self.FK_Accident_Worker" FromRole="Worker" ToRole="Accident" />
+          <NavigationProperty Name="Accounting" Relationship="Self.FK_Accounting_Accounting" FromRole="Worker" ToRole="Accounting" />
+          <NavigationProperty Name="Duty" Relationship="Self.FK_Duty_Worker" FromRole="Worker" ToRole="Duty" />
+          <NavigationProperty Name="History" Relationship="Self.FK_History_Worker" FromRole="Worker" ToRole="History" />
+          <NavigationProperty Name="IAP" Relationship="Self.FK_IAP_Worker" FromRole="Worker" ToRole="IAP" />
         </EntityType>
+        <Association Name="FK_Accident_Street">
+          <End Role="Street" Type="Self.Street" Multiplicity="1" />
+          <End Role="Accident" Type="Self.Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Street">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accident">
+              <PropertyRef Name="idStreet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accident_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Accident" Type="Self.Accident" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accident">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Accident">
+          <End Role="Accident" Type="Self.Accident" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accident">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idAccident" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Auto">
+          <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Auto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccidentMember_Driver">
+          <End Role="Driver" Type="Self.Driver" Multiplicity="1" />
+          <End Role="AccidentMember" Type="Self.AccidentMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Driver">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="AccidentMember">
+              <PropertyRef Name="idDriver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accounting_Accounting">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Accounting">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Accounting_Auto">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
           <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
@@ -389,18 +957,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Accounting_Worker">
-          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
-          <End Role="Accounting" Type="Self.Accounting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Worker">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Accounting">
-              <PropertyRef Name="idWorker" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Illegal_Auto">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
           <End Role="Illegal" Type="Self.Illegal" Multiplicity="*" />
@@ -410,6 +966,30 @@
             </Principal>
             <Dependent Role="Illegal">
               <PropertyRef Name="idAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DutyDots_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DutyDots">
+              <PropertyRef Name="idDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Street_District">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Street" Type="Self.Street" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Street">
+              <PropertyRef Name="idDistrict" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -425,6 +1005,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Duty_DutyDots">
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyDots">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="idDutyDots" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_ServiceCar">
+          <End Role="ServiceCar" Type="Self.ServiceCar" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceCar">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="idServiceCar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Illegal_Duty">
           <End Role="Duty" Type="Self.Duty" Multiplicity="1" />
           <End Role="Illegal" Type="Self.Illegal" Multiplicity="*" />
@@ -434,6 +1050,90 @@
             </Principal>
             <Dependent Role="Illegal">
               <PropertyRef Name="idDuty" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DutyDots_DutyDotsType">
+          <End Role="DutyDotsType" Type="Self.DutyDotsType" Multiplicity="1" />
+          <End Role="DutyDots" Type="Self.DutyDots" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DutyDotsType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DutyDots">
+              <PropertyRef Name="idDutyDotsType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Position">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idPosition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Rank">
+          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rank">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idRank" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="History" Type="Self.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAP_TypesOfIAP">
+          <End Role="TypesOfIAP" Type="Self.TypesOfIAP" Multiplicity="1" />
+          <End Role="IAP" Type="Self.IAP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TypesOfIAP">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IAP">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IAP_Worker">
+          <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+          <End Role="IAP" Type="Self.IAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Worker">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="IAP">
+              <PropertyRef Name="idWorker" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Illegal_Illegal">
+          <End Role="Illegal" Type="Self.Illegal" Multiplicity="1" />
+          <End Role="Illegal1" Type="Self.Illegal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Illegal">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Illegal1">
+              <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -449,40 +1149,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Rank_Rank">
-          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
-          <End Role="Rank1" Type="Self.Rank" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Rank">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Rank1">
-              <PropertyRef Name="id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Worker_Rank">
-          <End Role="Rank" Type="Self.Rank" Multiplicity="1" />
-          <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Rank">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Worker">
-              <PropertyRef Name="idRank" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="gaiEngEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accident" EntityType="Self.Accident" />
+          <EntitySet Name="AccidentMember" EntityType="Self.AccidentMember" />
           <EntitySet Name="Accounting" EntityType="Self.Accounting" />
           <EntitySet Name="Auto" EntityType="Self.Auto" />
+          <EntitySet Name="District" EntityType="Self.District" />
           <EntitySet Name="Driver" EntityType="Self.Driver" />
           <EntitySet Name="Duty" EntityType="Self.Duty" />
+          <EntitySet Name="DutyDots" EntityType="Self.DutyDots" />
+          <EntitySet Name="DutyDotsType" EntityType="Self.DutyDotsType" />
+          <EntitySet Name="History" EntityType="Self.History" />
+          <EntitySet Name="IAP" EntityType="Self.IAP" />
           <EntitySet Name="Illegal" EntityType="Self.Illegal" />
           <EntitySet Name="IllegalType" EntityType="Self.IllegalType" />
+          <EntitySet Name="Log" EntityType="Self.Log" />
+          <EntitySet Name="Position" EntityType="Self.Position" />
           <EntitySet Name="Rank" EntityType="Self.Rank" />
+          <EntitySet Name="ServiceCar" EntityType="Self.ServiceCar" />
+          <EntitySet Name="Street" EntityType="Self.Street" />
+          <EntitySet Name="TypesOfIAP" EntityType="Self.TypesOfIAP" />
           <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="Worker" EntityType="Self.Worker" />
+          <AssociationSet Name="FK_Accident_Street" Association="Self.FK_Accident_Street">
+            <End Role="Street" EntitySet="Street" />
+            <End Role="Accident" EntitySet="Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accident_Worker" Association="Self.FK_Accident_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Accident" EntitySet="Accident" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Accident" Association="Self.FK_AccidentMember_Accident">
+            <End Role="Accident" EntitySet="Accident" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Auto" Association="Self.FK_AccidentMember_Auto">
+            <End Role="Auto" EntitySet="Auto" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccidentMember_Driver" Association="Self.FK_AccidentMember_Driver">
+            <End Role="Driver" EntitySet="Driver" />
+            <End Role="AccidentMember" EntitySet="AccidentMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accounting_Accounting" Association="Self.FK_Accounting_Accounting">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Accounting" EntitySet="Accounting" />
+          </AssociationSet>
           <AssociationSet Name="FK_Accounting_Auto" Association="Self.FK_Accounting_Auto">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Accounting" EntitySet="Accounting" />
@@ -491,33 +1203,69 @@
             <End Role="Driver" EntitySet="Driver" />
             <End Role="Accounting" EntitySet="Accounting" />
           </AssociationSet>
-          <AssociationSet Name="FK_Accounting_Worker" Association="Self.FK_Accounting_Worker">
-            <End Role="Worker" EntitySet="Worker" />
-            <End Role="Accounting" EntitySet="Accounting" />
-          </AssociationSet>
           <AssociationSet Name="FK_Illegal_Auto" Association="Self.FK_Illegal_Auto">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Illegal" EntitySet="Illegal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DutyDots_District" Association="Self.FK_DutyDots_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="DutyDots" EntitySet="DutyDots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Street_District" Association="Self.FK_Street_District">
+            <End Role="District" EntitySet="District" />
+            <End Role="Street" EntitySet="Street" />
           </AssociationSet>
           <AssociationSet Name="FK_Illegal_Driver" Association="Self.FK_Illegal_Driver">
             <End Role="Driver" EntitySet="Driver" />
             <End Role="Illegal" EntitySet="Illegal" />
           </AssociationSet>
+          <AssociationSet Name="FK_Duty_DutyDots" Association="Self.FK_Duty_DutyDots">
+            <End Role="DutyDots" EntitySet="DutyDots" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_ServiceCar" Association="Self.FK_Duty_ServiceCar">
+            <End Role="ServiceCar" EntitySet="ServiceCar" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Worker" Association="Self.FK_Duty_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
           <AssociationSet Name="FK_Illegal_Duty" Association="Self.FK_Illegal_Duty">
             <End Role="Duty" EntitySet="Duty" />
             <End Role="Illegal" EntitySet="Illegal" />
           </AssociationSet>
+          <AssociationSet Name="FK_DutyDots_DutyDotsType" Association="Self.FK_DutyDots_DutyDotsType">
+            <End Role="DutyDotsType" EntitySet="DutyDotsType" />
+            <End Role="DutyDots" EntitySet="DutyDots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Position" Association="Self.FK_History_Position">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Rank" Association="Self.FK_History_Rank">
+            <End Role="Rank" EntitySet="Rank" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Worker" Association="Self.FK_History_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAP_TypesOfIAP" Association="Self.FK_IAP_TypesOfIAP">
+            <End Role="TypesOfIAP" EntitySet="TypesOfIAP" />
+            <End Role="IAP" EntitySet="IAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IAP_Worker" Association="Self.FK_IAP_Worker">
+            <End Role="Worker" EntitySet="Worker" />
+            <End Role="IAP" EntitySet="IAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Illegal_Illegal" Association="Self.FK_Illegal_Illegal">
+            <End Role="Illegal" EntitySet="Illegal" />
+            <End Role="Illegal1" EntitySet="Illegal" />
+          </AssociationSet>
           <AssociationSet Name="FK_Illegal_IllegalType" Association="Self.FK_Illegal_IllegalType">
             <End Role="IllegalType" EntitySet="IllegalType" />
             <End Role="Illegal" EntitySet="Illegal" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Rank_Rank" Association="Self.FK_Rank_Rank">
-            <End Role="Rank" EntitySet="Rank" />
-            <End Role="Rank1" EntitySet="Rank" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Worker_Rank" Association="Self.FK_Worker_Rank">
-            <End Role="Rank" EntitySet="Rank" />
-            <End Role="Worker" EntitySet="Worker" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -525,9 +1273,32 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="gaiEngModelStoreContainer" CdmEntityContainer="gaiEngEntities">
+        <EntityContainerMapping StorageEntityContainer="gaiEntiryStoreContainer" CdmEntityContainer="gaiEngEntities">
+          <EntitySetMapping Name="Accident">
+            <EntityTypeMapping TypeName="gaiEntiry.Accident">
+              <MappingFragment StoreEntitySet="Accident">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idStreet" ColumnName="idStreet" />
+                <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccidentMember">
+            <EntityTypeMapping TypeName="gaiEntiry.AccidentMember">
+              <MappingFragment StoreEntitySet="AccidentMember">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idAccident" ColumnName="idAccident" />
+                <ScalarProperty Name="idDriver" ColumnName="idDriver" />
+                <ScalarProperty Name="idAuto" ColumnName="idAuto" />
+                <ScalarProperty Name="Criminal" ColumnName="Criminal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Accounting">
-            <EntityTypeMapping TypeName="gaiEngModel.Accounting">
+            <EntityTypeMapping TypeName="gaiEntiry.Accounting">
               <MappingFragment StoreEntitySet="Accounting">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idWorker" ColumnName="idWorker" />
@@ -541,7 +1312,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Auto">
-            <EntityTypeMapping TypeName="gaiEngModel.Auto">
+            <EntityTypeMapping TypeName="gaiEntiry.Auto">
               <MappingFragment StoreEntitySet="Auto">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Brand" ColumnName="Brand" />
@@ -551,8 +1322,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="District">
+            <EntityTypeMapping TypeName="gaiEntiry.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="District1" ColumnName="District" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Driver">
-            <EntityTypeMapping TypeName="gaiEngModel.Driver">
+            <EntityTypeMapping TypeName="gaiEntiry.Driver">
               <MappingFragment StoreEntitySet="Driver">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
@@ -564,17 +1343,59 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Duty">
-            <EntityTypeMapping TypeName="gaiEngModel.Duty">
+            <EntityTypeMapping TypeName="gaiEntiry.Duty">
               <MappingFragment StoreEntitySet="Duty">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="idServiceCar" ColumnName="idServiceCar" />
+                <ScalarProperty Name="idDutyDots" ColumnName="idDutyDots" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Place" ColumnName="Place" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DutyDots">
+            <EntityTypeMapping TypeName="gaiEntiry.DutyDots">
+              <MappingFragment StoreEntitySet="DutyDots">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idDutyDotsType" ColumnName="idDutyDotsType" />
+                <ScalarProperty Name="idDistrict" ColumnName="idDistrict" />
+                <ScalarProperty Name="FirstPlace" ColumnName="FirstPlace" />
+                <ScalarProperty Name="LastPlace" ColumnName="LastPlace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DutyDotsType">
+            <EntityTypeMapping TypeName="gaiEntiry.DutyDotsType">
+              <MappingFragment StoreEntitySet="DutyDotsType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="History">
+            <EntityTypeMapping TypeName="gaiEntiry.History">
+              <MappingFragment StoreEntitySet="History">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="idRank" ColumnName="idRank" />
+                <ScalarProperty Name="idPosition" ColumnName="idPosition" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IAP">
+            <EntityTypeMapping TypeName="gaiEntiry.IAP">
+              <MappingFragment StoreEntitySet="IAP">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idWorker" ColumnName="idWorker" />
+                <ScalarProperty Name="idTypesOfIAP" ColumnName="idTypesOfIAP" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Illegal">
-            <EntityTypeMapping TypeName="gaiEngModel.Illegal">
+            <EntityTypeMapping TypeName="gaiEntiry.Illegal">
               <MappingFragment StoreEntitySet="Illegal">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idIllegalType" ColumnName="idIllegalType" />
@@ -587,7 +1408,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="IllegalType">
-            <EntityTypeMapping TypeName="gaiEngModel.IllegalType">
+            <EntityTypeMapping TypeName="gaiEntiry.IllegalType">
               <MappingFragment StoreEntitySet="IllegalType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="IllegalType1" ColumnName="IllegalType" />
@@ -597,16 +1418,61 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Log">
+            <EntityTypeMapping TypeName="gaiEntiry.Log">
+              <MappingFragment StoreEntitySet="Log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Position">
+            <EntityTypeMapping TypeName="gaiEntiry.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Position1" ColumnName="Position" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Rank">
-            <EntityTypeMapping TypeName="gaiEngModel.Rank">
+            <EntityTypeMapping TypeName="gaiEntiry.Rank">
               <MappingFragment StoreEntitySet="Rank">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Rank1" ColumnName="Rank" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ServiceCar">
+            <EntityTypeMapping TypeName="gaiEntiry.ServiceCar">
+              <MappingFragment StoreEntitySet="ServiceCar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Street">
+            <EntityTypeMapping TypeName="gaiEntiry.Street">
+              <MappingFragment StoreEntitySet="Street">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idDistrict" ColumnName="idDistrict" />
+                <ScalarProperty Name="Street1" ColumnName="Street" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypesOfIAP">
+            <EntityTypeMapping TypeName="gaiEntiry.TypesOfIAP">
+              <MappingFragment StoreEntitySet="TypesOfIAP">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Encouraging" ColumnName="Encouraging" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="gaiEngModel.User">
+            <EntityTypeMapping TypeName="gaiEntiry.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
@@ -616,13 +1482,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Worker">
-            <EntityTypeMapping TypeName="gaiEngModel.Worker">
+            <EntityTypeMapping TypeName="gaiEntiry.Worker">
               <MappingFragment StoreEntitySet="Worker">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idRank" ColumnName="idRank" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirsName" ColumnName="FirsName" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Birth" ColumnName="Birth" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

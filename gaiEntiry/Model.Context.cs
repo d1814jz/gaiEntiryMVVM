@@ -9,8 +9,6 @@
 
 namespace gaiEntiry
 {
-    //using Microsoft.EntityFrameworkCore;
-    //using Microsoft.EntityFrameworkCore;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -21,25 +19,31 @@ namespace gaiEntiry
             : base("name=gaiEngEntities")
         {
         }
-        
-        /*public gaiEngEntities(DbContextOptions<gaiEngEntities> options) : base(options)
-        {
-
-        }
-        */
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-
+    
+        public DbSet<Accident> Accident { get; set; }
+        public DbSet<AccidentMember> AccidentMember { get; set; }
         public DbSet<Accounting> Accounting { get; set; }
         public DbSet<Auto> Auto { get; set; }
+        public DbSet<District> District { get; set; }
         public DbSet<Driver> Driver { get; set; }
         public DbSet<Duty> Duty { get; set; }
+        public DbSet<DutyDots> DutyDots { get; set; }
+        public DbSet<DutyDotsType> DutyDotsType { get; set; }
+        public DbSet<History> History { get; set; }
+        public DbSet<IAP> IAP { get; set; }
         public DbSet<Illegal> Illegal { get; set; }
         public DbSet<IllegalType> IllegalType { get; set; }
+        public DbSet<Log> Log { get; set; }
+        public DbSet<Position> Position { get; set; }
         public DbSet<Rank> Rank { get; set; }
+        public DbSet<ServiceCar> ServiceCar { get; set; }
+        public DbSet<Street> Street { get; set; }
+        public DbSet<TypesOfIAP> TypesOfIAP { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<Worker> Worker { get; set; }
     }

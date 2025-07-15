@@ -188,6 +188,16 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -196,6 +206,9 @@
     </Reference>
     <Reference Include="Ninject, Version=3.3.6.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.6\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ookii.Dialogs.Wpf, Version=5.0.0.0, Culture=neutral, PublicKeyToken=66aa232afad40158, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ookii.Dialogs.Wpf.5.0.1\lib\net462\Ookii.Dialogs.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -217,6 +230,7 @@
     </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=7.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.7.0.1\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
@@ -304,32 +318,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Accounting.cs">
+    <Compile Include="Accident.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Add\AddNewAccountingView.xaml.cs">
-      <DependentUpon>AddNewAccountingView.xaml</DependentUpon>
+    <Compile Include="AccidentMember.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Add\AddNewAutoView.xaml.cs">
-      <DependentUpon>AddNewAutoView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewDriverView.xaml.cs">
-      <DependentUpon>AddNewDriverView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewIllegalView.xaml.cs">
-      <DependentUpon>AddNewIllegalView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewDutyView.xaml.cs">
-      <DependentUpon>AddNewDutyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewIllegalTypeView.xaml.cs">
-      <DependentUpon>AddNewIllegalTypeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewRankView.xaml.cs">
-      <DependentUpon>AddNewRankView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Add\AddNewWorkerView.xaml.cs">
-      <DependentUpon>AddNewWorkerView.xaml</DependentUpon>
+    <Compile Include="Accounting.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Auto.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -338,40 +334,114 @@
     <Compile Include="Base\DbRepository.cs" />
     <Compile Include="Base\IRepository.cs" />
     <Compile Include="Base\IUserDialog.cs" />
+    <Compile Include="Base\Report\ViewModel\AccidentReportViewModel.cs" />
+    <Compile Include="Base\Report\ViewModel\AccountingReportViewModel.cs" />
+    <Compile Include="Base\Report\ViewModel\DutyReportViewModel.cs" />
+    <Compile Include="Base\Report\ViewModel\IllegalReportViewModel.cs" />
+    <Compile Include="Base\Report\View\AccidentReportView.xaml.cs">
+      <DependentUpon>AccidentReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Report\View\AccountingReportView.xaml.cs">
+      <DependentUpon>AccountingReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Report\View\DutyReportView.xaml.cs">
+      <DependentUpon>DutyReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Report\View\IllegalReportView.xaml.cs">
+      <DependentUpon>IllegalReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Repository\AccidentMemberRepository.cs" />
+    <Compile Include="Base\Repository\AccidentRepository.cs" />
+    <Compile Include="Base\Repository\AccountingRepository.cs" />
     <Compile Include="Base\Repository\AutosRepository.cs" />
+    <Compile Include="Base\Repository\DutyDotsRepository.cs" />
+    <Compile Include="Base\Repository\DutyRepository.cs" />
+    <Compile Include="Base\Repository\HistoryRepository.cs" />
+    <Compile Include="Base\Repository\IAPRepository.cs" />
+    <Compile Include="Base\Repository\IllegalRepository.cs" />
+    <Compile Include="Base\Repository\StreetRepository.cs" />
+    <Compile Include="Base\Repository\WorkerRepository.cs" />
+    <Compile Include="Base\Service\ConverterService.cs" />
     <Compile Include="Base\Service\UserDialogService.cs" />
     <Compile Include="Base\test.xaml.cs">
       <DependentUpon>test.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\DependencyInjection\ViewModelLocator.cs" />
+    <Compile Include="Base\ViewsModel\AccidentBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AccidentBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AccidentMemberBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AccidentMemberBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\AccountingBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\AccountingBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\AuthorizationBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\AutoBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\AutoBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DistrictBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DistrictBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\DriverBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\DriverBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\DutyBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\DutyBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyDotsBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyDotsBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyDotsTypeBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\DutyDotsTypeBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\HistoryBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\HistoryBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IAPBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\IAPBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\IllegalBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\IllegalBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\IllegalTypeBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\IllegalTypeBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\LogBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\MenuBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\PositionBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\PositionBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\RankBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\RankBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\ServiceCarBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\ServiceCarBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\StreetBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\StreetBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\TypesOfIAPBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\TypesOfIAPBaseViewModel.cs" />
+    <Compile Include="Base\ViewsModel\UserBaseEditViewModel.cs" />
+    <Compile Include="Base\ViewsModel\UserBaseViewModel.cs" />
     <Compile Include="Base\ViewsModel\WorkerBaseEditViewModel.cs" />
     <Compile Include="Base\ViewsModel\WorkerBaseViewModel.cs" />
+    <Compile Include="Base\View\AccidentBaseEditView.xaml.cs">
+      <DependentUpon>AccidentBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AccidentBaseView.xaml.cs">
+      <DependentUpon>AccidentBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AccidentMemberBaseEditView.xaml.cs">
+      <DependentUpon>AccidentMemberBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\AccidentMemberBaseView.xaml.cs">
+      <DependentUpon>AccidentMemberBaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Base\View\AccountingBaseEditView.xaml.cs">
       <DependentUpon>AccountingBaseEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\AccountingBaseView.xaml.cs">
       <DependentUpon>AccountingBaseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Base\View\AuthorizationBaseView.xaml.cs">
+      <DependentUpon>AuthorizationBaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Base\View\AutoBaseEditView.xaml.cs">
       <DependentUpon>AutoBaseEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\AutoBaseView.xaml.cs">
       <DependentUpon>AutoBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DistrictBaseEditView.xaml.cs">
+      <DependentUpon>DistrictBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DistrictBaseView.xaml.cs">
+      <DependentUpon>DistrictBaseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\DriverBaseEditView.xaml.cs">
       <DependentUpon>DriverBaseEditView.xaml</DependentUpon>
@@ -385,6 +455,30 @@
     <Compile Include="Base\View\DutyBaseView.xaml.cs">
       <DependentUpon>DutyBaseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Base\View\DutyDotsBaseEditView.xaml.cs">
+      <DependentUpon>DutyDotsBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DutyDotsBaseView.xaml.cs">
+      <DependentUpon>DutyDotsBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DutyDotsTypeBaseEditView.xaml.cs">
+      <DependentUpon>DutyDotsTypeBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\DutyDotsTypeBaseView.xaml.cs">
+      <DependentUpon>DutyDotsTypeBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\HistoryBaseEditView.xaml.cs">
+      <DependentUpon>HistoryBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\HistoryBaseView.xaml.cs">
+      <DependentUpon>HistoryBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IAPBaseEditView.xaml.cs">
+      <DependentUpon>IAPBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\IAPBaseView.xaml.cs">
+      <DependentUpon>IAPBaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Base\View\IllegalBaseEditView.xaml.cs">
       <DependentUpon>IllegalBaseEditView.xaml</DependentUpon>
     </Compile>
@@ -397,14 +491,53 @@
     <Compile Include="Base\View\IllegalTypeBaseView.xaml.cs">
       <DependentUpon>IllegalTypeBaseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Base\View\LogBaseView.xaml.cs">
+      <DependentUpon>LogBaseView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Base\View\MenuBaseView.xaml.cs">
       <DependentUpon>MenuBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\MenuNchBaseView.xaml.cs">
+      <DependentUpon>MenuNchBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\MenuOperBaseView.xaml.cs">
+      <DependentUpon>MenuOperBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\PositionBaseEditView.xaml.cs">
+      <DependentUpon>PositionBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\PositionBaseView.xaml.cs">
+      <DependentUpon>PositionBaseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\RankBaseEditView.xaml.cs">
       <DependentUpon>RankBaseEditView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\RankBaseView.xaml.cs">
       <DependentUpon>RankBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\ServiceCarBaseEditView.xaml.cs">
+      <DependentUpon>ServiceCarBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\ServiceCarBaseView.xaml.cs">
+      <DependentUpon>ServiceCarBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\StreetBaseEditView.xaml.cs">
+      <DependentUpon>StreetBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\StreetBaseView.xaml.cs">
+      <DependentUpon>StreetBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\TypesOfIAPBaseEditView.xaml.cs">
+      <DependentUpon>TypesOfIAPBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\TypesOfIAPBaseView.xaml.cs">
+      <DependentUpon>TypesOfIAPBaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\UserBaseEditView.xaml.cs">
+      <DependentUpon>UserBaseEditView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Base\View\UserBaseView.xaml.cs">
+      <DependentUpon>UserBaseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Base\View\WorkerBaseEditView.xaml.cs">
       <DependentUpon>WorkerBaseEditView.xaml</DependentUpon>
@@ -415,54 +548,34 @@
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\DialogResultCommand.cs" />
     <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="Edit\EditAccountingView.xaml.cs">
-      <DependentUpon>EditAccountingView.xaml</DependentUpon>
+    <Compile Include="District.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Edit\EditAutoView.xaml.cs">
-      <DependentUpon>EditAutoView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditDriverView.xaml.cs">
-      <DependentUpon>EditDriverView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditDutyView.xaml.cs">
-      <DependentUpon>EditDutyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditIllegalTypeView.xaml.cs">
-      <DependentUpon>EditIllegalTypeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditIllegalView.xaml.cs">
-      <DependentUpon>EditIllegalView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditRankView.xaml.cs">
-      <DependentUpon>EditRankView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Edit\EditWorkerView.xaml.cs">
-      <DependentUpon>EditWorkerView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interface\IAutoRepository.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Repositories\AccountingRepositories.cs" />
-    <Compile Include="Repositories\AutoRepositories.cs" />
-    <Compile Include="Repositories\DriverRepositories.cs" />
-    <Compile Include="Repositories\DutyRepositories.cs" />
-    <Compile Include="Repositories\IllegalRepositories.cs" />
-    <Compile Include="Repositories\IllegalTypeRepositories.cs" />
-    <Compile Include="Repositories\RankRepositories.cs" />
     <Compile Include="Driver.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Duty.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DutyDots.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DutyDotsType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="History.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IAP.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Illegal.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="IllegalType.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Log.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.cs">
@@ -480,93 +593,66 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Position.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Rank.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\UserRepositories.cs" />
-    <Compile Include="Repositories\WorkerRepositories.cs" />
-    <Compile Include="User.cs">
+    <Compile Include="ServiceCar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewsModel\AccountingViewModel.cs" />
-    <Compile Include="ViewsModel\AutoViewModel.cs" />
-    <Compile Include="ViewsModel\DriverViewModel.cs" />
-    <Compile Include="ViewsModel\DutyViewModel.cs" />
-    <Compile Include="ViewsModel\IllegalTypeViewModel.cs" />
-    <Compile Include="ViewsModel\IllegalViewModel.cs" />
-    <Compile Include="ViewsModel\RankViewModel.cs" />
-    <Compile Include="ViewsModel\RepositoriesVM.cs" />
-    <Compile Include="ViewsModel\UserViewModel.cs" />
-    <Compile Include="ViewsModel\WorkerViewModel.cs" />
-    <Compile Include="View\AccountingView.xaml.cs">
-      <DependentUpon>AccountingView.xaml</DependentUpon>
+    <Compile Include="Street.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\AutoView.xaml.cs">
-      <DependentUpon>AutoView.xaml</DependentUpon>
+    <Compile Include="TypesOfIAP.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="View\DriverView.xaml.cs">
-      <DependentUpon>DriverView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\DutyView.xaml.cs">
-      <DependentUpon>DutyView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\IllegalTypeView.xaml.cs">
-      <DependentUpon>IllegalTypeView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\IllegalView.xaml.cs">
-      <DependentUpon>IllegalView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\LoginView.xaml.cs">
-      <DependentUpon>LoginView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MenuView.xaml.cs">
-      <DependentUpon>MenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MessageView.xaml.cs">
-      <DependentUpon>MessageView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\RankView.xaml.cs">
-      <DependentUpon>RankView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WorkerView.xaml.cs">
-      <DependentUpon>WorkerView.xaml</DependentUpon>
+    <Compile Include="User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Worker.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Page Include="Add\AddNewAccountingView.xaml">
+    <Page Include="Base\Report\View\AccidentReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Add\AddNewAutoView.xaml">
+    <Page Include="Base\Report\View\AccountingReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Add\AddNewDriverView.xaml">
+    <Page Include="Base\Report\View\DutyReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Add\AddNewIllegalView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Add\AddNewDutyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Add\AddNewIllegalTypeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Add\AddNewRankView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Add\AddNewWorkerView.xaml">
+    <Page Include="Base\Report\View\IllegalReportView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Base\test.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccidentBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccidentBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccidentMemberBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\AccidentMemberBaseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -578,11 +664,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Base\View\AuthorizationBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Base\View\AutoBaseEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Base\View\AutoBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DistrictBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DistrictBaseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -602,6 +700,38 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Base\View\DutyDotsBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DutyDotsBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DutyDotsTypeBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\DutyDotsTypeBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\HistoryBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\HistoryBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IAPBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\IAPBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Base\View\IllegalBaseEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -618,7 +748,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Base\View\LogBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Base\View\MenuBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\MenuNchBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\MenuOperBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\PositionBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\PositionBaseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -630,43 +780,43 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Base\View\ServiceCarBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\ServiceCarBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\StreetBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\StreetBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\TypesOfIAPBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\TypesOfIAPBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\UserBaseEditView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Base\View\UserBaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Base\View\WorkerBaseEditView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Base\View\WorkerBaseView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditAccountingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditAutoView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditDriverView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditDutyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditIllegalTypeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditIllegalView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditRankView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Edit\EditWorkerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -682,50 +832,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\AccountingView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\AutoView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DriverView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\DutyView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\IllegalTypeView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\IllegalView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MessageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\RankView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WorkerView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -741,11 +847,15 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <AdditionalFiles Include="..\DependencyValidation1\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <None Include="appsettings.Development.json" />
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="appsettings.Development.json" />
     <None Include="Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
@@ -774,7 +884,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Repository\" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.11.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.11.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

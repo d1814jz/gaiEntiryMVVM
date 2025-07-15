@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:gaiEntiry.Base.View"
         DataContext="{Binding WorkerBaseEditViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="Функиця" Height="450" Width="276.8">
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,8 +23,10 @@
             <TextBox Name="FirstNameBlock" Text="{Binding FirstName}"/>
             <TextBlock Text="Отчество"/>
             <TextBox Name="SurnameBlock" Text="{Binding  Surname}"/>
-            <TextBlock Text="Звание"/>
-            <TextBox Name="RankBlock" Text="{Binding  idRank}"/>
+            <TextBlock Text="Адрес"/>
+            <TextBox Name="AddressBlock" Text="{Binding  Address}"/>
+            <TextBlock Text="Дата рождения"/>
+            <TextBox Name="BirthBlock" Text="{Binding  Birth}"/>
 
         </StackPanel>
         <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>

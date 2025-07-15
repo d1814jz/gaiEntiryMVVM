@@ -1,0 +1,29 @@
+﻿<Window x:Class="gaiEntiry.Base.View.ServiceCarBaseEditView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gaiEntiry.Base.View"
+        DataContext="{Binding ServiceCarBaseEditViewModel, Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+        Title="Функция" Height="450" Width="276.8"
+        Icon="D:\Проекты (нет)\Диплом\interface\gaiEntiryMVVM\gaiEntiry\Resources\logo.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Марка"/>
+            <TextBox Name="ModelBlock" Text="{Binding Model}"/>
+            <TextBlock Text="Модель"/>
+            <TextBox Name="BrandBlock" Text="{Binding Brand}"/>
+            <TextBlock Text="Гос номер"/>
+            <TextBox Name="YearBlock" Text="{Binding Number}"/>
+        </StackPanel>
+        <Button Grid.Row="1" Content="Ок" Command="{StaticResource DialogResultCommand}"  IsDefault="True" CommandParameter="True"/>
+    </Grid>
+</Window>

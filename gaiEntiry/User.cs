@@ -17,8 +17,6 @@ namespace gaiEntiry
         public int id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public string Type { get; set; }
-
-
+        public int Type { get; set; }
     }
 }

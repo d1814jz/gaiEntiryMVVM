@@ -16,13 +16,18 @@ namespace gaiEntiry.Base.ViewsModel
         public string FirstName { get => _FirstName; set => Set(ref _FirstName, value); }
         private string _Surname;
         public string Surname { get => _Surname; set => Set(ref _Surname, value); }
+        private string _Address;
+        public string Address { get => _Address; set => Set(ref _Address, value); }
+        private DateTime _Birth;
+        public DateTime Birth { get => _Birth; set => Set(ref _Birth, value); }
 
         public WorkerBaseEditViewModel(Worker worker)
         {
             LastName = worker.LastName;
-            FirstName = worker.FirsName;
+            FirstName = worker.FirstName;
             Surname = worker.Surname;
-            idRank = worker.idRank;
+            Address = worker.Address;
+            Birth = worker.Birth;
         }
 
         public WorkerBaseEditViewModel()
